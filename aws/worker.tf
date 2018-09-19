@@ -1,9 +1,9 @@
 resource "aws_lambda_function" "pullapprove_worker" {
-  filename         = "${dirname(path.module)}/pullapprove_worker.zip"
+  filename         = "${dirname(path.module)}/pullapprove_worker_aws.zip"
   function_name    = "pullapprove_worker"
   role             = "${aws_iam_role.pullapprove_lambda_role.arn}"
   handler          = "main.aws_sqs_handler"
-  source_code_hash = "${base64sha256(file("${dirname(path.module)}/pullapprove_worker.zip"))}"
+  source_code_hash = "${base64sha256(file("${dirname(path.module)}/pullapprove_worker_aws.zip"))}"
   runtime          = "python3.6"
   timeout          = 300
   memory_size      = 128

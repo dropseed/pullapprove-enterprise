@@ -1,9 +1,9 @@
 resource "aws_lambda_function" "pullapprove_webhook" {
-  filename         = "${dirname(path.module)}/pullapprove_webhook.zip"
+  filename         = "${dirname(path.module)}/pullapprove_webhook_aws.zip"
   function_name    = "pullapprove_webhook"
   role             = "${aws_iam_role.pullapprove_lambda_role.arn}"
   handler          = "main.aws_handler"
-  source_code_hash = "${base64sha256(file("${dirname(path.module)}/pullapprove_webhook.zip"))}"
+  source_code_hash = "${base64sha256(file("${dirname(path.module)}/pullapprove_webhook_aws.zip"))}"
   runtime          = "python3.6"
   timeout          = 30
   memory_size      = 128

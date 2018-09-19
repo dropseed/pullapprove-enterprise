@@ -56,8 +56,8 @@ Reminder: these are not to be shared or distributed.
 
 Terraform will expect these zip files:
 
-- `pullapprove_webhook.zip`
-- `pullapprove_worker.zip`
+- `pullapprove_webhook_aws.zip`
+- `pullapprove_worker_aws.zip`
 
 ## Run terraform
 
