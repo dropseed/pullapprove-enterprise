@@ -25,11 +25,13 @@ installation.
 - The webhook URL will be created *after* you run Terraform. So for now you just need to use a placeholder (ex. `https://yourcompany.com`).
 - You *should* create a webhook secret (ex. output of `ruby -rsecurerandom -e 'puts SecureRandom.hex(20)'`).
 
-See [this screenshot](screenshots/github-app-settings.png) for an easy view of
+See [this screenshot](img/github-app-settings.png) for an easy view of
 which permissions and events should be enabled.
 
 After the app has been created, you will need to click "generate private key"
 and save that file for the next step.
+
+You can use [this image](img/github-app-logo.png) for the app logo/avatar.
 
 ## Set up Terraform variables
 
