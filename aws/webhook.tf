@@ -14,6 +14,7 @@ resource "aws_lambda_function" "pullapprove_webhook" {
       GITHUB_APP_WEBHOOK_SECRET = "${var.github_app_webhook_secret}"
       GITHUB_STATUS_CONTEXT = "${var.github_status_context}"
       CONFIG_FILENAME = "${var.config_filename}"
+      GITHUB_BOT_NAME = "${var.github_bot_name}"
       SENTRY_DSN = "${var.sentry_dsn}"
       LOG_LEVEL = "${var.log_level}"
     }

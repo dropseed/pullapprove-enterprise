@@ -48,6 +48,7 @@ github_api_base_url = "https://github.yourcompany.com/api/v3"
 github_app_id = "(GitHub App ID from the previous step)"
 github_app_webhook_secret = "(webhook secret from the previous step)"
 github_app_private_key = "(base64 encoded private key from the previous step -- ex. `cat private-key.pem | base64`)"
+github_bot_name = "(slugified name of your GitHub App + [bot], ex. `pullapprove-enterprise[bot]`)"
 ```
 
 ## Download the PullApprove zip files

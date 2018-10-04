@@ -16,6 +16,10 @@ variable "github_app_webhook_secret" {
 variable "github_app_private_key" {
   description = "The base64 encoded private key"
 }
+variable "github_bot_name" {
+  default = "pullapprove[bot]"
+  description = "The slugified name of your GitHub App. Should end in `[bot]`."
+}
 
 # Only change these if testing/staging a new version or something
 variable "github_status_context" {
