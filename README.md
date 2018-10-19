@@ -44,6 +44,7 @@ settings is to create `aws/terraform.tfvars` that looks like this:
 aws_region = "(an AWS region)"
 aws_access_key = "(an AWS access key)"
 aws_secret_key = "(an AWS secret key)"
+aws_bucket_suffix = "-yourcompany"
 github_api_base_url = "https://github.yourcompany.com/api/v3"
 github_app_id = "(GitHub App ID from the previous step)"
 github_app_webhook_secret = "(webhook secret from the previous step)"

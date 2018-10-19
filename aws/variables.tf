@@ -3,6 +3,10 @@ variable "aws_access_key" {}
 variable "aws_secret_key" {}
 variable "aws_region" {}
 
+variable "aws_bucket_suffix" {
+  description = "-yourcompany"
+}
+
 # GitHub App settings
 variable "github_app_id" {
   description = "ID for the GitHub App you created for PullApprove"
