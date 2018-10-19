@@ -62,6 +62,7 @@ Terraform will expect these zip files:
 
 - `pullapprove_webhook_aws.zip`
 - `pullapprove_worker_aws.zip`
+- `pullapprove_public.zip`
 
 ## Run terraform
 
