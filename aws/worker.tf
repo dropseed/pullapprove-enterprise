@@ -12,6 +12,8 @@ resource "aws_lambda_function" "pullapprove_worker" {
     variables = {
       AWS_SQS_NAME = "${aws_sqs_queue.pullapprove_worker_queue.name}"
       AWS_S3_BUCKET = "${aws_s3_bucket.pullapprove_storage_bucket.bucket}"
+      AWS_IAM_USER_ACCESS_KEY_ID = "${aws_iam_access_key.pullapprove.id}"
+      AWS_IAM_USER_SECRET_ACCESS_KEY = "${aws_iam_access_key.pullapprove.secret}"
       GITHUB_APP_ID = "${var.github_app_id}"
       GITHUB_APP_PRIVATE_KEY = "${var.github_app_private_key}"
       GITHUB_API_BASE_URL = "${var.github_api_base_url}"

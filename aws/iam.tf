@@ -69,25 +69,28 @@ resource "aws_iam_role_policy_attachment" "pullapprove_sqs_attachment" {
   policy_arn = "${aws_iam_policy.pullapprove_sqs_policy.arn}"
 }
 
-# S3 storage
-resource "aws_iam_policy" "pullapprove_s3_storage_policy" {
-  name = "pullapprove_s3_storage"
-  path = "/"
-  description = "IAM policy for PullApprove S3 storage bucket access"
+# also set up an iam user, so that we can sign urls with a longer expiration
+# than we can with a role
+resource "aws_iam_user" "pullapprove" {
+  name = "pullapprove"
+}
+
+resource "aws_iam_access_key" "pullapprove" {
+  user = "${aws_iam_user.pullapprove.name}"
+}
+
+resource "aws_iam_user_policy" "pullapprove_iam_policy" {
+  name = "pullapprove_iam_policy"
+  user = "${aws_iam_user.pullapprove.name}"
 
   policy = <<EOF
 {
-   "Version": "2012-10-17",
-   "Statement": [{
-         "Effect": "Allow",
-         "Action": "s3:*",
-         "Resource": "${aws_s3_bucket.pullapprove_storage_bucket.arn}/*"
-   }]
+  "Version": "2012-10-17",
+  "Statement": [{
+        "Effect": "Allow",
+        "Action": "s3:*",
+        "Resource": "${aws_s3_bucket.pullapprove_storage_bucket.arn}/*"
+  }]
 }
 EOF
-}
-
-resource "aws_iam_role_policy_attachment" "pullapprove_s3_storage_attachment" {
-  role = "${aws_iam_role.pullapprove_lambda_role.name}"
-  policy_arn = "${aws_iam_policy.pullapprove_s3_storage_policy.arn}"
 }
