@@ -20,7 +20,7 @@ it](https://www.terraform.io/downloads.html) to use this repo.
 You will need to create an internal GitHub App within your GitHub Enterprise
 installation.
 
-- The name can be "PullApprove Enterprise".
+- The name can be "PullApprove Enterprise", or "PullApprove Enterprise (yourcompany)" if you're using GitHub.com.
 - The homepage and authorization callback URL are not used yet in PullApprove Enterprise. You might just set them to `https://www.pullapprove.com` to point users towards the PullApprove documentation.
 - The webhook URL will be created *after* you run Terraform. So for now you just need to use a placeholder (ex. `https://yourcompany.com`).
 - You *should* create a webhook secret (ex. output of `ruby -rsecurerandom -e 'puts SecureRandom.hex(20)'`).
