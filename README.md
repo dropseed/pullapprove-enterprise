@@ -52,6 +52,8 @@ github_app_private_key = "(base64 encoded private key from the previous step -- 
 github_bot_name = "(slugified name of your GitHub App + [bot], ex. `pullapprove-enterprise[bot]`)"
 ```
 
+> Note: If you are installing this to run on GitHub.com then you should also set `github_status_context` to something other than "pullapprove" (like "pullapprove-yourcompany"), so that it doesn't use the same commit status name as our hosted service.
+
 ## Download the PullApprove zip files
 
 These zip files contain the PullApprove app code and will be sent directly to
