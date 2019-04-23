@@ -7,5 +7,7 @@ variables:
   base_url: https://docs.pullapprove.com
   enterprise: false
   support_url: https://www.pullapprove.com/contact/
+  version:
+    from_env: COMMIT_REF
   google_tag_manager_id:
     from_env: GOOGLE_TAG_MANAGER_ID
