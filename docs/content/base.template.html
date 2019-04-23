@@ -67,7 +67,7 @@
             </div>
             <ul class="-mx-2">
                 <li class="inline-block px-2"><a class="text-gray-500 no-underline hover:underline" href="{{ support_url }}">Support</a></li>
-                {% if version is defined %}<li class="inline-block px-2">Version {{ version }}</li>{% endif %}
+                {% if version is defined %}<li class="inline-block px-2">Version {{ version|truncate(7, end="") }}</li>{% endif %}
             </ul>
         </div>
     </div>
