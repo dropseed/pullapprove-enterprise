@@ -15,3 +15,4 @@ variables:
   #   default: https://
   #   env: BASE_URL
   enterprise: false
+  support_url: https://www.pullapprove.com/contact/
