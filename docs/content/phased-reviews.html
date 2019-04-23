@@ -1,0 +1,67 @@
+{% extends "base.template.html" %}
+
+{% set title = "Phased reviews" %}
+
+{% block content %}
+
+<h1>Phased reviews</h1>
+
+<p>With advanced use of the <a href="/config/conditions/">conditions</a> setting,
+  you can set up reviews to be done in "phases", or happen in separate steps.</p>
+
+<p>This is particularly useful if there are certain people that you don't want to
+  bug until other parts of the review have been completed &mdash; either because their
+  time is more valuable or because their area of review isn't necessary until
+  other aspects have already been approved.</p>
+
+<p>You can set this up by making groups depend on other groups. The
+<code>groups</code> variable comes with a <a
+href="/config/conditions/#groups">set of convenient properties</a> for
+checking the state of other groups.</p>
+
+<p><strong>Important:</strong> Groups are evaluated <em>in order</em>, and the
+<code>groups</code> variable only contains the preceding groups when you write
+<a href="/config/conditions/">conditions</a>.</p>
+
+<h2>Examples</h2>
+
+<h4>Code review first</h4>
+
+{% code "yaml" %}{% raw %}
+version: 3
+
+groups:
+  code:
+    ...
+
+  database:
+    ...
+    conditions:
+    # only asked to review once the other 2 groups are finished (or are not applicable)
+    - "'code' in groups.approved"
+{% endraw %}{% endcode %}
+
+<h4>Fallback review group</h4>
+
+<p>You can implement a "fallback" set of reviewers by placing the group last,
+and checking whether any of the previous groups have been activated (i.e.
+conditions met).</p>
+
+{% code "yaml" %}{% raw %}
+version: 3
+
+groups:
+  code:
+    ...
+
+  database:
+    ...
+
+  fallback:
+    ...
+    conditions:
+    # this group is asked to review if no previous groups match this PR
+    - "len(groups.active) == 0"  # or "not groups.active"
+{% endraw %}{% endcode %}
+
+{% endblock %}

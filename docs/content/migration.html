@@ -1,0 +1,84 @@
+{% extends "base.template.html" %}
+
+{% set title = "Migrating from v2" %}
+
+{% block content %}
+
+<h1>Migrating from previous versions</h1>
+
+<p>The original v1 and v2 versions of PullApprove were built on the OAuth
+integration system. The current version (v3) is built as a GitHub App and has
+some significant differences.</p>
+
+<p>PullApprove v3 is built entirely around the official GitHub Reviews, offering
+more controls for determining who should review what, and automation to help
+make it happen.</p>
+
+<p>To migrate from an older version, you'll want to roughly follow these steps:</p>
+
+<ol class="list-decimal pl-8 mb-8">
+  <li>Remove your repo from pullapprove.com (via https://pullapprove.com/(repo_name)/settings/)</li>
+  <li>Remove the webhook to pullapprove.com (via https://github.com/(repo_name)/settings/hooks)</li>
+  <li>If you use templates, migrate them to a GitHub repo or other HTTP accessible location</li>
+  <li><a href="https://github.com/apps/pullapprove">Install the GitHub App</a></li>
+  <li>Change your config to <code>version: 3</code> and <a href="/config-validator/">validate it</a></li>
+  <li>If you use protected branches, update protected branch settings (the new "pullapprove" context won't show up until it appears on a PR at least once)</li>
+</ol>
+
+<p>Previous versions of PullApprove used the <code>code-review/pullapprove</code> status check name. The new version simply uses <code>pullapprove</code>. Once you remove the repo from the old PullApprove, the old status check will stop showing up on new PRs.</p>
+
+<p>PRs that were already open will continue to show the old status check if it was already present.</p>
+
+<h2>Biggest differences from v2 to v3</h2>
+
+<h5 class="mt-4"><span class="text-green-700">+</span> Reviewer availability</h5>
+
+<p>People can now set themselves as "unavailable" when they go on vacation or aren't able
+  to help review PRs. PullApprove skips unavailable users when sending out review requests.</p>
+
+<h5 class="mt-4"><span class="text-green-700">+</span> Phased reviews</h5>
+
+<p>By using the status of other <a href="/config/groups/">groups</a> in your
+  <a href="/config/conditions/">conditions</a>, you can set up a phased review process where
+  certain groups aren't activated until others have finished their review first.</p>
+
+<h5 class="mt-4"><span class="text-green-700">+</span> More review conditions</h5>
+
+<p>A more flexible <a href="/config/conditions/">conditions</a> system
+  allows you to write the precise conditions that you need, using almost any
+  of the data available on your PR.</p>
+
+<h5 class="mt-4"><span class="text-green-700">+</span> No more syncing issues</h5>
+
+<p>PullApprove v3 has been redesigned and rebuilt from the ground up to
+  better handle the scale we've grown to.</p>
+
+<h5 class="mt-4"><span class="text-green-700">+</span> Addition of PR comment notifications</h5>
+
+<p>Notifications and comments play a key role in code review. Now PullApprove
+  has a <a href="/config/notifications/">notifications</a> setting so
+  you can easily integrate automated comments into your PRs that help people
+  know what to do.</p>
+
+<h5 class="mt-4"><span class="text-green-700">+</span> Review request ordering</h5>
+
+<p>Reviewers can now be <a href="/config/reviews/">randomized or chosen in a specific order</a>.</p>
+
+<h5 class="mt-4"><span class="text-red-700">-</span> Removed PR "requirements"</h5>
+
+<p>Static PR requirements (such as signed-off-by) are no longer directly a part of PullApprove. Instead we're
+  refocusing on the human element of code review, and you can integrate with other status checks
+  via <a href="/config/conditions/">conditions</a>.
+
+<h5 class="mt-4"><span class="text-red-700">-</span> Authors can no longer review their own PR</h5>
+
+<p>This is a limitation of GitHub Reviews, which v3 is built on. You can, however, still
+  get similar behavior to the old "auto" approval with the new <code>author_value</code> setting.</p>
+
+<h5 class="mt-4"><span class="text-red-700">-</span> You can no longer approve with a PR comment</h5>
+
+<p>PullApprove v3 is built around the offical GitHub Reviews. We no longer allow
+comments to trigger your review status, and instead you should use the offical
+review UI in GitHub.</p>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.template.html" %}
+
+{% set title = "Groups" %}
+
+{% block content %}
+
+<h1>Groups</h1>
+
+<p>Review groups are the key component of PullApprove. For simple use cases, you
+may only need one group. For more sophisitcated setups, groups can be used to
+divide reviewers by language, specialty, role, or anything else you use to
+organize your workflow. Groups can even depend on other groups to build a <a
+href="/phased-reviews/">phased review process</a>.</p>
+
+<p>Each group comes with its own rules for <a href="/config/conditions/">when they are asked to review</a>,
+provides controls for how <a href="/config/reviewers/">reviewers</a> are <a href="/config/reviews/">selected</a>, and <a href="/config/reviews/">how many reviews are required for
+approval</a>.</p>
+
+{% code "yaml" %}{% raw %}
+groups:
+  ux:  # group name
+    conditions:  # the group is activated when all of these statements are true
+    - ...
+    reviewers:  # people who can approve for this group
+      ...
+    reviews:  # settings for approval and reviewer selection
+      ...
+{% endraw %}{% endcode %}
+
+{% endblock %}

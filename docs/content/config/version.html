@@ -1,0 +1,25 @@
+{% extends "base.template.html" %}
+
+{% set title = "Version" %}
+
+{% block content %}
+
+<h1>Version</h1>
+
+<p>The version needs to be 3! That's about all there is to it. If you are using
+version 1 or 2 of PullApprove, you'll need to look at the <a
+href="https://v2-docs.pullapprove.com">older documentation</a>. And we highly
+recommend you <a href="/migration/">upgrade as soon as possible</a>.</p>
+
+<div class="bg-orange-200 text-orange-800 p-4 shadow rounded mb-4">Note that the <strong>version field is
+required!</strong> If you don't include it, you may not see any activity as we
+will assume that you are using an older version of PullApprove which is run off
+of a legacy system.</div>
+
+{% code "yaml" %}
+version: 3
+groups:
+  ...
+{% endcode %}
+
+{% endblock %}

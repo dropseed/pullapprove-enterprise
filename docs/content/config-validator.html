@@ -1,0 +1,22 @@
+{% extends "base.template.html" %}
+
+{% set title = "Config validator" %}
+
+{% block content %}
+
+<h1>Config validator</h1>
+
+{% markdown %}
+
+To test and validate a `.pullapprove.yml` file, [use the command
+`/pullapprove-test` in a PR review comment](/commands/). Your config will
+be tested against the live pull request (without sending any changes or
+statuses) so that you can test conditions and other settings with real data. The
+results of the test will be sent to the same PR in a comment.
+
+[![PullApprove config test command](/assets/img/screenshots/config-test-input.png)](/assets/img/screenshots/config-test-input.png)
+[![PullApprove config test command output](/assets/img/screenshots/config-test-output.png)](/assets/img/screenshots/config-test-output.png)
+
+{% endmarkdown %}
+
+{% endblock %}

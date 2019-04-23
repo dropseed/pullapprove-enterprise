@@ -1,0 +1,22 @@
+{% extends "base.template.html" %}
+
+{% set title = "Installation" %}
+
+{% block content %}
+
+<h1>Installation</h1>
+
+<p>PullApprove is installed as a GitHub App. You can either choose specific
+repos within your organization, or install it for all repos in an
+organization.</p>
+
+<p>We will only report a status check to GitHub if you have a
+<code>.pullapprove.yml</code> file using <code>version: 3</code> in the repo.
+Versions 1 and 2 were built using the original OAuth integration system, and can
+still be used side-by-side with version 3.</p>
+
+<br>
+
+<a class="bg-green-600 hover:bg-green-700 text-green-100 px-4 py-3 rounded shadow no-underline" href="https://github.com/apps/pullapprove">Install the PullApprove GitHub App →</a>
+
+{% endblock %}

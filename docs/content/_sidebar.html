@@ -1,0 +1,41 @@
+<h3 class="mb-2 font-medium">Docs</h3>
+<ul class="mb-4">
+    <li><a class="no-underline hover:underline inline-block py-1 text-gray-800 hover:text-black" href="/">Overview</a></li>
+    {% if not enterprise %}<li><a class="no-underline hover:underline inline-block py-1 text-gray-800 hover:text-black" href="/installation/">Installation</a></li>{% endif %}
+    <li><a class="no-underline hover:underline inline-block py-1 text-gray-800 hover:text-black" href="/config-validator/">Config validator</a></li>
+    {% if not enterprise %}<li><a class="no-underline hover:underline inline-block py-1 text-gray-800 hover:text-black" href="/migration/">Migrating from v2</a></li>{% endif %}
+</ul>
+
+<h3 class="mb-2 font-medium">Features</h3>
+<ul class="mb-4">
+    {% if not enterprise %}<li><a class="no-underline hover:underline inline-block py-1 text-gray-800 hover:text-black" href="/availability/">Away/unavailable status</a></li>{% endif %}
+    <li><a class="no-underline hover:underline inline-block py-1 text-gray-800 hover:text-black" href="/phased-reviews/">Phased reviews</a></li>
+    <li><a class="no-underline hover:underline inline-block py-1 text-gray-800 hover:text-black" href="/reviewed-for/">Approval specificity</a></li>
+    <li><a class="no-underline hover:underline inline-block py-1 text-gray-800 hover:text-black" href="/templates/">Config templates</a></li>
+    <li><a class="no-underline hover:underline inline-block py-1 text-gray-800 hover:text-black" href="/status-checks/">3rd party status checks</a></li>
+    <li><a class="no-underline hover:underline inline-block py-1 text-gray-800 hover:text-black" href="/commands/">/commands</a></li>
+</ul>
+
+<h3 class="mb-2 font-medium">Config</h3>
+<ul class="mb-4">
+    <li><a class="no-underline hover:underline inline-block py-1 text-gray-800 hover:text-black" href="/config/version/">version</a></li>
+    <li><a class="no-underline hover:underline inline-block py-1 text-gray-800 hover:text-black" href="/config/extends/">extends</a></li>
+    <li><a class="no-underline hover:underline inline-block py-1 text-gray-800 hover:text-black" href="/config/pullapprove-conditions/">pullapprove_conditions</a></li>
+    <li><a class="no-underline hover:underline inline-block py-1 text-gray-800 hover:text-black" href="/config/notifications/">notifications</a></li>
+    <li>
+        <a class="no-underline hover:underline inline-block py-1 text-gray-800 hover:text-black" href="/config/groups/">groups</a>
+        <ul class="pl-4">
+            <li><a class="no-underline hover:underline inline-block py-1 text-gray-800 hover:text-black" href="/config/conditions/">conditions</a></li>
+            <li><a class="no-underline hover:underline inline-block py-1 text-gray-800 hover:text-black" href="/config/reviewers/">reviewers</a></li>
+            <li><a class="no-underline hover:underline inline-block py-1 text-gray-800 hover:text-black" href="/config/reviews/">reviews</a></li>
+        </ul>
+    </li>
+    <li><a class="no-underline hover:underline inline-block py-1 text-gray-800 hover:text-black" href="/config/github-api-version/">github_api_version</a></li>
+</ul>
+
+{% if not enterprise %}
+<h3 class="mb-2 font-medium">Resources</h3>
+<ul class="mb-4">
+    <li><a class="no-underline hover:underline inline-block py-1 text-gray-800 hover:text-black" href="https://v2-docs.pullapprove.com">v2 docs</a></li>
+</ul>
+{% endif %}

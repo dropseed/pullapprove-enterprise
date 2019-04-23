@@ -1,0 +1,38 @@
+{% extends "base.template.html" %}
+
+{% set title = "Status checks" %}
+
+{% block content %}
+
+<h1>Status checks</h1>
+
+<p>While PullApprove itself is focused on the human aspect of code review, you
+can integrate it with other automated static analysis checks and tests. This is
+often used in order to let machines do the boring, tedious work of verifying
+that code meets the style guidelines, passes test suites, is properly committed
+(signed-off-by), etc. before actually bothering real people on your team to look
+at PRs.</p>
+
+<p>You can integrate with other services you're already using, or even build
+your own with tools like <a href="https://probot.github.io/">probot</a>.</p>
+
+<p>Other commit statuses can be referenced in <a
+href="/config/conditions/">group conditions</a> or the overall <a
+href="/config/pullapprove-conditions/">pullapprove_conditions</a>. For
+example, to prevent any human review from happening until your automated tests
+have passed, you could use a config like this:</p>
+
+{% code "yaml" %}
+version: 3
+pullapprove_conditions:
+- "'license/cla' in statuses.succeeded"
+- "'*travis*' in statuses.succeeded"
+- "'codeclimate' in statuses.succeeded"
+
+groups:
+  ...
+{% endcode %}
+
+<img src="/assets/img/screenshots/status-checks.png" alt="Conditions with status checks from PullApprove">
+
+{% endblock %}

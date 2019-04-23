@@ -1,0 +1,105 @@
+{% extends "base.template.html" %}
+
+{% set title = "Reviews" %}
+
+{% block content %}
+
+<h1>Reviews</h1>
+
+<p>This is how you determine how many approvals are required for this group to
+be approved, and how many review requests will be sent at a time (e.g. the max
+number of "pending" requested reviews at once). Additionally, you can decide
+what order reviewers are chosen in.</p>
+
+{% code "yaml" %}{% raw %}
+version: 3
+groups:
+  code:
+    reviews:
+      required: 3  # 3 approvals from this group are required
+      request: 1  # 1 review request will be sent at a time
+      request_order: shuffle  # reviewers will be chosen in a random order
+      author_value: 1  # if the PR author is in this group, automatically add +1
+
+{% endraw %}{% endcode %}
+
+<h2>Requesting 1 review at a time, in a specific order</h2>
+
+<p>Use <code>request_order: given</code> to have reviewers requested in the
+same order that you provide them (most useful with specific <code>users</code>).
+This can be handy for putting reviewers in order of preference, but having
+fallbacks in case people are unavailable.</p>
+
+{% code "yaml" %}{% raw %}
+version: 3
+groups:
+  code:
+    reviews:
+      required: 1
+      request: 1
+      request_order: given
+
+    reviewers:
+      users:
+      - typicalreviewer
+      - fallbackreviewer1
+      - fallbackreviewer2
+
+{% endraw %}{% endcode %}
+
+<h2>What happens when the PR author is also a group member?</h2>
+
+<p>Even though the PR author cannot approve their own PR within GitHub, you can
+still factor them in to your review process.</p>
+
+<p>By using the <code>author_value</code> setting, you can decide how the
+required reviews are affected if the PR author is a member of this group. By
+default, <code>author_value: 0</code> and the author's presence has no
+impact.</p>
+
+<h4>Require fewer reviews if the author is a group member</h4>
+
+<p>By using a positive number, the author essentially "auto approves" their own
+PR.</p>
+
+{% code "yaml" %}{% raw %}
+version: 3
+groups:
+  code:
+    reviews:
+      # only 2 approvals required if author is in this group
+      required: 3
+      author_value: 1
+
+  code:
+    reviews:
+      # only 1 approval required if author is in this group
+      required: 3
+      author_value: 2
+
+  code:
+    reviews:
+      # no approval required if author is in this group
+      required: 3
+      author_value: 3
+{% endraw %}{% endcode %}
+
+<h4>Require more reviews if the author is a group member</h4>
+
+<p>By using a negative number, you can actually require <em>more</em> reviews if
+the author is also a member of the group. This might be useful if you want to
+ensure that any PR that this group "owns" gets more reviews than they usually
+do. For example, if the "security" team needs to give extra attention to their
+own PRs.</p>
+
+{% code "yaml" %}{% raw %}
+version: 3
+groups:
+  code:
+    reviews:
+      # require 4 approvals if the author is in this group
+      required: 3
+      author_value: -1
+{% endraw %}{% endcode %}
+
+{% endblock %}
