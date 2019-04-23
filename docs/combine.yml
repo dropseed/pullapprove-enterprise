@@ -4,15 +4,8 @@ steps:
       - "./content/*/_tailwind.config.js"
       - "./content/*/_tailwind.dev.css"
 variables:
-  # TODO need to be able to change these in build command
-  # check other enterprise settings (site name, twitter, etc.)
-  # need ENV var too so can put in netlify directly? should they be force uppercase _ to match that? all page variables won't be that way
-  # could have an option to choose env var to populate from? then can use other built ins -- set git commit to netlify commit sha, etc.
-  # need configyaml on this
-  # or could have env_variables -> map to variable name, don't like that though (they are all variables)
   base_url: https://docs.pullapprove.com
-  # base_url:
-  #   default: https://
-  #   env: BASE_URL
   enterprise: false
   support_url: https://www.pullapprove.com/contact/
+  google_tag_manager_id:
+    from_env: GOOGLE_TAG_MANAGER_ID
