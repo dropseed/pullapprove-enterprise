@@ -15,4 +15,3 @@ variables:
   #   default: https://
   #   env: BASE_URL
   enterprise: false
-  google_tag_manager_id: test
