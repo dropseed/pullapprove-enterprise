@@ -32,6 +32,9 @@ td {
     @apply border p-2;
 }
 
+.algolia-autocomplete { display: block !important; }
+.algolia-autocomplete .ds-dropdown-menu a { @apply no-underline; }
+
 .highlight {
     background-color: #282c34;
     @apply text-sm shadow-md rounded p-4 mb-8;

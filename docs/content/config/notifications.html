@@ -77,7 +77,7 @@ notifications:
 <p>These custom events are made by PullApprove itself, so that you can also send
 notifications at specific times in the broader review workflow.</p>
 
-<ul>
+<ul class="list-disc pl-4">
   <li><code>pullapprove.started</code> - the first time that PullApprove sends a "pending" status for the PR (e.g. groups have been activated)</li>
   <li><code>pullapprove.approved</code> - when there are active groups, and they have all approved the PR</li>
   <li><code>pullapprove.group.requested_reviewers</code> - any time review requests are created by PullApprove, comes with <code>event.group</code> and <code>event.requested_reviewers</code> that you can us in the comment template</li>

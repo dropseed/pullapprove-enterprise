@@ -17,6 +17,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    {% if docsearch_api_key is defined -%}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+    {%- endif %}
     <link rel="stylesheet" href="/assets/css/main.css">
 
     <title>{% if title is defined %}{{ title }} - {% endif %}PullApprove Docs</title>
@@ -36,6 +39,7 @@
     {%- endif %}
     <meta name="twitter:card" content="summary_large_image" />
     {% if not enterprise %}<link rel="me" href="https://twitter.com/dropseed">{% endif %}
+
 </head>
 
 <body class="flex flex-col min-h-screen text-gray-800">
@@ -45,23 +49,33 @@
     {% endif %}
 
     <div class="py-3 border-b border-gray-300 md:mb-10 bg-gray-100">
-        <div class="container flex justify-between items-center">
-            <a href="/" class="flex items-center no-underline text-lg"><img src="/assets/img/pullapprove-logo.svg" alt="PullApprove logo" class="h-6 inline-block pr-2"> <span class="font-medium">PullApprove</span>&nbsp;Docs</a>
-            <a href="https://www.pullapprove.com" class="border border-gray-800 hover:bg-gray-800 hover:text-gray-100 rounded px-3 py-1 no-underline">PullApprove.com →</a>
+        <div class="container md:flex">
+            <div class="md:w-1/4 mb-2 md:mb-0">
+                <a href="/" class="flex items-center no-underline text-lg"><img src="/assets/img/pullapprove-logo.svg"
+                        alt="PullApprove logo" class="h-6 inline-block pr-2"> <span class="font-medium">PullApprove</span>&nbsp;Docs</a>
+            </div>
+            <div class="md:w-1/2">
+                {% if docsearch_api_key is defined -%}
+                <input type="text" id="search" class="rounded text-lg px-2 py-1 w-full ds-input bg-gray-300 focus:bg-white" placeholder="Search">
+                {%- endif %}
+            </div>
+            <div class="md:w-1/4 md:text-right hidden md:block">
+                <a href="https://www.pullapprove.com" class="border border-gray-800 hover:bg-gray-800 hover:text-gray-100 rounded px-3 py-1 no-underline">PullApprove.com →</a>
+            </div>
         </div>
     </div>
 
-    <div class="md:flex flex-grow container">
+    <div class="md:flex md:flex-row-reverse flex-grow container">
+        <div class="md:w-3/4 lg:w-1/2 mr-auto content">
+            {% block content %}{% endblock %}
+        </div>
         <div class="md:w-1/4 md:pt-16">
             {% include "_sidebar.html" %}
-        </div>
-        <div class="md:w-3/5">
-            {% block content %}{% endblock %}
         </div>
     </div>
 
     <div class="mt-10">
-        <div class="container md:flex md:justify-between py-3 text-gray-500 text-sm border-t border-gray-200">
+        <div class="container flex justify-between py-3 text-gray-500 text-sm border-t border-gray-200">
             <div>
                 © {{ now().year }} Dropseed, LLC
             </div>
@@ -71,6 +85,17 @@
             </ul>
         </div>
     </div>
+
+    {% if docsearch_api_key is defined -%}
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+    <script type="text/javascript"> docsearch({
+            apiKey: '{{ docsearch_api_key }}',
+            indexName: 'pullapprove',
+            inputSelector: '#search',
+            debug: false
+        });
+    </script>
+    {%- endif %}
 
 </body>
 

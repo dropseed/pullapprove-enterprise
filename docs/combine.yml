@@ -7,6 +7,8 @@ variables:
   base_url: https://docs.pullapprove.com
   enterprise: false
   support_url: https://www.pullapprove.com/contact/
+  docsearch_api_key:
+    from_env: DOCSEARCH_API_KEY
   version:
     from_env: COMMIT_REF
   google_tag_manager_id:
