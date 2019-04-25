@@ -9,6 +9,7 @@ variables:
   support_url: https://www.pullapprove.com/contact/
   docsearch_api_key:
     from_env: DOCSEARCH_API_KEY
+  docsearch_index_name: pullapprove
   version:
     from_env: COMMIT_REF
   google_tag_manager_id:
