@@ -8,6 +8,11 @@
   </thead>
   <tbody>
     <tr>
+      <td>additions</td>
+      <td>int</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>all</td>
       <td>function</td>
       <td><p>Return True if bool(x) is True for all values x in the iterable.</p>
@@ -20,29 +25,64 @@
 <p>If the iterable is empty, return False.</p></td>
     </tr>
     <tr>
-      <td>length</td>
-      <td>function</td>
-      <td><p>Return the number of items in a container.</p></td>
+      <td>assignee</td>
+      <td><a href="#user">User</a></td>
+      <td></td>
     </tr>
     <tr>
-      <td>len</td>
-      <td>function</td>
-      <td><p>Return the number of items in a container.</p></td>
+      <td>assignees</td>
+      <td><a href="#users">Users</a></td>
+      <td></td>
     </tr>
     <tr>
-      <td>count</td>
-      <td>function</td>
-      <td><p>Return the number of items in a container.</p></td>
+      <td>author</td>
+      <td><a href="#user">User</a></td>
+      <td></td>
     </tr>
     <tr>
-      <td>regex</td>
-      <td>function</td>
-      <td><p><code>regex('WIP: .*')</code></p></td>
+      <td>author_association</td>
+      <td>str</td>
+      <td></td>
     </tr>
     <tr>
-      <td>contains_fnmatch</td>
-      <td>function</td>
-      <td><p><code>contains_fnmatch(title, 'WIP*')</code></p></td>
+      <td>base</td>
+      <td><a href="#branch">Branch</a></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>body</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>changed_files</td>
+      <td>int</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>closed_at</td>
+      <td>datetime</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>comments</td>
+      <td>int</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>comments_url</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>commits</td>
+      <td><a href="#commits">Commits</a></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>commits_url</td>
+      <td>str</td>
+      <td></td>
     </tr>
     <tr>
       <td>contains_any_fnmatches</td>
@@ -50,9 +90,24 @@
       <td><p><code>contains_any_fnmatches(files, ['api/*', 'tests/*'])</code></p></td>
     </tr>
     <tr>
+      <td>contains_fnmatch</td>
+      <td>function</td>
+      <td><p><code>contains_fnmatch(title, 'WIP*')</code></p></td>
+    </tr>
+    <tr>
       <td>contains_regex</td>
       <td>function</td>
       <td><p><code>contains_regex(title, 'WIP.*')</code></p></td>
+    </tr>
+    <tr>
+      <td>count</td>
+      <td>function</td>
+      <td><p>Return the number of items in a container.</p></td>
+    </tr>
+    <tr>
+      <td>created_at</td>
+      <td>datetime</td>
+      <td></td>
     </tr>
     <tr>
       <td>date</td>
@@ -62,117 +117,12 @@
 <p><code>date('8/10/1995')</code></p></td>
     </tr>
     <tr>
-      <td>text_list</td>
-      <td>function</td>
-      <td><p>Returns a readable, comma-separated list of items for printing in templates.</p>
-<p><code>text_list(['a', 'b', 'c', 'd']) == 'a, b, c or d'</code></p>
-<p><code>text_list(['a', 'b', 'c'], 'and') == 'a, b and c'</code></p>
-<p><code>text_list(['a', 'b'], 'and') == 'a and b'</code></p>
-<p><code>text_list(['a']) == 'a'</code></p>
-<p><code>text_list([]) == ''</code></p></td>
-    </tr>
-    <tr>
-      <td>node_id</td>
-      <td>str</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>merge_commit_sha</td>
-      <td>str</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>statuses</td>
-      <td><a href="#statuses">Statuses</a></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>closed_at</td>
-      <td>datetime</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>merged_by</td>
-      <td><a href="#user">User</a></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>created_at</td>
-      <td>datetime</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>maintainer_can_modify</td>
-      <td>bool</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>patch_url</td>
-      <td>str</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>number</td>
-      <td>int</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>locked</td>
-      <td>bool</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>review_comments_url</td>
-      <td>str</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>review_comments</td>
-      <td>int</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>commits_url</td>
-      <td>str</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>commits</td>
-      <td>int</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>merged</td>
-      <td>bool</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>changed_files</td>
-      <td>int</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>milestone</td>
-      <td><a href="#milestone">Milestone</a></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>state</td>
-      <td>str</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>rebaseable</td>
-      <td>bool</td>
-      <td></td>
-    </tr>
-    <tr>
       <td>deletions</td>
       <td>int</td>
       <td></td>
     </tr>
     <tr>
-      <td>author_association</td>
+      <td>diff_url</td>
       <td>str</td>
       <td></td>
     </tr>
@@ -182,63 +132,8 @@
       <td></td>
     </tr>
     <tr>
-      <td>body</td>
-      <td>str</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>url</td>
-      <td>str</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>merged_at</td>
-      <td>datetime</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>diff_url</td>
-      <td>str</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>assignee</td>
-      <td><a href="#user">User</a></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>author</td>
-      <td><a href="#user">User</a></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>updated_at</td>
-      <td>datetime</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>title</td>
-      <td>str</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>issue_url</td>
-      <td>str</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>comments</td>
-      <td>int</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>mergeable</td>
-      <td>bool</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>labels</td>
-      <td><a href="#labels">Labels</a></td>
+      <td>groups</td>
+      <td><a href="#groups">Groups</a></td>
       <td></td>
     </tr>
     <tr>
@@ -247,24 +142,104 @@
       <td></td>
     </tr>
     <tr>
-      <td>assignees</td>
-      <td><a href="#users">Users</a></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>statuses_url</td>
+      <td>html_url</td>
       <td>str</td>
       <td></td>
     </tr>
     <tr>
-      <td>comments_url</td>
-      <td>str</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>additions</td>
+      <td>id</td>
       <td>int</td>
       <td></td>
+    </tr>
+    <tr>
+      <td>issue_url</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>labels</td>
+      <td><a href="#labels">Labels</a></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>len</td>
+      <td>function</td>
+      <td><p>Return the number of items in a container.</p></td>
+    </tr>
+    <tr>
+      <td>length</td>
+      <td>function</td>
+      <td><p>Return the number of items in a container.</p></td>
+    </tr>
+    <tr>
+      <td>locked</td>
+      <td>bool</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>maintainer_can_modify</td>
+      <td>bool</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>merge_commit_sha</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>mergeable</td>
+      <td>bool</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>mergeable_state</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>merged</td>
+      <td>bool</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>merged_at</td>
+      <td>datetime</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>merged_by</td>
+      <td><a href="#user">User</a></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>milestone</td>
+      <td><a href="#milestone">Milestone</a></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>node_id</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>number</td>
+      <td>int</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>patch_url</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>rebaseable</td>
+      <td>bool</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>regex</td>
+      <td>function</td>
+      <td><p><code>regex('WIP: .*')</code></p></td>
     </tr>
     <tr>
       <td>requested_reviewers</td>
@@ -282,142 +257,12 @@
       <td></td>
     </tr>
     <tr>
-      <td>base</td>
-      <td><a href="#branch">Branch</a></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>html_url</td>
-      <td>str</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>user</td>
-      <td><a href="#user">User</a></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>mergeable_state</td>
-      <td>str</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>id</td>
+      <td>review_comments</td>
       <td>int</td>
       <td></td>
     </tr>
     <tr>
-      <td>groups</td>
-      <td><a href="#groups">Groups</a></td>
-      <td></td>
-    </tr>
-  </tbody>
-</table></div>
-
-<h2 id="statuses">Statuses</h2>
-
-<p>Statuses are pulled from the most recent commit on the pull request.
-<a href="https://developer.github.com/v3/repos/statuses/#list-statuses-for-a-specific-ref">See the GitHub documentation for more information.</a></p>
-
-<div class="table-responsive"><table class="table table-sm table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>Property</th>
-      <th>Type</th>
-      <th>Note</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>contexts</td>
-      <td>list of str</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>errored</td>
-      <td><a href="#statuses">Statuses</a></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>exclude</td>
-      <td>method</td>
-      <td><p>Filter down the list of objects using <em>not</em> <code>contains</code> behavior. Chainable with <code>include</code>.</p>
-<p><code>files.excludes("*.md")</code></p>
-<p><code>files.include("src/*").exclude("*.md")</code></p></td>
-    </tr>
-    <tr>
-      <td>failed</td>
-      <td><a href="#statuses">Statuses</a></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>include</td>
-      <td>method</td>
-      <td><p>Filter down the list of objects using <code>contains</code> behavior. Chainable with <code>exclude</code>.</p>
-<p><code>files.include("src/*")</code></p>
-<p><code>files.include("src/*").exclude("*.md")</code></p></td>
-    </tr>
-    <tr>
-      <td>pending</td>
-      <td><a href="#statuses">Statuses</a></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>succeeded</td>
-      <td><a href="#statuses">Statuses</a></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>successful</td>
-      <td><a href="#statuses">Statuses</a></td>
-      <td></td>
-    </tr>
-  </tbody>
-</table></div>
-
-<h2 id="status">Status</h2>
-
-<div class="table-responsive"><table class="table table-sm table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>Property</th>
-      <th>Type</th>
-      <th>Note</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>avatar_url</td>
-      <td>str</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>context</td>
-      <td>str</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>created_at</td>
-      <td>datetime</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>creator</td>
-      <td>dict</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>description</td>
-      <td>str</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>id</td>
-      <td>int</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>node_id</td>
+      <td>review_comments_url</td>
       <td>str</td>
       <td></td>
     </tr>
@@ -427,7 +272,27 @@
       <td></td>
     </tr>
     <tr>
-      <td>target_url</td>
+      <td>statuses</td>
+      <td><a href="#statuses">Statuses</a></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>statuses_url</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>text_list</td>
+      <td>function</td>
+      <td><p>Returns a readable, comma-separated list of items for printing in templates.</p>
+<p><code>text_list(['a', 'b', 'c', 'd']) == 'a, b, c or d'</code></p>
+<p><code>text_list(['a', 'b', 'c'], 'and') == 'a, b and c'</code></p>
+<p><code>text_list(['a', 'b'], 'and') == 'a and b'</code></p>
+<p><code>text_list(['a']) == 'a'</code></p>
+<p><code>text_list([]) == ''</code></p></td>
+    </tr>
+    <tr>
+      <td>title</td>
       <td>str</td>
       <td></td>
     </tr>
@@ -441,10 +306,15 @@
       <td>str</td>
       <td></td>
     </tr>
+    <tr>
+      <td>user</td>
+      <td><a href="#user">User</a></td>
+      <td></td>
+    </tr>
   </tbody>
 </table></div>
 
-<h2 id="user">User</h2>
+<h2 id="branch">Branch</h2>
 
 <div class="table-responsive"><table class="table table-sm table-bordered table-striped">
   <thead>
@@ -456,33 +326,62 @@
   </thead>
   <tbody>
     <tr>
-      <td>avatar_url</td>
+      <td>label</td>
       <td>str</td>
       <td></td>
     </tr>
     <tr>
-      <td>events_url</td>
+      <td>ref</td>
       <td>str</td>
       <td></td>
     </tr>
     <tr>
-      <td>followers_url</td>
+      <td>repo</td>
+      <td><a href="#repo">Repo</a></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>sha</td>
       <td>str</td>
       <td></td>
     </tr>
     <tr>
-      <td>following_url</td>
+      <td>user</td>
+      <td><a href="#user">User</a></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h2 id="commit">Commit</h2>
+
+<div class="table-responsive"><table class="table table-sm table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>author</td>
+      <td>dict</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>comments_url</td>
       <td>str</td>
       <td></td>
     </tr>
     <tr>
-      <td>gists_url</td>
-      <td>str</td>
+      <td>commit</td>
+      <td>dict</td>
       <td></td>
     </tr>
     <tr>
-      <td>gravatar_id</td>
-      <td>str</td>
+      <td>committer</td>
+      <td>dict</td>
       <td></td>
     </tr>
     <tr>
@@ -491,17 +390,12 @@
       <td></td>
     </tr>
     <tr>
-      <td>id</td>
-      <td>int</td>
+      <td>is_signed_off</td>
+      <td>bool</td>
       <td></td>
     </tr>
     <tr>
-      <td>login</td>
-      <td>str</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>mention</td>
+      <td>message</td>
       <td>str</td>
       <td></td>
     </tr>
@@ -511,37 +405,12 @@
       <td></td>
     </tr>
     <tr>
-      <td>organizations_url</td>
-      <td>str</td>
+      <td>parents</td>
+      <td>list of dict</td>
       <td></td>
     </tr>
     <tr>
-      <td>received_events_url</td>
-      <td>str</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>repos_url</td>
-      <td>str</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>site_admin</td>
-      <td>bool</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>starred_url</td>
-      <td>str</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>subscriptions_url</td>
-      <td>str</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>type</td>
+      <td>sha</td>
       <td>str</td>
       <td></td>
     </tr>
@@ -550,9 +419,409 @@
       <td>str</td>
       <td></td>
     </tr>
+  </tbody>
+</table></div>
+
+<h2 id="commits">Commits</h2>
+
+<div class="table-responsive"><table class="table table-sm table-bordered table-striped">
+  <thead>
     <tr>
-      <td>username</td>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>are_signed_off</td>
+      <td>bool</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>exclude</td>
+      <td>method</td>
+      <td><p>Filter down the list of objects using <em>not</em> <code>contains</code> behavior. Chainable with <code>include</code>.</p>
+<p><code>files.excludes("*.md")</code></p>
+<p><code>files.include("src/*").exclude("*.md")</code></p></td>
+    </tr>
+    <tr>
+      <td>include</td>
+      <td>method</td>
+      <td><p>Filter down the list of objects using <code>contains</code> behavior. Chainable with <code>exclude</code>.</p>
+<p><code>files.include("src/*")</code></p>
+<p><code>files.include("src/*").exclude("*.md")</code></p></td>
+    </tr>
+    <tr>
+      <td>shas</td>
+      <td>list of str</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h2 id="file">File</h2>
+
+<div class="table-responsive"><table class="table table-sm table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>additions</td>
+      <td>int</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>blob_url</td>
       <td>str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>changes</td>
+      <td>int</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>contents_url</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>deletions</td>
+      <td>int</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>filename</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>patch</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>raw_url</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>sha</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>status</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h2 id="files">Files</h2>
+
+<p><a href="https://developer.github.com/v3/pulls/#list-pull-requests-files">See the GitHub documentation for more information.</a></p>
+
+<div class="table-responsive"><table class="table table-sm table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>added</td>
+      <td><a href="#files">Files</a></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>exclude</td>
+      <td>method</td>
+      <td><p>Filter down the list of objects using <em>not</em> <code>contains</code> behavior. Chainable with <code>include</code>.</p>
+<p><code>files.excludes("*.md")</code></p>
+<p><code>files.include("src/*").exclude("*.md")</code></p></td>
+    </tr>
+    <tr>
+      <td>filenames</td>
+      <td>list of str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>include</td>
+      <td>method</td>
+      <td><p>Filter down the list of objects using <code>contains</code> behavior. Chainable with <code>exclude</code>.</p>
+<p><code>files.include("src/*")</code></p>
+<p><code>files.include("src/*").exclude("*.md")</code></p></td>
+    </tr>
+    <tr>
+      <td>modified</td>
+      <td><a href="#files">Files</a></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>removed</td>
+      <td><a href="#files">Files</a></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h2 id="group">Group</h2>
+
+<p>A PullApprove review group</p>
+
+<div class="table-responsive"><table class="table table-sm table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>author_value</td>
+      <td>int</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>conditions</td>
+      <td>list</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>is_active</td>
+      <td>bool</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>is_passing</td>
+      <td>bool</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>name</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>request</td>
+      <td>int</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>request_order</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>required</td>
+      <td>int</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>score</td>
+      <td>int</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>state</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>teams</td>
+      <td>list</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>users</td>
+      <td>list of str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>users_approved</td>
+      <td>list</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>users_available</td>
+      <td>list</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>users_pending</td>
+      <td>list</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>users_rejected</td>
+      <td>list</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>users_requested</td>
+      <td>list</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>users_unavailable</td>
+      <td>list</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>users_unrequested</td>
+      <td>list</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h2 id="groups">Groups</h2>
+
+<p>Groups is a list of <a href="#group">Group</a> objects with a few handy shortcuts.</p>
+
+<div class="table-responsive"><table class="table table-sm table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>active</td>
+      <td><a href="#groups">Groups</a></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>approved</td>
+      <td><a href="#groups">Groups</a></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>exclude</td>
+      <td>method</td>
+      <td><p>Filter down the list of objects using <em>not</em> <code>contains</code> behavior. Chainable with <code>include</code>.</p>
+<p><code>files.excludes("*.md")</code></p>
+<p><code>files.include("src/*").exclude("*.md")</code></p></td>
+    </tr>
+    <tr>
+      <td>inactive</td>
+      <td><a href="#groups">Groups</a></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>include</td>
+      <td>method</td>
+      <td><p>Filter down the list of objects using <code>contains</code> behavior. Chainable with <code>exclude</code>.</p>
+<p><code>files.include("src/*")</code></p>
+<p><code>files.include("src/*").exclude("*.md")</code></p></td>
+    </tr>
+    <tr>
+      <td>names</td>
+      <td>list of str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>passing</td>
+      <td><a href="#groups">Groups</a></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>pending</td>
+      <td><a href="#groups">Groups</a></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>rejected</td>
+      <td><a href="#groups">Groups</a></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h2 id="label">Label</h2>
+
+<div class="table-responsive"><table class="table table-sm table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>color</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>default</td>
+      <td>bool</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>id</td>
+      <td>int</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>name</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>node_id</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>url</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h2 id="labels">Labels</h2>
+
+<div class="table-responsive"><table class="table table-sm table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>exclude</td>
+      <td>method</td>
+      <td><p>Filter down the list of objects using <em>not</em> <code>contains</code> behavior. Chainable with <code>include</code>.</p>
+<p><code>files.excludes("*.md")</code></p>
+<p><code>files.include("src/*").exclude("*.md")</code></p></td>
+    </tr>
+    <tr>
+      <td>include</td>
+      <td>method</td>
+      <td><p>Filter down the list of objects using <code>contains</code> behavior. Chainable with <code>exclude</code>.</p>
+<p><code>files.include("src/*")</code></p>
+<p><code>files.include("src/*").exclude("*.md")</code></p></td>
+    </tr>
+    <tr>
+      <td>names</td>
+      <td>list of str</td>
       <td></td>
     </tr>
   </tbody>
@@ -652,236 +921,6 @@
   </tbody>
 </table></div>
 
-<h2 id="files">Files</h2>
-
-<p><a href="https://developer.github.com/v3/pulls/#list-pull-requests-files">See the GitHub documentation for more information.</a></p>
-
-<div class="table-responsive"><table class="table table-sm table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>Property</th>
-      <th>Type</th>
-      <th>Note</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>added</td>
-      <td><a href="#files">Files</a></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>exclude</td>
-      <td>method</td>
-      <td><p>Filter down the list of objects using <em>not</em> <code>contains</code> behavior. Chainable with <code>include</code>.</p>
-<p><code>files.excludes("*.md")</code></p>
-<p><code>files.include("src/*").exclude("*.md")</code></p></td>
-    </tr>
-    <tr>
-      <td>filenames</td>
-      <td>list of str</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>include</td>
-      <td>method</td>
-      <td><p>Filter down the list of objects using <code>contains</code> behavior. Chainable with <code>exclude</code>.</p>
-<p><code>files.include("src/*")</code></p>
-<p><code>files.include("src/*").exclude("*.md")</code></p></td>
-    </tr>
-    <tr>
-      <td>modified</td>
-      <td><a href="#files">Files</a></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>removed</td>
-      <td><a href="#files">Files</a></td>
-      <td></td>
-    </tr>
-  </tbody>
-</table></div>
-
-<h2 id="file">File</h2>
-
-<div class="table-responsive"><table class="table table-sm table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>Property</th>
-      <th>Type</th>
-      <th>Note</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>additions</td>
-      <td>int</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>blob_url</td>
-      <td>str</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>changes</td>
-      <td>int</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>contents_url</td>
-      <td>str</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>deletions</td>
-      <td>int</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>filename</td>
-      <td>str</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>patch</td>
-      <td>str</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>raw_url</td>
-      <td>str</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>sha</td>
-      <td>str</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>status</td>
-      <td>str</td>
-      <td></td>
-    </tr>
-  </tbody>
-</table></div>
-
-<h2 id="labels">Labels</h2>
-
-<div class="table-responsive"><table class="table table-sm table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>Property</th>
-      <th>Type</th>
-      <th>Note</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>exclude</td>
-      <td>method</td>
-      <td><p>Filter down the list of objects using <em>not</em> <code>contains</code> behavior. Chainable with <code>include</code>.</p>
-<p><code>files.excludes("*.md")</code></p>
-<p><code>files.include("src/*").exclude("*.md")</code></p></td>
-    </tr>
-    <tr>
-      <td>include</td>
-      <td>method</td>
-      <td><p>Filter down the list of objects using <code>contains</code> behavior. Chainable with <code>exclude</code>.</p>
-<p><code>files.include("src/*")</code></p>
-<p><code>files.include("src/*").exclude("*.md")</code></p></td>
-    </tr>
-    <tr>
-      <td>names</td>
-      <td>list of str</td>
-      <td></td>
-    </tr>
-  </tbody>
-</table></div>
-
-<h2 id="label">Label</h2>
-
-<div class="table-responsive"><table class="table table-sm table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>Property</th>
-      <th>Type</th>
-      <th>Note</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>color</td>
-      <td>str</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>default</td>
-      <td>bool</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>id</td>
-      <td>int</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>name</td>
-      <td>str</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>node_id</td>
-      <td>str</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>url</td>
-      <td>str</td>
-      <td></td>
-    </tr>
-  </tbody>
-</table></div>
-
-<h2 id="branch">Branch</h2>
-
-<div class="table-responsive"><table class="table table-sm table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>Property</th>
-      <th>Type</th>
-      <th>Note</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>label</td>
-      <td>str</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>ref</td>
-      <td>str</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>repo</td>
-      <td><a href="#repo">Repo</a></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>sha</td>
-      <td>str</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>user</td>
-      <td><a href="#user">User</a></td>
-      <td></td>
-    </tr>
-  </tbody>
-</table></div>
-
 <h2 id="repo">Repo</h2>
 
 <div class="table-responsive"><table class="table table-sm table-bordered table-striped">
@@ -971,6 +1010,11 @@
     <tr>
       <td>description</td>
       <td>str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>disabled</td>
+      <td>bool</td>
       <td></td>
     </tr>
     <tr>
@@ -1256,7 +1300,7 @@
   </tbody>
 </table></div>
 
-<h2 id="users">Users</h2>
+<h2 id="status">Status</h2>
 
 <div class="table-responsive"><table class="table table-sm table-bordered table-striped">
   <thead>
@@ -1268,33 +1312,67 @@
   </thead>
   <tbody>
     <tr>
-      <td>exclude</td>
-      <td>method</td>
-      <td><p>Filter down the list of objects using <em>not</em> <code>contains</code> behavior. Chainable with <code>include</code>.</p>
-<p><code>files.excludes("*.md")</code></p>
-<p><code>files.include("src/*").exclude("*.md")</code></p></td>
-    </tr>
-    <tr>
-      <td>include</td>
-      <td>method</td>
-      <td><p>Filter down the list of objects using <code>contains</code> behavior. Chainable with <code>exclude</code>.</p>
-<p><code>files.include("src/*")</code></p>
-<p><code>files.include("src/*").exclude("*.md")</code></p></td>
-    </tr>
-    <tr>
-      <td>mentions</td>
-      <td>list of str</td>
+      <td>avatar_url</td>
+      <td>str</td>
       <td></td>
     </tr>
     <tr>
-      <td>usernames</td>
-      <td>list of str</td>
+      <td>context</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>created_at</td>
+      <td>datetime</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>creator</td>
+      <td>dict</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>description</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>id</td>
+      <td>int</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>node_id</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>state</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>target_url</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>updated_at</td>
+      <td>datetime</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>url</td>
+      <td>str</td>
       <td></td>
     </tr>
   </tbody>
 </table></div>
 
-<h2 id="teams">Teams</h2>
+<h2 id="statuses">Statuses</h2>
+
+<p>Statuses are pulled from the most recent commit on the pull request.
+<a href="https://developer.github.com/v3/repos/statuses/#list-statuses-for-a-specific-ref">See the GitHub documentation for more information.</a></p>
 
 <div class="table-responsive"><table class="table table-sm table-bordered table-striped">
   <thead>
@@ -1306,6 +1384,16 @@
   </thead>
   <tbody>
     <tr>
+      <td>contexts</td>
+      <td>list of str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>errored</td>
+      <td><a href="#statuses">Statuses</a></td>
+      <td></td>
+    </tr>
+    <tr>
       <td>exclude</td>
       <td>method</td>
       <td><p>Filter down the list of objects using <em>not</em> <code>contains</code> behavior. Chainable with <code>include</code>.</p>
@@ -1313,8 +1401,8 @@
 <p><code>files.include("src/*").exclude("*.md")</code></p></td>
     </tr>
     <tr>
-      <td>ids</td>
-      <td>list of int</td>
+      <td>failed</td>
+      <td><a href="#statuses">Statuses</a></td>
       <td></td>
     </tr>
     <tr>
@@ -1325,8 +1413,18 @@
 <p><code>files.include("src/*").exclude("*.md")</code></p></td>
     </tr>
     <tr>
-      <td>names</td>
-      <td>list of str</td>
+      <td>pending</td>
+      <td><a href="#statuses">Statuses</a></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>succeeded</td>
+      <td><a href="#statuses">Statuses</a></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>successful</td>
+      <td><a href="#statuses">Statuses</a></td>
       <td></td>
     </tr>
   </tbody>
@@ -1345,6 +1443,11 @@
   <tbody>
     <tr>
       <td>description</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>html_url</td>
       <td>str</td>
       <td></td>
     </tr>
@@ -1396,9 +1499,7 @@
   </tbody>
 </table></div>
 
-<h2 id="groups">Groups</h2>
-
-<p>Groups is a list of <a href="#group">Group</a> objects with a few handy shortcuts.</p>
+<h2 id="teams">Teams</h2>
 
 <div class="table-responsive"><table class="table table-sm table-bordered table-striped">
   <thead>
@@ -1410,16 +1511,6 @@
   </thead>
   <tbody>
     <tr>
-      <td>active</td>
-      <td><a href="#groups">Groups</a></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>approved</td>
-      <td><a href="#groups">Groups</a></td>
-      <td></td>
-    </tr>
-    <tr>
       <td>exclude</td>
       <td>method</td>
       <td><p>Filter down the list of objects using <em>not</em> <code>contains</code> behavior. Chainable with <code>include</code>.</p>
@@ -1427,8 +1518,8 @@
 <p><code>files.include("src/*").exclude("*.md")</code></p></td>
     </tr>
     <tr>
-      <td>inactive</td>
-      <td><a href="#groups">Groups</a></td>
+      <td>ids</td>
+      <td>list of int</td>
       <td></td>
     </tr>
     <tr>
@@ -1443,27 +1534,10 @@
       <td>list of str</td>
       <td></td>
     </tr>
-    <tr>
-      <td>passing</td>
-      <td><a href="#groups">Groups</a></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>pending</td>
-      <td><a href="#groups">Groups</a></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>rejected</td>
-      <td><a href="#groups">Groups</a></td>
-      <td></td>
-    </tr>
   </tbody>
 </table></div>
 
-<h2 id="group">Group</h2>
-
-<p>A PullApprove review group</p>
+<h2 id="user">User</h2>
 
 <div class="table-responsive"><table class="table table-sm table-bordered table-striped">
   <thead>
@@ -1475,98 +1549,141 @@
   </thead>
   <tbody>
     <tr>
-      <td>author_value</td>
+      <td>avatar_url</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>events_url</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>followers_url</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>following_url</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>gists_url</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>gravatar_id</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>html_url</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>id</td>
       <td>int</td>
       <td></td>
     </tr>
     <tr>
-      <td>conditions</td>
-      <td>list</td>
+      <td>login</td>
+      <td>str</td>
       <td></td>
     </tr>
     <tr>
-      <td>is_active</td>
+      <td>mention</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>node_id</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>organizations_url</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>received_events_url</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>repos_url</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>site_admin</td>
       <td>bool</td>
       <td></td>
     </tr>
     <tr>
-      <td>is_passing</td>
-      <td>bool</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>name</td>
+      <td>starred_url</td>
       <td>str</td>
       <td></td>
     </tr>
     <tr>
-      <td>request</td>
-      <td>int</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>request_order</td>
+      <td>subscriptions_url</td>
       <td>str</td>
       <td></td>
     </tr>
     <tr>
-      <td>required</td>
-      <td>int</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>score</td>
-      <td>int</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>state</td>
+      <td>type</td>
       <td>str</td>
       <td></td>
     </tr>
     <tr>
-      <td>teams</td>
-      <td>list</td>
+      <td>url</td>
+      <td>str</td>
       <td></td>
     </tr>
     <tr>
-      <td>users</td>
+      <td>username</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h2 id="users">Users</h2>
+
+<div class="table-responsive"><table class="table table-sm table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>exclude</td>
+      <td>method</td>
+      <td><p>Filter down the list of objects using <em>not</em> <code>contains</code> behavior. Chainable with <code>include</code>.</p>
+<p><code>files.excludes("*.md")</code></p>
+<p><code>files.include("src/*").exclude("*.md")</code></p></td>
+    </tr>
+    <tr>
+      <td>include</td>
+      <td>method</td>
+      <td><p>Filter down the list of objects using <code>contains</code> behavior. Chainable with <code>exclude</code>.</p>
+<p><code>files.include("src/*")</code></p>
+<p><code>files.include("src/*").exclude("*.md")</code></p></td>
+    </tr>
+    <tr>
+      <td>mentions</td>
       <td>list of str</td>
       <td></td>
     </tr>
     <tr>
-      <td>users_approved</td>
-      <td>list</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>users_available</td>
-      <td>list</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>users_pending</td>
-      <td>list</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>users_rejected</td>
-      <td>list</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>users_requested</td>
-      <td>list</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>users_unavailable</td>
-      <td>list</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>users_unrequested</td>
-      <td>list</td>
+      <td>usernames</td>
+      <td>list of str</td>
       <td></td>
     </tr>
   </tbody>
