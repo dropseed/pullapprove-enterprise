@@ -1,0 +1,26 @@
+{% extends "examples/example.template.html" %}
+
+{% set title = "Assigning reviewers based on pull request labels" %}
+
+{% block example_content %}
+{% markdown %}
+
+Labels can be a great, visual indicator of what topics a pull request covers or
+which phase of review it is in.
+
+You can use the `labels` variable when writing conditions to automatically
+assign reviewers based on how the author or other collaborators label the PR.
+
+```yaml
+version: 3
+groups:
+  design:
+    conditions:
+    - "'ui/ux' in labels"
+    reviewers:
+      teams:
+      - design
+```
+
+{% endmarkdown %}
+{% endblock %}
