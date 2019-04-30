@@ -1,18 +1,24 @@
-{% extends "base.template.html" %}
+{% extends "examples/example.template.html" %}
 
 {% set title = "Spreading the review workload" %}
 
-{% block content %}
-
-<a href="/examples/" class="text-gray-600 text-lg no-underline hover:underline">Example</a>
-<h1>Spreading the review workload</h1>
+{% block example_content %}
 
 {% markdown %}
 If you have a large team and want everyone to be involved in code review, randomly assigning reviewers
 can be an easy way to distribute the work.
 
+The following config will randomly choose 2 reviewers for each new pull request.
 ```yaml
-test: test
+version: 3
+groups:
+  code-review:
+    reviewers:
+      teams:
+      - everybody
+    reviews:
+      request: 2
+      request_order: random
 ```
 {% endmarkdown %}
 

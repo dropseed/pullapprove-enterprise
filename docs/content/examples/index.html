@@ -10,25 +10,32 @@
     facilitate and improve their code review processes.
 </p>
 
-<p>If you have a favorite workflow that you want to tell others about, <a href="#">let's add it!</a></p>
+<p>If you have a favorite workflow that you want to tell others about, <a href="https://github.com/dropseed/pullapprove/tree/master/docs/content/examples">let's add it!</a></p>
 
-{% set examples = [
-        ("#", "Spreading the review workflow"),
-        ("#", "Requiring review of code review process changes"),
+{% set examples = (
+        ("spreading-review-workload/", "Spreading the review workload"),
+        ("reviewing-process-changes/", "Reviewing process changes"),
         ("#", "Using labels in code review"),
         ("#", "Instructing first-time contributors"),
         ("#", "Skipping review on certain branches"),
         ("#", "Waiting until Travis CI passes to start review"),
         ("#", "DCO"),
         ("#", "Assigning owners to files"),
-    ]
+        ("#", "Requesting reviews one at a time"),
+        ("#", "Making sure tasks are finished"),
+    )
 %}
 
 <ul class="list-reset mt-8">
 
     {% for url, title in examples %}
-    <li class="mb-4">
-        <a href="{{ url }}" class="no-underline hover:underline text-xl mb-4">
+    <li class="mb-6 flex items-center hover:text-green-600">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 mr-2 icon-check fill-current inline-block">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path color="white"
+                d="M10 14.59l6.3-6.3a1 1 0 0 1 1.4 1.42l-7 7a1 1 0 0 1-1.4 0l-3-3a1 1 0 0 1 1.4-1.42l2.3 2.3z"></path>
+        </svg>
+        <a href="{{ url }}" class="no-underline text-xl">
             {{ title }}
         </a>
     </li>
