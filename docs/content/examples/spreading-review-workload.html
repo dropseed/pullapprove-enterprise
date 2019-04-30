@@ -1,0 +1,19 @@
+{% extends "base.template.html" %}
+
+{% set title = "Spreading the review workload" %}
+
+{% block content %}
+
+<a href="/examples/" class="text-gray-600 text-lg no-underline hover:underline">Example</a>
+<h1>Spreading the review workload</h1>
+
+{% markdown %}
+If you have a large team and want everyone to be involved in code review, randomly assigning reviewers
+can be an easy way to distribute the work.
+
+```yaml
+test: test
+```
+{% endmarkdown %}
+
+{% endblock %}
