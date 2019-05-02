@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# pullapprove
-=======
 # ![PullApprove Enterprise](https://www.pullapprove.com/static/img/logos/pullapprove-enterprise.svg)
 
 These are the tools and instructions for deploying PullApprove Enterprise
@@ -109,4 +106,3 @@ send any relevant data our way).
 You'll most likely want to save your `terraform.tfvars` and `terraform.tfstate`
 somewhere. Your organization will probably have a preference regarding how to do
 this. If you have any questions, just let us know.
->>>>>>> enterprise/master
