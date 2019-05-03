@@ -1,0 +1,35 @@
+#!/bin/sh -e
+VERSION="$1"
+
+if [ -z "$VERSION" ]
+then
+    echo "You need to specify a version (ex. 1.0.0)"
+    exit 1
+fi
+
+REPO="$( cd "$(dirname "$( dirname "${BASH_SOURCE[0]}" )" )" >/dev/null && pwd )"
+
+BUILD="$REPO/build"
+rm -rf $BUILD && mkdir $BUILD
+
+echo "Building documentation..."
+pushd $REPO/docs
+./scripts/install
+BASE_URL="" SUPPORT_URL="" SELF_HOSTED="True" COMMIT_REF="$VERSION" pipenv run combine build
+cp -r output $BUILD/pullapprove_public
+popd
+
+echo "Building report..."
+pushd $REPO/report
+yarn install
+yarn build
+cp -r build $BUILD/pullapprove_public/report
+popd
+
+pushd $BUILD
+zip -r pullapprove_public.zip pullapprove_public
+popd
+
+# push to gh
+
+# rm -r $BUILD

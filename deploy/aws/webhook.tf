@@ -1,10 +1,10 @@
 resource "aws_lambda_function" "pullapprove_webhook" {
-  filename         = "${dirname(path.module)}/pullapprove_webhook_aws.zip"
+  filename         = "${var.assets_dir}/pullapprove_webhook_aws.zip"
   function_name    = "pullapprove_webhook"
   role             = "${aws_iam_role.pullapprove_lambda_role.arn}"
   handler          = "main.aws_handler"
-  source_code_hash = "${base64sha256(file("${dirname(path.module)}/pullapprove_webhook_aws.zip"))}"
-  runtime          = "python3.6"
+  source_code_hash = "${base64sha256(file("${var.assets_dir}/pullapprove_webhook_aws.zip"))}"
+  runtime          = "python3.7"
   timeout          = 30
   memory_size      = 128
 
@@ -17,6 +17,7 @@ resource "aws_lambda_function" "pullapprove_webhook" {
       GITHUB_BOT_NAME = "${var.github_bot_name}"
       SENTRY_DSN = "${var.sentry_dsn}"
       LOG_LEVEL = "${var.log_level}"
+      VERSION = "${var.version}"
     }
   }
 }
