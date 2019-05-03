@@ -23,7 +23,7 @@ approve or request changes.</p>
 the required number of approvals. When this happens, we'll send a "success" status check to GitHub,
 which you can make a <a href="https://help.github.com/en/articles/enabling-required-status-checks">requirement of any protected branches</a>.</p>
 
-{% if not enterprise %}
+{% if not self_hosted %}
 <div class="bg-gray-100 rounded shadow p-4 mb-4"><strong>Not using version 3 yet?</strong> It's <a href="/migration/">easy to migrate!</a> Or you can find the old version 2 docs <a href="https://v2-docs.pullapprove.com">here</a>.</div>
 {% endif %}
 
