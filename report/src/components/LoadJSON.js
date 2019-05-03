@@ -13,9 +13,7 @@ class LoadStatus extends Component {
   render() {
     return (
       <div className="card card-body">
-        <p>
-          Paste the JSON output to load a PR manually.
-        </p>
+        <p>Paste the JSON output to load a PR manually.</p>
         <textarea
           rows={10}
           style={{ fontSize: ".9rem" }}
@@ -23,7 +21,9 @@ class LoadStatus extends Component {
           value={this.state.content}
           onChange={e => this.setState({ content: e.target.value })}
         />
-        <button className="btn btn-primary mt-1" onClick={this.load}>Load JSON</button>
+        <button className="btn btn-primary mt-1" onClick={this.load}>
+          Load JSON
+        </button>
       </div>
     );
   }

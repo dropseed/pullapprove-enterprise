@@ -13,9 +13,7 @@ class LoadURL extends Component {
   render() {
     return (
       <div className="card card-body">
-        <p>
-          Paste the URL to a PullApprove status JSON.
-        </p>
+        <p>Paste the URL to a PullApprove status JSON.</p>
         <textarea
           rows={5}
           style={{ fontSize: ".9rem" }}
@@ -23,7 +21,9 @@ class LoadURL extends Component {
           value={this.state.content}
           onChange={e => this.setState({ content: e.target.value })}
         />
-        <button className="btn btn-primary mt-1" onClick={this.load}>Load URL</button>
+        <button className="btn btn-primary mt-1" onClick={this.load}>
+          Load URL
+        </button>
       </div>
     );
   }
