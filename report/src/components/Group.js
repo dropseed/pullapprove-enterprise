@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { textColor } from "../colors.js";
 import Conditions from "./Conditions.js";
+import { AppContext } from "../App.js";
 
 class Group extends Component {
   state = { showAllUsers: false };
@@ -8,7 +9,20 @@ class Group extends Component {
     if (state === "available" && !this.state.showAllUsers) return;
     return users.map(username => (
       <tr key={username}>
-        <td width="200px">{username}</td>
+        <td width="200px">
+          <AppContext.Consumer>
+            {context => (
+              <img
+                src={context.avatarUrlFormat.replace("{username}", username)}
+                alt=""
+                height="22px"
+                className="mr-1"
+                style={{ borderRadius: "3px", verticalAlign: "inherit" }}
+              />
+            )}
+          </AppContext.Consumer>
+          {username}
+        </td>
         <td className={textColor(state)}>{state}</td>
       </tr>
     ));

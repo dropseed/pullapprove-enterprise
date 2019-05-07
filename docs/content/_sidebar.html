@@ -2,14 +2,14 @@
 <ul class="mb-4">
     <li><a class="no-underline hover:underline inline-block py-1 text-gray-800 hover:text-black" href="/">Overview</a></li>
     <li><a class="no-underline hover:underline inline-block py-1 text-gray-800 hover:text-black" href="/examples/">Examples</a></li>
-    {% if not enterprise %}<li><a class="no-underline hover:underline inline-block py-1 text-gray-800 hover:text-black" href="/installation/">Installation</a></li>{% endif %}
+    {% if not self_hosted %}<li><a class="no-underline hover:underline inline-block py-1 text-gray-800 hover:text-black" href="/installation/">Installation</a></li>{% endif %}
     <li><a class="no-underline hover:underline inline-block py-1 text-gray-800 hover:text-black" href="/config-validator/">Config validator</a></li>
-    {% if not enterprise %}<li><a class="no-underline hover:underline inline-block py-1 text-gray-800 hover:text-black" href="/migration/">Migrating from v2</a></li>{% endif %}
+    {% if not self_hosted %}<li><a class="no-underline hover:underline inline-block py-1 text-gray-800 hover:text-black" href="/migration/">Migrating from v2</a></li>{% endif %}
 </ul>
 
 <h3 class="mb-2 font-medium">Features</h3>
 <ul class="mb-4">
-    {% if not enterprise %}<li><a class="no-underline hover:underline inline-block py-1 text-gray-800 hover:text-black" href="/availability/">Away/unavailable status</a></li>{% endif %}
+    {% if not self_hosted %}<li><a class="no-underline hover:underline inline-block py-1 text-gray-800 hover:text-black" href="/availability/">Away/unavailable status</a></li>{% endif %}
     <li><a class="no-underline hover:underline inline-block py-1 text-gray-800 hover:text-black" href="/phased-reviews/">Phased reviews</a></li>
     <li><a class="no-underline hover:underline inline-block py-1 text-gray-800 hover:text-black" href="/reviewed-for/">Approval specificity</a></li>
     <li><a class="no-underline hover:underline inline-block py-1 text-gray-800 hover:text-black" href="/templates/">Config templates</a></li>
@@ -34,7 +34,7 @@
     <li><a class="no-underline hover:underline inline-block py-1 text-gray-800 hover:text-black" href="/config/github-api-version/">github_api_version</a></li>
 </ul>
 
-{% if not enterprise %}
+{% if not self_hosted %}
 <h3 class="mb-2 font-medium">Resources</h3>
 <ul class="mb-4">
     <li><a class="no-underline hover:underline inline-block py-1 text-gray-800 hover:text-black" href="https://v2-docs.pullapprove.com">v2 docs</a></li>

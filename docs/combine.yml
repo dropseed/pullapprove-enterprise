@@ -4,9 +4,15 @@ steps:
       - "./content/*/_tailwind.config.js"
       - "./content/*/_tailwind.dev.css"
 variables:
-  base_url: https://docs.pullapprove.com
-  enterprise: false
-  support_url: https://www.pullapprove.com/contact/
+  base_url:
+    default: https://docs.pullapprove.com
+    from_env: BASE_URL
+  self_hosted:
+    default: false
+    from_env: SELF_HOSTED
+  support_url:
+    default: https://www.pullapprove.com/contact/
+    from_env: SUPPORT_URL
   docsearch_api_key:
     from_env: DOCSEARCH_API_KEY
   docsearch_index_name: pullapprove

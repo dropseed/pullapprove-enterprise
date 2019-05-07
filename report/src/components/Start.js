@@ -4,7 +4,7 @@ import LoadJSON from "./LoadJSON.js";
 import LoadURL from "./LoadURL.js";
 
 class Start extends Component {
-  state = {tab: null}
+  state = { tab: null };
   render() {
     return (
       <div className="text-center mx-auto" style={{ maxWidth: "600px" }}>
@@ -20,13 +20,30 @@ class Start extends Component {
           View the status of a PR by clicking the link on a commit status.
           <br />
           <small>
-            Or manually load from <a href="#" className="text-muted" onClick={() => this.setState({tab: "json"})}>JSON</a>
-            {' '}or{' '}
-            <a href="#" className="text-muted" onClick={() => this.setState({tab: "url"})}>URL</a>
+            Or manually load from{" "}
+            <a
+              href="#"
+              className="text-muted"
+              onClick={() => this.setState({ tab: "json" })}
+            >
+              JSON
+            </a>{" "}
+            or{" "}
+            <a
+              href="#"
+              className="text-muted"
+              onClick={() => this.setState({ tab: "url" })}
+            >
+              URL
+            </a>
           </small>
         </p>
-        {this.state.tab === "json" ? <LoadJSON loadHandler={this.props.loadFromTextHandler} /> : null}
-        {this.state.tab === "url" ? <LoadURL loadHandler={this.props.loadFromURLHandler} /> : null}
+        {this.state.tab === "json" ? (
+          <LoadJSON loadHandler={this.props.loadFromTextHandler} />
+        ) : null}
+        {this.state.tab === "url" ? (
+          <LoadURL loadHandler={this.props.loadFromURLHandler} />
+        ) : null}
       </div>
     );
   }
