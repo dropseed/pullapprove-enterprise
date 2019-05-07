@@ -1,0 +1,33 @@
+{% extends "examples/example.template.html" %}
+
+{% set title = "Instructing first-time contributors" %}
+
+{% block example_content %}
+{% markdown %}
+
+Setting expectations is important when someone opens their first pull request.
+They should know what is expected of them, and what they can expect to see during the review process.
+
+A well-written automated comment can go a long way in giving the contributor a sense of
+what will happen, and removing some of the burden from the maintainers/admins.
+
+{% raw %}
+```yaml
+version: 3
+notifications:
+- when: pull_request.opened
+  if: "author_association == 'FIRST_TIME_CONTRIBUTOR'"
+  comment: |
+    Hey @{{ author }}, thanks for the PR! The review will start once
+    the tests and CI checks have passed. If they don't, please review
+    the logs and try to fix the issues (ask for help if you can't
+    figure it out). A reviewer will be assigned once the tests are
+    passing and they'll walk you through getting the PR finished
+    and merged.
+groups:
+  ...
+```
+{% endraw %}
+
+{% endmarkdown %}
+{% endblock %}

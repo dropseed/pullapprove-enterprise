@@ -40,10 +40,10 @@
         },
         "combine": {
             "hashes": [
-                "sha256:4fa8606baf5b1f735f447727aef92a956185aafb4772e526a082411f80e18bbc"
+                "sha256:e89276f7236bf0acdff24ce85c85732e73be900cefba5224bf02619ed0f254a8"
             ],
             "index": "pypi",
-            "version": "==0.0.21"
+            "version": "==0.0.22"
         },
         "jinja2": {
             "hashes": [

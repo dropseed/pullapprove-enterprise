@@ -1,0 +1,26 @@
+{% extends "examples/example.template.html" %}
+
+{% set title = "Developer Certificate of Origin" %}
+
+{% block example_content %}
+{% markdown %}
+
+A common part of the pull request process for open-source projects
+is to use
+[Developer Certificate of Origin ("DCO")](https://developercertificate.org/).
+
+There are tools built specifically for this purpose, but if you
+are already using PullApprove then we also have a simple
+variable that you can use to directly incorporate signed-off commits
+into your review process.
+
+```yaml
+version: 3
+pullapprove_conditions:
+- condition: "commits.are_signed_off"
+  unmet_status: "pending"
+  explanation: "Commits need to be signed-off before review starts"
+```
+
+{% endmarkdown %}
+{% endblock %}
