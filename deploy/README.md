@@ -12,3 +12,4 @@ please contact us directly.
 
 - [First time installation](docs/install.md)
 - [Updating to a new version](docs/update.md)
+- [FAQs](docs/faqs.md)
