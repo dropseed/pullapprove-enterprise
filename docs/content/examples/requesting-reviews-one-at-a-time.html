@@ -1,0 +1,31 @@
+{% extends "examples/example.template.html" %}
+
+{% set title = "Requesting reviews one at a time" %}
+
+{% block example_content %}
+{% markdown %}
+
+An important aspect of PullApprove is that you have
+the control to notify people only when they are needed.
+
+For example, if Steve and Mike both need to sign off on a design
+change, but Mike really only wants to look at it after Steve already has,
+then you could use a config like this:
+
+```yaml
+version: 3
+groups:
+  design:
+    reviewers:
+      # the order matters!
+      users:
+      - steve
+      - mike
+    reviews:
+      request: 1
+      required: 2
+      request_order: given
+```
+
+{% endmarkdown %}
+{% endblock %}

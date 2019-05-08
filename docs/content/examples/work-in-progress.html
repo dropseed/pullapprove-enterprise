@@ -1,0 +1,47 @@
+{% extends "examples/example.template.html" %}
+
+{% set title = "\"Work in progress\" pull requests" %}
+
+{% block example_content %}
+{% markdown %}
+
+If pull requests are opened "early and often", then
+you may not want the typical review to happen right away.
+
+Teams have different preferences for how these are marked.
+
+### Using labels
+
+```yaml
+version: 3
+pullapprove_conditions:
+- condition: "'wip' in labels"
+  unmet_status: pending
+  explanation: "Work in progress"
+```
+
+### Using titles
+
+```yaml
+version: 3
+pullapprove_conditions:
+- condition: "'WIP' in title"
+  unmet_status: pending
+  explanation: "Work in progress"
+```
+
+### Using "draft" pull requests
+
+Note that this is still in API preview, so you need to [enable it](/config/github-api-version/).
+
+```yaml
+version: 3
+github_api_version: "shadow-cat-preview"
+pullapprove_conditions:
+- condition: "not draft"
+  unmet_status: pending
+  explanation: "Work in progress"
+```
+
+{% endmarkdown %}
+{% endblock %}
