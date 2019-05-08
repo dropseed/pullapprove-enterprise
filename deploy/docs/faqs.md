@@ -17,7 +17,7 @@ and respects the GitHub API cache-control headers.
 
 In AWS Lambda, concurrent functions often [re-use containers](https://aws.amazon.com/blogs/compute/container-reuse-in-lambda/) and will share the cache.
 
-Most GitHub API results have a `Cache-Control` header containing `s-maxage=60`,
+Most GitHub API responses have a `Cache-Control` header containing `s-maxage=60`,
 meaning that concurrent requests to that resource are allowed to be stale for a full minute.
 So,
 it is possible that if you make two quick changes to PR labels,
@@ -31,4 +31,4 @@ So if you are afraid that the data you are seeing is not up-to-date,
 just wait a full minute and trigger a refresh.
 
 If you want to disable caching entirely,
-you can set the Terraform variable to an empty string `cache = ""``.
+you can set the Terraform variable to an empty string: `cache = ""`
