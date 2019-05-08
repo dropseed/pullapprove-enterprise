@@ -46,3 +46,18 @@ variable "sentry_dsn" {
   default = ""
   description = "Lambda errors can be sent to Sentry (https://sentry.io)"
 }
+
+variable "cache" {
+  default = "file"
+  description = "Enable API request caching. Set to an empty string to disable."
+}
+
+variable "version" {
+  default = "3.7.0"
+  description = "The version of PullApprove being deployed"
+}
+
+variable "assets_dir" {
+  default = "../versions/3.7.0"
+  description = "Path to the directory with assets for the version being deployed"
+}

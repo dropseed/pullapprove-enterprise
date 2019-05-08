@@ -1,0 +1,6 @@
+#!/bin/sh -e
+VERSION="$1"
+DEPLOY="$( cd "$(dirname "$( dirname "${BASH_SOURCE[0]}" )" )" >/dev/null && pwd )"
+VERSION_DIR="$DEPLOY/versions/$VERSION"
+mkdir -p $VERSION_DIR
+echo "Downloading assets for version $VERSION into $VERSION_DIR"
