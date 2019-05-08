@@ -1,6 +1,14 @@
 #!/bin/sh -e
-VERSION="$1"
 DEPLOY="$( cd "$(dirname "$( dirname "${BASH_SOURCE[0]}" )" )" >/dev/null && pwd )"
+VERSION="$1"
+
+if [ -z "$VERSION" ]
+then
+    echo "You need to specify a version (ex. 1.0.0)"
+    exit 1
+fi
+
 VERSION_DIR="$DEPLOY/versions/$VERSION"
 mkdir -p $VERSION_DIR
 echo "Downloading assets for version $VERSION into $VERSION_DIR"
+curl https://github.com/dropseed/pullapprove/releases/download/v$VERSION/pullapprove_public.zip -o $VERSION_DIR/pullapprove_public.zip

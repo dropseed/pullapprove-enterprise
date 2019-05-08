@@ -1,4 +1,4 @@
-# Install
+# Installing PullApprove
 
 Make sure you have the following things installed or set up and ready to go.
 
