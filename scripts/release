@@ -30,6 +30,8 @@ pushd $BUILD
 zip -r pullapprove_public.zip pullapprove_public
 popd
 
-# push to gh
-
-# rm -r $BUILD
+echo ""
+echo "The following manual steps are required:"
+echo "1. Git tag as $VERSION"
+echo "2. Create a release on GitHub with changes"
+echo "3. Upload the public zips"
