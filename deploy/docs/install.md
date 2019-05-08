@@ -8,7 +8,7 @@ Make sure you have the following things installed or set up and ready to go.
 
 ## Clone this repo
 
-You will most likely want to maintain a clone/fork of this repo to streamline the process updating to new versions.
+You will want to maintain a clone/fork of this repo to streamline the process updating to new versions.
 
 ```sh
 $ git clone https://github.com/dropseed/pullapprove pullapprove-yourcompany
@@ -95,16 +95,14 @@ a 200 (successful) response.
 ## That's all!
 
 PullApprove Enterprise should now be set up to work with your GitHub Enterprise
-installation. You can install the app on some repositories, and test it out. The
+installation. You can install the app on some repositories and test it out. The
 "Advanced" tab of your GitHub App will always have the webhook
 requests/responses which can be useful for debugging. You will also have logs
 for the PullApprove webhook and worker functions that you can inspect.
 
 Error reporting can be configured through any services provided by your host, or
 you can use the `sentry_dsn` Terraform variable to automatically send webhook
-and worker errors to [Sentry](https://sentry.io). If you want to send errors
-directly to *us*, then we can give you a SENTRY_DSN to use (note: this will also
-send any relevant data our way).
+and worker errors to [Sentry](https://sentry.io).
 
 You'll most likely want to save your `terraform.tfvars` and `terraform.tfstate`
 somewhere. Your organization will probably have a preference regarding how to do
