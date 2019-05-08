@@ -10,5 +10,5 @@ please contact us directly.
 
 ## Docs
 
-- [First time installation](install.md)
-- [Updating to a new version](update.md)
+- [First time installation](docs/install.md)
+- [Updating to a new version](docs/update.md)
