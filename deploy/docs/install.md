@@ -40,7 +40,7 @@ You can use [this image](img/github-app-logo.png) for the app logo/avatar.
 
 There are a handful of required and optional settings. Some of the settings will
 need to be copied from your new GitHub App details. The full list of settings
-can be found in [variables.tf](aws/variables.tf). An easy way to configure your
+can be found in [variables.tf](../aws/variables.tf). An easy way to configure your
 settings is to create `aws/terraform.tfvars` that looks like this:
 
 ```hcl
@@ -57,17 +57,18 @@ github_bot_name = "(slugified name of your GitHub App + [bot], ex. `pullapprove-
 
 > Note: If you are installing this to run on GitHub.com then you should also set `github_status_context` to something other than "pullapprove" (like "pullapprove-yourcompany"), so that it doesn't use the same commit status name as our hosted service.
 
-## Download the PullApprove zip files
+## Download the PullApprove zip archives
 
-Terraform will expect these zip files:
+To download the publicly available zip archives:
 
-- `./versions/3.7.0/pullapprove_webhook_aws.zip`
-- `./versions/3.7.0/pullapprove_worker_aws.zip`
-- `./versions/3.7.0/pullapprove_public.zip`
+```sh
+$ cd deploy
+$ ./scripts/download 3.7.0
+```
 
-These currently contain proprietary code,
-and you will need to get them from us.
-Do not redistribute or share these files.
+You will also need the zip files which are *are not publicly available.*
+We will send these directly to you.
+Reminder: do not redistribute or share these files.
 
 ## Run terraform
 
