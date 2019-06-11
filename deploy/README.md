@@ -13,3 +13,11 @@ please contact us directly.
 - [First time installation](docs/install.md)
 - [Updating to a new version](docs/update.md)
 - [FAQs](docs/faqs.md)
+
+## Overview
+
+Below is a basic diagram to give you an idea of how
+PullApprove works in AWS and integrates with GitHub.
+For more details, look at the Terraform files themselves.
+
+![PullApprove Enterprise AWS](docs/img/pullapprove-enterprise-aws.png)
