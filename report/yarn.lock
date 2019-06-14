@@ -4664,10 +4664,10 @@ iferr@^0.1.5:
   resolved "https://registry.yarnpkg.com/iferr/-/iferr-0.1.5.tgz#c60eed69e6d8fdb6b3104a1fcbca1c192dc5b501"
   integrity sha1-xg7taebY/bazEEofy8ocGS3FtQE=
 
-iframe-resizer@^3.6.2:
-  version "3.6.2"
-  resolved "https://registry.yarnpkg.com/iframe-resizer/-/iframe-resizer-3.6.2.tgz#114bc574b2849bf938c5028e2a6b6ca6603c8523"
-  integrity sha512-iC4IZ281NNB7AZsl5oKwEQsI/IaCXW4iqifXF7c/N0fnEN481v9ST791VCRzIDz/JmTb3fOBVfe8ughIowZ44A==
+iframe-resizer@4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/iframe-resizer/-/iframe-resizer-4.1.1.tgz#607c36edfb4547ecce8247226ef062e269a4eccc"
+  integrity sha512-+cs/M4ivpLyKYDs9AZWK0eRA1FKXut0yQr0iaEqdMKuk5yZJeF9H691q1qW1Cz5D3wHmiT+cTubWEsaSJBLUJA==
 
 ignore-walk@^3.0.1:
   version "3.0.1"
