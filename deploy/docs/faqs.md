@@ -32,3 +32,33 @@ just wait a full minute and trigger a refresh.
 
 If you want to disable caching entirely,
 you can set the Terraform variable to an empty string: `cache = ""`
+
+## Security
+
+### What data is stored?
+
+PullApprove stores JSON documents each time that a new PR status is generated.
+This contains information about the configuration used,
+the results of any group "condition" statements,
+and reviewers (by username) involved at that point in time.
+The JSON files are automatically deleted after 60 days (by default).
+
+You can see a simplified example of the JSON here: [pullapprove-status-example.json](pullapprove-status-example.json)
+
+The logs for PullApprove can store GitHub API requests/responses,
+depending on your settings and config.
+These are automatically deleted after 30 days by default but can change depending on your setup.
+
+Our hosted pullapprove.com SaaS stores a minimal amount of additional user and organization data,
+such as OAuth tokens, IDs, names, and references to Stripe subscriptions.
+
+### Is data sent to third-parties?
+
+PullApprove Enterprise only sends data between your GitHub Enterprise instance and AWS resources.
+No data is sent back to us or to other providers unless you configure it to do so.
+
+Our hosted pullapprove.com SaaS uses Stripe for billing and subscription data, and Sentry for error tracking.
+
+### Does PullApprove have permission to write to our repos?
+
+No! PullApprove only has read access to your code.
