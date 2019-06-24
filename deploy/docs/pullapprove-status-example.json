@@ -1,0 +1,131 @@
+{
+  "config": {
+    "config_text": "version: 3\nnotifications:\n- when: pullapprove.group.requested_reviewers\n  comment: \"Review requested from {{ text_list(event.requested_reviewers.mentions, 'and') }} in {{ event.group }}.\"\ngroups:\n second:\n   conditions:\n   - \"'bug' in labels\"\n   reviewers:\n     teams:\n     - testers\n",
+    "config": {
+      "version": {
+        "value": 3
+      },
+      "extends": {
+        "value": ""
+      },
+      "github_api_version": {
+        "value": ""
+      },
+      "pullapprove_conditions": {
+        "items": []
+      },
+      "groups": {
+        "second": {
+          "conditions": {
+            "items": [
+              {
+                "value": "'bug' in labels"
+              }
+            ]
+          },
+          "reviewers": {
+            "users": {
+              "items": []
+            },
+            "teams": {
+              "items": [
+                {
+                  "value": "testers"
+                }
+              ]
+            }
+          },
+          "reviews": {
+            "required": {
+              "value": 1
+            },
+            "request": {
+              "value": 1
+            },
+            "request_order": {
+              "value": "random"
+            },
+            "author_value": {
+              "value": 0
+            }
+          }
+        }
+      },
+      "notifications": {
+        "items": [
+          {
+            "when": {
+              "value": "pullapprove.group.requested_reviewers"
+            },
+            "if": {
+              "value": ""
+            },
+            "comment": {
+              "value": "Review requested from {{ text_list(event.requested_reviewers.mentions, 'and') }} in {{ event.group }}."
+            }
+          }
+        ]
+      }
+    }
+  },
+  "pull_request": {
+    "number": 2
+  },
+  "repo": {
+    "owner_name": "dropseed",
+    "full_name": "dropseed/pullapprove-test"
+  },
+  "users_unavailable": [],
+  "status": {
+    "state": "success",
+    "explanation": "No groups meet their conditions",
+    "groups": {
+      "second": {
+        "name": "second",
+        "is_active": false,
+        "is_passing": true,
+        "state": "pending",
+        "users": [
+          "davegaeddert",
+          "tester",
+          "tester2"
+        ],
+        "teams": [
+          "testers"
+        ],
+        "required": 1,
+        "score": 0,
+        "request": 1,
+        "request_order": "random",
+        "author_value": 0,
+        "conditions": [
+          {
+            "condition": "'bug' in labels",
+            "result": "False",
+            "is_met": false
+          }
+        ],
+        "users_approved": [],
+        "users_rejected": [],
+        "users_pending": [
+          "tester",
+          "tester2"
+        ],
+        "users_unavailable": [
+          "davegaeddert"
+        ],
+        "users_available": [],
+        "users_requested": [],
+        "users_unrequested": []
+      }
+    }
+  },
+  "meta": {
+    "id": "01ed79bd-b839-495c-badf-8a31f006e9b4",
+    "fingerprint": "8c49ad946c4377b4a7b47d260d982b9c",
+    "timestamp": "2019-05-03T01:22:21.004051",
+    "mode": "live",
+    "version": "3.7.0",
+    "github_api_base_url": "https://github.dropseed.io/api/v3"
+  }
+}
