@@ -11,4 +11,4 @@ fi
 VERSION_DIR="$DEPLOY/versions/$VERSION"
 mkdir -p $VERSION_DIR
 echo "Downloading assets for version $VERSION into $VERSION_DIR"
-curl https://github.com/dropseed/pullapprove/releases/download/v$VERSION/pullapprove_public.zip -o $VERSION_DIR/pullapprove_public.zip
+curl -fL https://github.com/dropseed/pullapprove/releases/download/v$VERSION/pullapprove_public.zip -o $VERSION_DIR/pullapprove_public.zip
