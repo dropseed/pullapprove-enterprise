@@ -15,7 +15,7 @@ Download the public zip archives for this version:
 
 ```sh
 $ cd deploy
-$ ./scripts/download 3.7.0
+$ ./scripts/download 3.8.0
 ```
 
 And make sure to add the private zip archives to the same `versions/<version>` folder.

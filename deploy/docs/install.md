@@ -63,7 +63,7 @@ To download the publicly available zip archives:
 
 ```sh
 $ cd deploy
-$ ./scripts/download 3.7.0
+$ ./scripts/download 3.8.0
 ```
 
 You will also need the zip files which are *are not publicly available.*
