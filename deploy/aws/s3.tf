@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "pullapprove_storage_bucket" {
-  bucket = "pullapprove-storage${var.aws_bucket_suffix}"
+  bucket = "pullapprove-storage${var.aws_unique_suffix}"
   acl    = "private"
 
   cors_rule {
@@ -20,7 +20,7 @@ resource "aws_s3_bucket" "pullapprove_storage_bucket" {
 }
 
 resource "aws_s3_bucket" "pullapprove_public_bucket" {
-  bucket = "pullapprove-public${var.aws_bucket_suffix}"
+  bucket = "pullapprove-public${var.aws_unique_suffix}"
   acl    = "public-read"
 
   website {
