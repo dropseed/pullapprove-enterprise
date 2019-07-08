@@ -33,6 +33,16 @@ just wait a full minute and trigger a refresh.
 If you want to disable caching entirely,
 you can set the Terraform variable to an empty string: `cache = ""`
 
+### The pullapprove status isn't showing up. What do I do?
+
+We suggest checking the following, in this order.
+
+1) Add/remove a label to trigger pullapprove to run. Wait a minute to make sure the status doesn't show up.
+2) Is there a .pullapprove.yml version 3 in the repo default branch? The status does not show up if there is no config, or the config is version 2.
+3) Is the pullapprove GitHub App installed on the repo? (Do other PRs have pullapprove, check repo/settings/installations)
+4) Are the webhooks being received successfully? Can check this in the GitHub App settings "advanced" tab.
+5) Are there errors in the worker logs?
+
 ## Security
 
 ### What data is stored?
