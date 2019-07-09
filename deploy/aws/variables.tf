@@ -34,6 +34,29 @@ variable "config_filename" {
   default = ".pullapprove.yml"
   description = "Name of the PullApprove config file in each repo"
 }
+variable "ui_base_url" {
+  default = ""
+  description = "The base url used to generate links to reports (leave blank to be automatically populated)"
+}
+# Note: these are single-space empty strings intentionally
+# since SSM must have a value to store for these secrets
+# - pullapprove will strip and detect these values are empty
+variable "billing_api_url" {
+  default = " "
+  description = "URL to the billing API (not used for enterprise installations)"
+}
+variable "billing_api_secret" {
+  default = " "
+  description = "Secret for the billing API (not used for enterprise installations)"
+}
+variable "availability_api_url" {
+  default = " "
+  description = "URL to the availability API (not used for enterprise installations)"
+}
+variable "availability_api_secret" {
+  default = " "
+  description = "Secret for the availability API (not used for enterprise installations)"
+}
 
 # Lambda settings
 variable "log_level" {

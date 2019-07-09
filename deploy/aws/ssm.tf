@@ -21,3 +21,27 @@ resource "aws_ssm_parameter" "github_app_private_key" {
   type        = "SecureString"
   value       = "${var.github_app_private_key}"
 }
+
+resource "aws_ssm_parameter" "billing_api_url" {
+  name        = "/pullapprove${var.aws_unique_suffix}/billing_api_url"
+  type        = "SecureString"
+  value       = "${var.billing_api_url}"
+}
+
+resource "aws_ssm_parameter" "billing_api_secret" {
+  name        = "/pullapprove${var.aws_unique_suffix}/billing_api_secret"
+  type        = "SecureString"
+  value       = "${var.billing_api_secret}"
+}
+
+resource "aws_ssm_parameter" "availability_api_url" {
+  name        = "/pullapprove${var.aws_unique_suffix}/availability_api_url"
+  type        = "SecureString"
+  value       = "${var.availability_api_url}"
+}
+
+resource "aws_ssm_parameter" "availability_api_secret" {
+  name        = "/pullapprove${var.aws_unique_suffix}/availability_api_secret"
+  type        = "SecureString"
+  value       = "${var.availability_api_secret}"
+}
