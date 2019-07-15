@@ -6,7 +6,7 @@ resource "aws_lambda_function" "pullapprove_worker" {
   source_code_hash = "${base64sha256(file("${var.assets_dir}/pullapprove_worker_aws.zip"))}"
   runtime          = "python3.7"
   timeout          = 300
-  memory_size      = 128
+  memory_size      = "${var.worker_memory}"
 
   environment {
     variables = {

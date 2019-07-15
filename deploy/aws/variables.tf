@@ -64,6 +64,11 @@ variable "log_level" {
   description = "Log level for lambda functions to enable more or less output"
 }
 
+variable "worker_memory" {
+  default = 256
+  description = "Memory limit on pullapprove worker"
+}
+
 # Optional error tracking
 variable "sentry_dsn" {
   default = ""
