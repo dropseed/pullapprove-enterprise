@@ -81,11 +81,11 @@ variable "cache" {
 }
 
 variable "version" {
-  default = "3.8.0"
+  default = "3.8.1"
   description = "The version of PullApprove being deployed"
 }
 
 variable "assets_dir" {
-  default = "../versions/3.8.0"
+  default = "../versions/3.8.1"
   description = "Path to the directory with assets for the version being deployed"
 }
