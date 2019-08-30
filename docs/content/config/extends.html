@@ -21,11 +21,72 @@ version: 3
 extends: https://api.github.com/repos/example/pullapprove-config/contents/.pullapprove.yml
 {% endraw %}{% endcode %}
 
-{#
-<h2>Deep merging</h2>
+<h2>Template merging</h2>
 
 <p>When you extend a template <em>and</em> provide settings in the <code>.pullapprove.yml</code> file itself,
-the settings will be merged together.</p>
-#}
+the settings will be merged together. You can see your merged config in the "Config" tab of the PullApprove status page.</p>
+
+<p><strong>The basic rule is that dictionaries will be merged, and any other kinds of fields will be overwritten.</strong></p>
+
+<p>
+    For example, the <code>groups</code> are a dictionary (each group name is a key).
+    If you have <code>groups</code> in your template and groups in your repo config,
+    they will be merged together.
+</p>
+
+<h3>Template</h3>
+
+{% code "yaml" %}{% raw %}
+version: 3
+groups:
+  template_group: ...
+{% endraw %}{% endcode %}
+
+<h3>Repo</h3>
+
+{% code "yaml" %}{% raw %}
+version: 3
+extends: <template url>
+groups:
+  repo_group: ...
+{% endraw %}{% endcode %}
+
+<h3>Merged config</h3>
+
+{% code "yaml" %}{% raw %}
+version: 3
+extends: <template url>
+groups:
+  template_group: ...
+  repo_group: ...
+{% endraw %}{% endcode %}
+
+<p>Other fields that are lists, integers, or strings will be overwritten by your repo config. A common example of this is <code>pullapprove_conditions</code>.</p>
+
+<h3>Template</h3>
+
+{% code "yaml" %}{% raw %}
+version: 3
+pullapprove_conditions:
+- <template condition>
+{% endraw %}{% endcode %}
+
+<h3>Repo</h3>
+
+{% code "yaml" %}{% raw %}
+version: 3
+extends: <template url>
+pullapprove_conditions:
+- <repo condition>
+{% endraw %}{% endcode %}
+
+<h3>Merged config</h3>
+
+{% code "yaml" %}{% raw %}
+version: 3
+extends: <template url>
+pullapprove_conditions:
+- <repo condition>
+{% endraw %}{% endcode %}
 
 {% endblock %}
