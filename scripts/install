@@ -1,0 +1,3 @@
+#!/bin/sh -e
+cd docs && scripts/install && cd ..
+cd report && scripts/install && cd ..
