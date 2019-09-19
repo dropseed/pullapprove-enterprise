@@ -1,0 +1,19 @@
+name: deps
+
+on: push
+#  schedule:
+#  - cron: 0 0 * * *
+
+jobs:
+  deps:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-python@v1
+    - run: pip install pipenv
+    - run: ./scripts/install
+    - run: curl https://deps.app/install.sh | bash -s -- -b $HOME/bin
+    - run: $HOME/bin/deps ci
+      env:
+        DEPS_TOKEN: ${{ secrets.DEPS_TOKEN }}
+        DEPS_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
