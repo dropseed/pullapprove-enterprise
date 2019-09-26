@@ -16,6 +16,7 @@ then
 fi
 
 VERSIONS_DIR="$DEPLOY/versions"
+mkdir -p $VERSIONS_DIR
 echo "Downloading assets for version $VERSION into $VERSIONS_DIR"
 ZIP="$VERSIONS_DIR/download.zip"
 rm -f $ZIP
