@@ -1,6 +1,7 @@
 #!/bin/sh -e
 DEPLOY="$( cd "$(dirname "$( dirname "${BASH_SOURCE[0]}" )" )" >/dev/null && pwd )"
 VERSION="$1"
+TOKEN="$2"
 
 if [ -z "$VERSION" ]
 then
@@ -8,7 +9,15 @@ then
     exit 1
 fi
 
-VERSION_DIR="$DEPLOY/versions/$VERSION"
-mkdir -p $VERSION_DIR
-echo "Downloading assets for version $VERSION into $VERSION_DIR"
-curl -fL https://github.com/dropseed/pullapprove/releases/download/v$VERSION/pullapprove_public.zip -o $VERSION_DIR/pullapprove_public.zip
+if [ -z "$TOKEN" ]
+then
+    echo "You need to specify a download token. Contact us if you don't have one."
+    exit 1
+fi
+
+VERSIONS_DIR="$DEPLOY/versions"
+echo "Downloading assets for version $VERSION into $VERSIONS_DIR"
+ZIP="$VERSIONS_DIR/download.zip"
+rm -f $ZIP
+curl -fL "https://us-central1-pullapprove.cloudfunctions.net/pullapprove-downloader?version=$VERSION&token=$TOKEN" -o $ZIP
+unzip $ZIP -d $VERSIONS_DIR
