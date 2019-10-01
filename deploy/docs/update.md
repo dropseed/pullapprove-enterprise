@@ -11,15 +11,12 @@ $ git fetch upstream
 $ git merge upstream/master
 ```
 
-Download the public zip archives for this version:
+Download the assets for this version:
 
 ```sh
 $ cd deploy
-$ ./scripts/download 3.8.0
+$ ./scripts/download 3.9.0 $YOUR_PULLAPPROVE_DOWNLOAD_TOKEN
 ```
-
-And make sure to add the private zip archives to the same `versions/<version>` folder.
-Contact us if we have not sent these to you.
 
 Then run Terraform:
 
