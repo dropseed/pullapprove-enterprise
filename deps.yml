@@ -1,0 +1,17 @@
+version: 3
+dependencies:
+- type: python
+  path: docs/Pipfile
+  lockfile_updates:
+    settings:
+      github_labels: [automerge]
+- type: js
+  path: docs
+  lockfile_updates:
+    settings:
+      github_labels: [automerge]
+- type: js
+  path: report
+  lockfile_updates:
+    settings:
+      github_labels: [automerge]
