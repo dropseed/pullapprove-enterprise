@@ -80,7 +80,7 @@ variable "cache" {
   description = "Enable API request caching. Set to an empty string to disable."
 }
 
-variable "version" {
+variable "pullapprove_version" {
   default = "3.9.0"
   description = "The version of PullApprove being deployed"
 }
