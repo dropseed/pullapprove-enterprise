@@ -12,6 +12,7 @@ You will want to maintain a clone/fork of this repo to streamline the process up
 
 ```sh
 $ git clone https://github.com/dropseed/pullapprove pullapprove-yourcompany
+$ cd pullapprove-yourcompany
 $ git remote rename origin upstream
 # Create a new, private and empty git repo that you can push this to
 $ git remote add origin <your repo url>
