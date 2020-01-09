@@ -23,5 +23,6 @@ Then run Terraform:
 
 ```sh
 $ cd aws
+$ terraform init
 $ terraform apply
 ```
