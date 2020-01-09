@@ -7,6 +7,7 @@ In your private clone of this repo,
 
 ```sh
 # This assumes you have a remote named "upstream" pointing to this repo
+# (`git remote add upstream https://github.com/dropseed/pullapprove` if you need to add this)
 $ git fetch upstream
 $ git merge upstream/master
 ```
