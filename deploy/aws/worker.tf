@@ -3,7 +3,7 @@ resource "aws_lambda_function" "pullapprove_worker" {
   function_name    = "pullapprove_worker"
   role             = aws_iam_role.pullapprove_lambda_role.arn
   handler          = "main.aws_sqs_handler"
-  source_code_hash = base64sha256(file("${var.assets_dir}/pullapprove_worker_aws.zip"))
+  source_code_hash = filebase64sha256("${var.assets_dir}/pullapprove_worker_aws.zip")
   runtime          = "python3.7"
   timeout          = 300
   memory_size      = var.worker_memory
