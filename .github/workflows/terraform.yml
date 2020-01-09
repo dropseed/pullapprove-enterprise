@@ -19,3 +19,10 @@ jobs:
           tf_actions_subcommand: validate
           tf_actions_working_dir: deploy/aws
           tf_actions_comment: false
+      - name: Terraform Fmt
+        uses: hashicorp/terraform-github-actions@master
+        with:
+          tf_actions_version: latest
+          tf_actions_subcommand: fmt
+          tf_actions_working_dir: deploy/aws
+          tf_actions_comment: false

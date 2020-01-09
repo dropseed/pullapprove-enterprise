@@ -10,8 +10,8 @@ resource "aws_s3_bucket" "pullapprove_storage_bucket" {
   }
 
   lifecycle_rule {
-    id = "reports"
-    prefix = "reports/"
+    id      = "reports"
+    prefix  = "reports/"
     enabled = true
     expiration {
       days = 60
@@ -36,9 +36,9 @@ resource "null_resource" "pullapprove_public_bucket_sync" {
   provisioner "local-exec" {
     command = "unzip ${var.assets_dir}/pullapprove_public.zip -d ${var.assets_dir}/pullapprove_public && aws s3 sync --acl public-read --delete ${var.assets_dir}/pullapprove_public/* s3://${aws_s3_bucket.pullapprove_public_bucket.id} && rm -r ${var.assets_dir}/pullapprove_public"
     environment = {
-      AWS_ACCESS_KEY_ID = "${var.aws_access_key}"
+      AWS_ACCESS_KEY_ID     = "${var.aws_access_key}"
       AWS_SECRET_ACCESS_KEY = "${var.aws_secret_key}"
-      AWS_REGION = "${var.aws_region}"
+      AWS_REGION            = "${var.aws_region}"
     }
   }
 }
