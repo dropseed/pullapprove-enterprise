@@ -12,6 +12,7 @@ You will want to maintain a clone/fork of this repo to streamline the process up
 
 ```sh
 $ git clone https://github.com/dropseed/pullapprove pullapprove-yourcompany
+$ cd pullapprove-yourcompany
 $ git remote rename origin upstream
 # Create a new, private and empty git repo that you can push this to
 $ git remote add origin <your repo url>
@@ -57,18 +58,16 @@ github_bot_name = "(slugified name of your GitHub App + [bot], ex. `pullapprove-
 
 > Note: If you are installing this to run on GitHub.com then you should also set `github_status_context` to something other than "pullapprove" (like "pullapprove-yourcompany"), so that it doesn't use the same commit status name as our hosted service.
 
-## Download the PullApprove zip archives
+## Download the release assets
 
-To download the publicly available zip archives:
+Contact us to get your download token.
+This token identifies you as a customer and gives you access to the necessary files to run PullApprove. Please do not share or redistribute the files,
+and keep your download token a secret.
 
 ```sh
 $ cd deploy
-$ ./scripts/download 3.8.0
+$ ./scripts/download 3.9.0 $YOUR_PULLAPPROVE_DOWNLOAD_TOKEN
 ```
-
-You will also need the zip files which are *are not publicly available.*
-We will send these directly to you.
-Reminder: do not redistribute or share these files.
 
 ## Run terraform
 
