@@ -16,12 +16,18 @@ class App extends Component {
     const windowURL = new URL(window.location.href);
     const s = windowURL.searchParams.get("s");
     const url = windowURL.searchParams.get("url");
+    const truncatedStorageUrl = windowURL.searchParams.get("t");
     if (s) {
       const d = decodeURIComponent(s);
       const decoded = atob(d);
       this.loadStatusFromText(decoded);
     } else if (url) {
       this.loadStatusFromURL(decodeURI(url));
+    } else if (truncatedStorageUrl) {
+      // Only used in enterprise
+      const suffix = window.location.hostname.match(/pullapprove-public-(\w+)/)[1];
+      const base = `https://pullapprove-storage-${suffix}.s3.amazonaws.com/reports/`;
+      this.loadStatusFromURL(base + decodeURI(truncatedStorageUrl));
     }
 
     this.setState({ embedded: windowURL.searchParams.get("embedded") });

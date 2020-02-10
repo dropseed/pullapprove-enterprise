@@ -32,6 +32,11 @@ td {
     @apply border p-2;
 }
 
+blockquote {
+    @apply italic text-gray-700 rounded bg-gray-200 p-4 mb-4;
+}
+blockquote p:last-child { @apply m-0; }
+
 .algolia-autocomplete { display: block !important; }
 .algolia-autocomplete .ds-dropdown-menu a { @apply no-underline; }
 
