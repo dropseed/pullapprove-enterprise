@@ -1,8 +1,8 @@
 name: deps
 
-on: push
-#  schedule:
-#  - cron: 0 0 * * *
+on:
+  schedule:
+  - cron: 0 0 * * 1
 
 jobs:
   deps:
@@ -11,7 +11,6 @@ jobs:
     - uses: actions/checkout@v1
     - uses: actions/setup-python@v1
     - run: pip install pipenv
-    - run: ./scripts/install
     - run: curl https://deps.app/install.sh | bash -s -- -b $HOME/bin
     - run: $HOME/bin/deps ci
       env:

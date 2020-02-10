@@ -74,7 +74,7 @@ class Group extends Component {
                   className="form-check-label"
                   htmlFor={`showUsersCheck-${name}`}
                 >
-                  <small>Show all {data.users.length} users</small>
+                  <small>Show all users</small>
                 </label>
               </div>
 
