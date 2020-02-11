@@ -63,6 +63,9 @@ conditions:
 - "files.include('src/*').exclude('*.md')"
 # review changes to any non-python tests
 - "files.include('*test*').exclude('*.py')"
+# use glob paths
+- "contains_any_globs(files, ['api/**', 'tests/*.py'])"
+- "files.include(glob('api/**'))"
 ```
 
 ### Multiline conditions for readability
