@@ -15,11 +15,15 @@ p {
     margin-bottom: 1rem;
 }
 
-code {
-    @apply bg-green-100 text-green-800;
-    border-radius: 3px;
-    padding: .15rem .4rem;
-    font-size: .9em;
+p > code {
+    background-color: #eef5f0;
+    color: #3c544a;
+    font-size: .95em;
+    padding: 0 2px;
+}
+
+h3 > code {
+    @apply font-bold;
 }
 
 table {
