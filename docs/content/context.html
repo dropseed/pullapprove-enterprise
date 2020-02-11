@@ -1,0 +1,16 @@
+{% extends "base.template.html" %}
+
+{% set title = "Context" %}
+{% set description = "Reference for what is available when writing PullApprove conditions and logic" %}
+
+{% block content %}
+
+<h1>Context reference</h1>
+
+<p>The following variables are available at the root level when writing conditions and
+templates. For variables that are custom objects, see their properties further
+down the page.</p>
+
+{% include "_generated_context.html" %}
+
+{% endblock %}

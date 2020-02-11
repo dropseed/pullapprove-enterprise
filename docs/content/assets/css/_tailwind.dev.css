@@ -7,6 +7,10 @@ h3 { @apply font-medium text-xl pt-2 mb-2; }
 h4 { @apply font-medium text-lg pt-2 mb-2; }
 h5 { @apply font-medium pt-1 mb-1; }
 
+.markdown ul {
+    @apply list-disc pl-8 mb-4;
+}
+
 a {
     @apply underline;
 }
@@ -40,6 +44,8 @@ blockquote {
     @apply italic text-gray-700 rounded bg-gray-200 p-4 mb-4;
 }
 blockquote p:last-child { @apply m-0; }
+
+details { @apply mb-4; }
 
 .algolia-autocomplete { display: block !important; }
 .algolia-autocomplete .ds-dropdown-menu a { @apply no-underline; }

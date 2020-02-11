@@ -90,9 +90,19 @@
       <td><p><code>contains_any_fnmatches(files, ['api/*', 'tests/*'])</code></p></td>
     </tr>
     <tr>
+      <td>contains_any_globs</td>
+      <td>function</td>
+      <td><p><code>contains_any_globs(files, ['api/**', 'tests/*.py'])</code></p></td>
+    </tr>
+    <tr>
       <td>contains_fnmatch</td>
       <td>function</td>
       <td><p><code>contains_fnmatch(title, 'WIP*')</code></p></td>
+    </tr>
+    <tr>
+      <td>contains_glob</td>
+      <td>function</td>
+      <td><p><code>contains_glob(file.filename, 'app/**/*.py')</code></p></td>
     </tr>
     <tr>
       <td>contains_regex</td>
@@ -130,6 +140,11 @@
       <td>files</td>
       <td><a href="#files">Files</a></td>
       <td></td>
+    </tr>
+    <tr>
+      <td>glob</td>
+      <td>function</td>
+      <td><p><code>glob('*.py')</code></p></td>
     </tr>
     <tr>
       <td>groups</td>
@@ -316,6 +331,7 @@
 
 <h2 id="branch">Branch</h2>
 
+<details><summary>Properties</summary>
 <div class="table-responsive"><table class="table table-sm table-bordered table-striped">
   <thead>
     <tr>
@@ -352,9 +368,11 @@
     </tr>
   </tbody>
 </table></div>
+</details>
 
 <h2 id="commit">Commit</h2>
 
+<details><summary>Properties</summary>
 <div class="table-responsive"><table class="table table-sm table-bordered table-striped">
   <thead>
     <tr>
@@ -421,9 +439,11 @@
     </tr>
   </tbody>
 </table></div>
+</details>
 
 <h2 id="commits">Commits</h2>
 
+<details><summary>Properties</summary>
 <div class="table-responsive"><table class="table table-sm table-bordered table-striped">
   <thead>
     <tr>
@@ -459,9 +479,11 @@
     </tr>
   </tbody>
 </table></div>
+</details>
 
 <h2 id="file">File</h2>
 
+<details><summary>Properties</summary>
 <div class="table-responsive"><table class="table table-sm table-bordered table-striped">
   <thead>
     <tr>
@@ -523,11 +545,13 @@
     </tr>
   </tbody>
 </table></div>
+</details>
 
 <h2 id="files">Files</h2>
 
 <p><a href="https://developer.github.com/v3/pulls/#list-pull-requests-files">See the GitHub documentation for more information.</a></p>
 
+<details><summary>Properties</summary>
 <div class="table-responsive"><table class="table table-sm table-bordered table-striped">
   <thead>
     <tr>
@@ -578,11 +602,13 @@
     </tr>
   </tbody>
 </table></div>
+</details>
 
 <h2 id="group">Group</h2>
 
 <p>A PullApprove review group</p>
 
+<details><summary>Properties</summary>
 <div class="table-responsive"><table class="table table-sm table-bordered table-striped">
   <thead>
     <tr>
@@ -694,11 +720,13 @@
     </tr>
   </tbody>
 </table></div>
+</details>
 
 <h2 id="groups">Groups</h2>
 
 <p>Groups is a list of <a href="#group">Group</a> objects with a few handy shortcuts.</p>
 
+<details><summary>Properties</summary>
 <div class="table-responsive"><table class="table table-sm table-bordered table-striped">
   <thead>
     <tr>
@@ -759,9 +787,11 @@
     </tr>
   </tbody>
 </table></div>
+</details>
 
 <h2 id="label">Label</h2>
 
+<details><summary>Properties</summary>
 <div class="table-responsive"><table class="table table-sm table-bordered table-striped">
   <thead>
     <tr>
@@ -779,6 +809,11 @@
     <tr>
       <td>default</td>
       <td>bool</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>description</td>
+      <td>str</td>
       <td></td>
     </tr>
     <tr>
@@ -803,9 +838,11 @@
     </tr>
   </tbody>
 </table></div>
+</details>
 
 <h2 id="labels">Labels</h2>
 
+<details><summary>Properties</summary>
 <div class="table-responsive"><table class="table table-sm table-bordered table-striped">
   <thead>
     <tr>
@@ -836,9 +873,11 @@
     </tr>
   </tbody>
 </table></div>
+</details>
 
 <h2 id="milestone">Milestone</h2>
 
+<details><summary>Properties</summary>
 <div class="table-responsive"><table class="table table-sm table-bordered table-striped">
   <thead>
     <tr>
@@ -930,9 +969,11 @@
     </tr>
   </tbody>
 </table></div>
+</details>
 
 <h2 id="repo">Repo</h2>
 
+<details><summary>Properties</summary>
 <div class="table-responsive"><table class="table table-sm table-bordered table-striped">
   <thead>
     <tr>
@@ -1309,9 +1350,11 @@
     </tr>
   </tbody>
 </table></div>
+</details>
 
 <h2 id="status">Status</h2>
 
+<details><summary>Properties</summary>
 <div class="table-responsive"><table class="table table-sm table-bordered table-striped">
   <thead>
     <tr>
@@ -1373,12 +1416,14 @@
     </tr>
   </tbody>
 </table></div>
+</details>
 
 <h2 id="statuses">Statuses</h2>
 
 <p>Statuses are pulled from the most recent commit on the pull request.
 <a href="https://developer.github.com/v3/repos/statuses/#list-statuses-for-a-specific-ref">See the GitHub documentation for more information.</a></p>
 
+<details><summary>Properties</summary>
 <div class="table-responsive"><table class="table table-sm table-bordered table-striped">
   <thead>
     <tr>
@@ -1434,9 +1479,11 @@
     </tr>
   </tbody>
 </table></div>
+</details>
 
 <h2 id="team">Team</h2>
 
+<details><summary>Properties</summary>
 <div class="table-responsive"><table class="table table-sm table-bordered table-striped">
   <thead>
     <tr>
@@ -1477,6 +1524,11 @@
       <td></td>
     </tr>
     <tr>
+      <td>parent</td>
+      <td>str</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>permission</td>
       <td>str</td>
       <td></td>
@@ -1503,9 +1555,11 @@
     </tr>
   </tbody>
 </table></div>
+</details>
 
 <h2 id="teams">Teams</h2>
 
+<details><summary>Properties</summary>
 <div class="table-responsive"><table class="table table-sm table-bordered table-striped">
   <thead>
     <tr>
@@ -1541,9 +1595,11 @@
     </tr>
   </tbody>
 </table></div>
+</details>
 
 <h2 id="user">User</h2>
 
+<details><summary>Properties</summary>
 <div class="table-responsive"><table class="table table-sm table-bordered table-striped">
   <thead>
     <tr>
@@ -1655,9 +1711,11 @@
     </tr>
   </tbody>
 </table></div>
+</details>
 
 <h2 id="users">Users</h2>
 
+<details><summary>Properties</summary>
 <div class="table-responsive"><table class="table table-sm table-bordered table-striped">
   <thead>
     <tr>
@@ -1693,3 +1751,4 @@
     </tr>
   </tbody>
 </table></div>
+</details>
