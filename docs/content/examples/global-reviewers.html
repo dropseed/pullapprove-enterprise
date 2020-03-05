@@ -1,0 +1,30 @@
+{% extends "examples/example.template.html" %}
+
+{% set title = "Global reviewers" %}
+
+{% block example_content %}
+{% markdown %}
+
+TODO
+
+```yaml
+version: 3
+groups:
+  global:
+    type: optional
+    reviewers:
+      teams:
+      - global
+    reviews:
+      request: 0
+      required: 1
+      reviewed_for: required
+
+  code:
+    conditions:
+    - "global not in groups.approved"
+    ...
+```
+
+{% endmarkdown %}
+{% endblock %}

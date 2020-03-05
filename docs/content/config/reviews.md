@@ -21,6 +21,7 @@ groups:
       # if the PR author is in this group, automatically add +1
       author_value: 1
 
+      reviewed_for: optional
 ```
 
 ## Fields
@@ -108,3 +109,15 @@ groups:
 ```
 
 *Note that on GitHub, authors can't actually review their own PR.*
+
+### `reviewed_for`
+
+Determines whether reviews are required to have ["Reviewed-for: {group}" in the body of the review](/config/reviewed-for).
+By default, this is `optional`.
+
+Setting `reviewed_for: required` can help with situations where a single person is involved in multiple active groups,
+by forcing them to say which group they are reviewing for and preventing accidental overlapping reviews.
+
+#### Example use cases:
+
+- [Global reviewers](/examples/global-reviewers/)
