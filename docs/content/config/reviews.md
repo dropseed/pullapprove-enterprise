@@ -118,6 +118,8 @@ By default, this is `optional`.
 Setting `reviewed_for: required` can help with situations where a single person is involved in multiple active groups,
 by forcing them to say which group they are reviewing for and preventing accidental overlapping reviews.
 
+> Note that if `reviewed_for: required` and you forget to include the "Reviewed-for" line in your review, the review will simply be ignored for that group.
+
 #### Example use cases:
 
 - [Global reviewers](/examples/global-reviewers/)
