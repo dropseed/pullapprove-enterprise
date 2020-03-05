@@ -112,7 +112,7 @@ groups:
 
 ### `reviewed_for`
 
-Determines whether reviews are required to have ["Reviewed-for: {group}" in the body of the review](/config/reviewed-for).
+Determines whether reviews are required to have ["Reviewed-for: {group}" in the body of the review](/reviewed-for/).
 By default, this is `optional`.
 
 Setting `reviewed_for: required` can help with situations where a single person is involved in multiple active groups,
