@@ -43,4 +43,5 @@ groups:
 #### Example use cases:
 
 - [Global reviewers](/examples/global-reviewers/)
+- [Require 2 of 4 optional groups to approve](https://github.com/pullapprove/support/issues/129#issuecomment-598289118)
 - [Reviews from the general public or other non-essential contributors?](#)
