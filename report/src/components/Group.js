@@ -121,6 +121,13 @@ class Group extends Component {
                 <dd className="col-sm-8">
                   <code>{data.author_value}</code>
                 </dd>
+
+                <dt className="col-sm-4">
+                  <code>reviewed_for</code>
+                </dt>
+                <dd className="col-sm-8">
+                  <code>{data.reviewed_for}</code>
+                </dd>
               </dl>
             </div>
           </div>
