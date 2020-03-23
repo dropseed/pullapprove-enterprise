@@ -9,7 +9,7 @@
     "feather-icons": "^4.7.3",
     "iframe-resizer": "^4.2.10",
     "node-sass": "^4.9.4",
-    "prettier": "^1.14.3",
+    "prettier": "^2.0.1",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-scripts": "3.4.0",
