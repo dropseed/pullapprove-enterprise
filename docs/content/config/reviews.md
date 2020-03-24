@@ -20,7 +20,7 @@ groups:
       request_order: shuffle
       # if the PR author is in this group, automatically add +1
       author_value: 1
-
+      # decide whether reviews have to use the "Reviewed-for:" syntax to qualify for this group
       reviewed_for: optional
 ```
 
@@ -119,6 +119,15 @@ Setting `reviewed_for: required` can help with situations where a single person 
 by forcing them to say which group they are reviewing for and preventing accidental overlapping reviews.
 
 > Note that if `reviewed_for: required` and you forget to include the "Reviewed-for" line in your review, the review will simply be ignored for that group.
+
+```yaml
+version: 3
+groups:
+  security:
+    reviews:
+      # review body will have to contain "Reviewed-for: security" to count towards this group
+      reviewed_for: required
+```
 
 #### Example use cases:
 
