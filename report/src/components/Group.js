@@ -59,7 +59,7 @@ class Group extends Component {
 
         <div className="card-body">
 
-          {data.description ? <div className="mb-2" dangerouslySetInnerHTML={{__html: dompurify.sanitize(marked(data.description))}} /> : null}
+          {data.description ? <div className="mb-4" dangerouslySetInnerHTML={{__html: dompurify.sanitize(marked(data.description))}} /> : null}
 
           <div className="row">
             <div className="col-sm-6">
