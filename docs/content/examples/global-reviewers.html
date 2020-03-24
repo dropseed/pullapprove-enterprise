@@ -1,0 +1,31 @@
+{% extends "examples/example.template.html" %}
+
+{% set title = "Global reviewers" %}
+
+{% block example_content %}
+{% markdown %}
+
+Add a "global" group which can override/deactivate
+other groups if they need to step in and approve a PR immediately.
+
+```yaml
+version: 3
+groups:
+  global:
+    type: optional
+    reviewers:
+      teams:
+      - global
+    reviews:
+      request: 0
+      required: 1
+      reviewed_for: required
+
+  code:
+    conditions:
+    - "global not in groups.approved"
+    ...
+```
+
+{% endmarkdown %}
+{% endblock %}

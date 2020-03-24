@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { textColor } from "../colors.js";
 import Conditions from "./Conditions.js";
 import { AppContext } from "../App.js";
+import marked from "marked";
+import dompurify from "dompurify";
 
 class Group extends Component {
   state = { showAllUsers: false };
@@ -42,20 +44,31 @@ class Group extends Component {
             >
               {data.is_active ? "active" : "inactive"}
             </span>
-            &nbsp;
             <span
               className={
                 data.is_active && data.is_passing
-                  ? "badge badge-success"
-                  : "badge badge-secondary"
+                  ? "badge badge-success ml-1"
+                  : "badge badge-secondary ml-1"
               }
             >
               {data.state}
+            </span>
+            <span
+              className={
+                data.is_active && data.is_passing && data.type === "required"
+                  ? "badge badge-success ml-1"
+                  : "badge badge-secondary ml-1"
+              }
+            >
+              {data.type}
             </span>
           </div>
         </div>
 
         <div className="card-body">
+
+          {data.description ? <div className="mb-4" dangerouslySetInnerHTML={{__html: dompurify.sanitize(marked(data.description))}} /> : null}
+
           <div className="row">
             <div className="col-sm-6">
               <h5 className="card-title float-left">Reviewers</h5>
@@ -120,6 +133,13 @@ class Group extends Component {
                 </dt>
                 <dd className="col-sm-8">
                   <code>{data.author_value}</code>
+                </dd>
+
+                <dt className="col-sm-4">
+                  <code>reviewed_for</code>
+                </dt>
+                <dd className="col-sm-8">
+                  <code>{data.reviewed_for}</code>
                 </dd>
               </dl>
             </div>
