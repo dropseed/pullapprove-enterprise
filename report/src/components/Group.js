@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { textColor } from "../colors.js";
 import Conditions from "./Conditions.js";
 import { AppContext } from "../App.js";
+import marked from "marked";
+import dompurify from "dompurify";
 
 class Group extends Component {
   state = { showAllUsers: false };
@@ -56,6 +58,9 @@ class Group extends Component {
         </div>
 
         <div className="card-body">
+
+          {data.description ? <div className="mb-2" dangerouslySetInnerHTML={{__html: dompurify.sanitize(marked(data.description))}} /> : null}
+
           <div className="row">
             <div className="col-sm-6">
               <h5 className="card-title float-left">Reviewers</h5>
