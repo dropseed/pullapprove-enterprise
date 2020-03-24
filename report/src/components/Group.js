@@ -44,15 +44,23 @@ class Group extends Component {
             >
               {data.is_active ? "active" : "inactive"}
             </span>
-            &nbsp;
             <span
               className={
                 data.is_active && data.is_passing
-                  ? "badge badge-success"
-                  : "badge badge-secondary"
+                  ? "badge badge-success ml-1"
+                  : "badge badge-secondary ml-1"
               }
             >
               {data.state}
+            </span>
+            <span
+              className={
+                data.is_active && data.is_passing && data.type === "required"
+                  ? "badge badge-success ml-1"
+                  : "badge badge-secondary ml-1"
+              }
+            >
+              {data.type}
             </span>
           </div>
         </div>
