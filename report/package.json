@@ -9,7 +9,7 @@
     "dompurify": "^2.0.8",
     "feather-icons": "^4.7.3",
     "iframe-resizer": "^4.2.10",
-    "marked": "^0.8.2",
+    "marked": "^1.0.0",
     "node-sass": "^4.9.4",
     "prettier": "^2.0.1",
     "react": "^16.5.2",
