@@ -36,4 +36,8 @@ module.exports = {
       // }
     }
   },
+  purge: {
+    enabled: process.env.NETLIFY == "true",
+    content: ["./output/**/*.html"],
+  },
 }
