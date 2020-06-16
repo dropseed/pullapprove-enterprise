@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - uses: actions/setup-python@v1
+    - uses: actions/setup-python@v2.0.1
     - run: pip install pipenv
     - run: curl https://deps.app/install.sh | bash -s -- -b $HOME/bin
     - run: $HOME/bin/deps ci
