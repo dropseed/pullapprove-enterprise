@@ -19,7 +19,7 @@ p {
     margin-bottom: 1rem;
 }
 
-p > code {
+p > code, li > code {
     background-color: #eef5f0;
     color: #3c544a;
     font-size: .95em;
