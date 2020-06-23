@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from "react";
 import logo from "../pullapprove-logo.png";
 import LoadJSON from "./LoadJSON.js";
