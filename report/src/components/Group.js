@@ -111,14 +111,14 @@ class Group extends Component {
               </table>
             </div>
             <div className="col-sm-6">
-              {data.conditions.length > 0 ? (
+              {data.conditions && data.conditions.length > 0 ? (
                 <div>
                   <h5 className="card-title">Conditions</h5>
                   <Expressions data={data.conditions} />
                 </div>
               ) : null}
 
-              {data.requirements.length > 0 ? (
+              {data.requirements && data.requirements.length > 0 ? (
                 <div>
                   <h5 className="card-title">Requirements</h5>
                   <Expressions data={data.requirements} />
