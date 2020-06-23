@@ -19,7 +19,7 @@ class LoadStatus extends Component {
           style={{ fontSize: ".9rem" }}
           className="form-control"
           value={this.state.content}
-          onChange={e => this.setState({ content: e.target.value })}
+          onChange={(e) => this.setState({ content: e.target.value })}
         />
         <button className="btn btn-primary mt-1" onClick={this.load}>
           Load JSON

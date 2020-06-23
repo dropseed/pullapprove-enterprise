@@ -10,7 +10,7 @@ class Expressions extends Component {
     return (
       <table className="table table-flush">
         <tbody>
-          {data.map(c => (
+          {data.map((c) => (
             <tr key={c.condition || c.expression}>
               <td width="30px" className={textColor(c.is_met)}>
                 {c.is_met ? "pass" : "fail"}

@@ -9,13 +9,16 @@ class Group extends Component {
   state = { showAllUsers: false };
   userRows(users, state) {
     if (state === "available" && !this.state.showAllUsers) return;
-    return users.map(username => (
+    return users.map((username) => (
       <tr key={username}>
         <td width="200px">
           <AppContext.Consumer>
-            {context => (
+            {(context) => (
               <img
-                src={context.avatarUrlFormat.replace("{username}", username.replace("[bot]", ""))}
+                src={context.avatarUrlFormat.replace(
+                  "{username}",
+                  username.replace("[bot]", "")
+                )}
                 alt=""
                 height="22px"
                 className="mr-1"
@@ -66,8 +69,14 @@ class Group extends Component {
         </div>
 
         <div className="card-body">
-
-          {data.description ? <div className="mb-4" dangerouslySetInnerHTML={{__html: dompurify.sanitize(marked(data.description))}} /> : null}
+          {data.description ? (
+            <div
+              className="mb-4"
+              dangerouslySetInnerHTML={{
+                __html: dompurify.sanitize(marked(data.description)),
+              }}
+            />
+          ) : null}
 
           <div className="row">
             <div className="col-sm-6">
@@ -102,21 +111,19 @@ class Group extends Component {
               </table>
             </div>
             <div className="col-sm-6">
-              {data.conditions.length > 0 ?
-              <div>
-                <h5 className="card-title">Conditions</h5>
-                <Expressions data={data.conditions} />
-              </div>
-              : null}
+              {data.conditions.length > 0 ? (
+                <div>
+                  <h5 className="card-title">Conditions</h5>
+                  <Expressions data={data.conditions} />
+                </div>
+              ) : null}
 
-
-              {data.requirements.length > 0 ?
-              <div>
-                <h5 className="card-title">Requirements</h5>
-                <Expressions data={data.requirements} />
-              </div>
-              : null}
-
+              {data.requirements.length > 0 ? (
+                <div>
+                  <h5 className="card-title">Requirements</h5>
+                  <Expressions data={data.requirements} />
+                </div>
+              ) : null}
 
               <h5 className="card-title">Settings</h5>
               <dl className="row">

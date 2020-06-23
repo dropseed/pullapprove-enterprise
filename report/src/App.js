@@ -26,27 +26,29 @@ class App extends Component {
       this.loadStatusFromURL(decodeURI(url));
     } else if (truncatedStorageUrl) {
       // Only used in enterprise
-      const suffix = window.location.hostname.match(/pullapprove-public-(\w+)/)[1];
+      const suffix = window.location.hostname.match(
+        /pullapprove-public-(\w+)/
+      )[1];
       const base = `https://pullapprove-storage-${suffix}.s3.amazonaws.com/reports/`;
       this.loadStatusFromURL(base + decodeURI(truncatedStorageUrl));
     }
 
     this.setState({ embedded: windowURL.searchParams.get("embedded") });
   }
-  loadStatusFromText = text => {
+  loadStatusFromText = (text) => {
     const data = JSON.parse(text);
     this.setState({ status: data });
   };
-  loadStatusFromURL = url => {
+  loadStatusFromURL = (url) => {
     const t = this;
     fetch(url)
-      .then(function(response) {
+      .then(function (response) {
         return response.json();
       })
-      .then(function(data) {
+      .then(function (data) {
         t.setState({ status: data });
       })
-      .catch(error => {
+      .catch((error) => {
         console.error(error);
         t.setState({ error: error });
       });

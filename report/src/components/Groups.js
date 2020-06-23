@@ -8,7 +8,7 @@ class Groups extends Component {
     let groupNames = Object.keys(this.props.data);
     if (!this.state.showAll) {
       groupNames = groupNames.filter(
-        name => this.props.data[name].is_active || this.state.showAll
+        (name) => this.props.data[name].is_active || this.state.showAll
       );
     }
     return (
@@ -31,7 +31,7 @@ class Groups extends Component {
           <Empty text="No active groups" icon="x" />
         ) : null}
 
-        {groupNames.map(name => (
+        {groupNames.map((name) => (
           <Group key={name} name={name} data={this.props.data[name]} />
         ))}
       </div>

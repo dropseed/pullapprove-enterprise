@@ -7,7 +7,7 @@ export const colors = {
   rejected: "danger",
   unavailable: "muted",
   true: "success",
-  false: "danger"
+  false: "danger",
 };
 
 export function textColor(key) {

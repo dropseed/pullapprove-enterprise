@@ -7,7 +7,7 @@ class Empty extends Component {
     if (this.props.icon) {
       svg = feather.icons[this.props.icon].toSvg({
         width: 40,
-        height: 40
+        height: 40,
       });
     }
     return (

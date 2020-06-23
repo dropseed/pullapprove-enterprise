@@ -1,4 +1,4 @@
-export const contextForStatus = status => {
+export const contextForStatus = (status) => {
   let avatarUrlFormat = "https://github.com/{username}.png";
 
   if (
