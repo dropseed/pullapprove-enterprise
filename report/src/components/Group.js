@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { textColor } from "../colors.js";
-import Conditions from "./Conditions.js";
+import Expressions from "./Expressions.js";
 import { AppContext } from "../App.js";
 import marked from "marked";
 import dompurify from "dompurify";
@@ -102,8 +102,21 @@ class Group extends Component {
               </table>
             </div>
             <div className="col-sm-6">
-              <h5 className="card-title">Conditions</h5>
-              <Conditions data={data.conditions} />
+              {data.conditions.length > 0 ?
+              <div>
+                <h5 className="card-title">Conditions</h5>
+                <Expressions data={data.conditions} />
+              </div>
+              : null}
+
+
+              {data.requirements.length > 0 ?
+              <div>
+                <h5 className="card-title">Requirements</h5>
+                <Expressions data={data.requirements} />
+              </div>
+              : null}
+
 
               <h5 className="card-title">Settings</h5>
               <dl className="row">

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { textColor } from "../colors.js";
 
-class Conditions extends Component {
+class Expressions extends Component {
   render() {
     const { data } = this.props;
     if (data.length < 1) {
@@ -11,12 +11,12 @@ class Conditions extends Component {
       <table className="table table-flush">
         <tbody>
           {data.map(c => (
-            <tr key={c.condition}>
+            <tr key={c.condition || c.expression}>
               <td width="30px" className={textColor(c.is_met)}>
                 {c.is_met ? "pass" : "fail"}
               </td>
               <td>
-                <code>{c.condition}</code>
+                <code>{c.condition || c.expression}</code>
               </td>
             </tr>
           ))}
@@ -26,4 +26,4 @@ class Conditions extends Component {
   }
 }
 
-export default Conditions;
+export default Expressions;
