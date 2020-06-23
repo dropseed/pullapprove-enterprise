@@ -15,7 +15,7 @@ class Group extends Component {
           <AppContext.Consumer>
             {context => (
               <img
-                src={context.avatarUrlFormat.replace("{username}", username)}
+                src={context.avatarUrlFormat.replace("{username}", username.replace("[bot]", ""))}
                 alt=""
                 height="22px"
                 className="mr-1"
