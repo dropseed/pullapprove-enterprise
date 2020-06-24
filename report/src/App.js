@@ -75,7 +75,11 @@ class App extends Component {
           this.state.embedded ? "container-fluid" : "container mt-sm-4"
         }
       >
-        <Helmet>
+        <Helmet
+          onChangeClientState={(newState, addedTags, removedTags) =>
+            window.parent.postMessage({title: newState.title}, "*")
+          }
+        >
           <title>{`${this.state.status.repo.full_name} #${this.state.status.pull_request.number} • PullApprove`}</title>
         </Helmet>
         <AppContext.Provider value={contextForStatus(this.state.status)}>
