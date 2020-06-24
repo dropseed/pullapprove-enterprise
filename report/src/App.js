@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React, { Component } from "react";
+import { Helmet } from "react-helmet";
 import logo from "./pullapprove-logo.png";
 import "./App.scss";
 import Config from "./components/Config.js";
@@ -74,6 +75,9 @@ class App extends Component {
           this.state.embedded ? "container-fluid" : "container mt-sm-4"
         }
       >
+        <Helmet>
+          <title>{`${this.state.status.repo.full_name} #${this.state.status.pull_request.number} • PullApprove`}</title>
+        </Helmet>
         <AppContext.Provider value={contextForStatus(this.state.status)}>
           <div className="mb-sm-4 d-flex align-items-center border-bottom pb-2">
             <h1 className="font-weight-light">
