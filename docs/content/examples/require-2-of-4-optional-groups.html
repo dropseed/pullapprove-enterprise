@@ -43,7 +43,7 @@ groups:
 
   shared:
     type: required
-    conditions:
+    requirements:
       - len(groups.approved.include('shared-code-*')) >= 2
     reviews:
       required: 0
