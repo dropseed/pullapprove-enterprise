@@ -125,6 +125,7 @@ resource "aws_iam_user_policy" "pullapprove_iam_policy" {
         "Effect": "Allow",
         "Action": [
             "s3:PutObject",
+            "s3:PutObjectAcl",
             "s3:GetObject"
         ],
         "Resource": "${aws_s3_bucket.pullapprove_storage_bucket.arn}/*"
