@@ -16,6 +16,7 @@ resource "aws_lambda_function" "pullapprove_webhook" {
       CONFIG_FILENAME        = var.config_filename
       GITHUB_BOT_NAME        = var.github_bot_name
       SENTRY_DSN             = var.sentry_dsn
+      SENTRY_ENV             = var.sentry_env
       LOG_LEVEL              = var.log_level
       VERSION                = var.pullapprove_version
     }

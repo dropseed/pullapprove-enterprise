@@ -74,6 +74,10 @@ variable "sentry_dsn" {
   default     = ""
   description = "Lambda errors can be sent to Sentry (https://sentry.io)"
 }
+variable "sentry_env" {
+  default     = ""
+  description = "Lambda errors can be sent to Sentry (https://sentry.io)"
+}
 
 variable "cache" {
   default     = "file"

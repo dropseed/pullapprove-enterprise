@@ -19,6 +19,7 @@ resource "aws_lambda_function" "pullapprove_worker" {
       CONFIG_FILENAME        = var.config_filename
       UI_BASE_URL            = "${var.ui_base_url != "" ? var.ui_base_url : "http://${aws_s3_bucket.pullapprove_public_bucket.website_endpoint}/report/"}"
       SENTRY_DSN             = var.sentry_dsn
+      SENTRY_ENV             = var.sentry_env
       LOG_LEVEL              = var.log_level
       CACHE                  = var.cache
       VERSION                = var.pullapprove_version
