@@ -43,6 +43,11 @@ We suggest checking the following, in this order.
 4) Are the webhooks being received successfully? Can check this in the GitHub App settings "advanced" tab.
 5) Are there errors in the worker logs?
 
+### When I click a PR status, the report fails to load
+
+If the browser console is giving a CORS error and your installation is brand new,
+it may take a few hours for your new S3 bucket to propagate and for the URL to work as expected.
+
 ## Security
 
 ### What data is stored?
