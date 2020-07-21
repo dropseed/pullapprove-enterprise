@@ -1,6 +1,6 @@
 resource "aws_cloudwatch_dashboard" "pullapprove_cloudwatch_dashboard" {
-    dashboard_name = "PullApprove"
-    dashboard_body = <<EOF
+  dashboard_name = "PullApprove"
+  dashboard_body = <<EOF
     {
         "widgets": [
             {
