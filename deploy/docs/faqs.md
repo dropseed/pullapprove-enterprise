@@ -35,7 +35,11 @@ you can set the Terraform variable to an empty string: `cache = ""`
 
 ### The pullapprove status isn't showing up. What do I do?
 
-We suggest checking the following, in this order.
+First, check the CloudWatch dashboard (if you have access to it) and look for anything out of the ordinary.
+
+![PullApprove monitoring dashboard](img/cloudwatch.png)
+
+Then, we suggest checking the following, in this order.
 
 1) Add/remove a label to trigger pullapprove to run. Wait a minute to make sure the status doesn't show up.
 2) Is there a .pullapprove.yml version 3 in the repo default branch? The status does not show up if there is no config, or the config is version 2.
