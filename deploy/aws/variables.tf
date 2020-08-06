@@ -83,7 +83,7 @@ variable "cache" {
   default     = "file"
   description = "Enable API request caching. Set to an empty string to disable."
 }
-variable "presigned_expiration_days" {
+variable "report_expiration_days" {
   default     = "7"
   description = "Use pre-signed URLs for links to reports. Set to 0 to make report URLs public."
 }
