@@ -4,7 +4,7 @@ resource "aws_lambda_function" "pullapprove_webhook" {
   role             = aws_iam_role.pullapprove_lambda_role.arn
   handler          = "main.aws_handler"
   source_code_hash = filebase64sha256("${var.assets_dir}/pullapprove_webhook_aws.zip")
-  runtime          = "python3.7"
+  runtime          = "python3.8"
   timeout          = 30
   memory_size      = 128
 
