@@ -54,5 +54,5 @@ resource "aws_api_gateway_integration" "pullapprove_webhook_integration" {
 }
 
 output "github_app_webhook_url" {
-  value = "${aws_api_gateway_deployment.pullapprove_deployment.invoke_url}/${aws_api_gateway_resource.pullapprove_webhook_proxy.path_part}"
+  value = "${aws_api_gateway_stage.pullapprove_gateway_stage.invoke_url}/${aws_api_gateway_resource.pullapprove_webhook_proxy.path_part}"
 }

@@ -133,3 +133,54 @@ resource "aws_iam_user_policy" "pullapprove_iam_policy" {
 }
 EOF
 }
+
+# set up an iam role to allow enabling cloudwatch logging on api gateway
+resource "aws_api_gateway_account" "pullapprove_cloudwatch_account" {
+  cloudwatch_role_arn = aws_iam_role.pullapprove_cloudwatch_role.arn
+}
+
+resource "aws_iam_role" "pullapprove_cloudwatch_role" {
+  name = "pullapprove_cloudwatch_role"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "apigateway.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_iam_role_policy" "pullapprove_cloudwatch_policy" {
+  name = "pullapprove_cloudwatch_policy"
+  role = aws_iam_role.pullapprove_cloudwatch_role.id
+
+  policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:DescribeLogGroups",
+                "logs:DescribeLogStreams",
+                "logs:PutLogEvents",
+                "logs:GetLogEvents",
+                "logs:FilterLogEvents"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+EOF
+}
