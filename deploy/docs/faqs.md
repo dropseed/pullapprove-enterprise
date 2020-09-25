@@ -52,6 +52,12 @@ Then, we suggest checking the following, in this order.
 If the browser console is giving a CORS error and your installation is brand new,
 it may take a few hours for your new S3 bucket to propagate and for the URL to work as expected.
 
+### How do I transition from a clone of this repo to using it as a Terraform module?
+
+In order to transition the `terraform.tfstate` from a cloned setup to a module setup,
+our current recommendation is to manually modify `terraform.tfstate`.
+In your editor of choice, find `"mode": "managed",` and replace with `"module": "module.your_module_name", "mode": "managed",`. When you run terraform apply, it should now recognize most of the state as being the same as the current, and only show the few changes you expect.
+
 ## Security
 
 ### What data is stored?
