@@ -134,7 +134,7 @@ resource "aws_cloudwatch_dashboard" "pullapprove_cloudwatch_dashboard" {
             {
                 "type": "log",
                 "x": 0,
-                "y": 31,
+                "y": 34,
                 "width": 24,
                 "height": 6,
                 "properties": {
@@ -175,10 +175,10 @@ resource "aws_cloudwatch_dashboard" "pullapprove_cloudwatch_dashboard" {
             },
             {
                 "type": "log",
-                "x": 0,
+                "x": 9,
                 "y": 28,
-                "width": 24,
-                "height": 3,
+                "width": 15,
+                "height": 6,
                 "properties": {
                     "query": "SOURCE '/aws/lambda/pullapprove_webhook' | SOURCE '/aws/lambda/pullapprove_worker' | fields @message, @requestId\n| filter strcontains(@message, \"[ERROR]\")\n| stats count(@requestId) by bin(5m)",
                     "region": "${var.aws_region}",
@@ -209,6 +209,19 @@ resource "aws_cloudwatch_dashboard" "pullapprove_cloudwatch_dashboard" {
                     "stacked": false,
                     "title": "Webhook activity",
                     "view": "timeSeries"
+                }
+            },
+            {
+                "type": "log",
+                "x": 0,
+                "y": 28,
+                "width": 9,
+                "height": 6,
+                "properties": {
+                    "query": "SOURCE '/aws/lambda/pullapprove_worker' | filter strcontains(@message, \"rate_limit_remaining=\")\n| fields @timestamp, @message\n| parse @message \" rate_limit_remaining=* \" as rate_limit_remaining\n| parse @message \" github_installation_id=* \" as github_installation_id\n| parse @message \" repo=*/* \" as owner, repo\n| stats min(rate_limit_remaining) by bin(15m), github_installation_id, owner",
+                    "region": "${var.aws_region}",
+                    "title": "GitHub API rate limit usage per installation",
+                    "view": "table"
                 }
             }
         ]
