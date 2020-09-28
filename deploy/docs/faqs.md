@@ -33,6 +33,24 @@ just wait a full minute and trigger a refresh.
 If you want to disable caching entirely,
 you can set the Terraform variable to an empty string: `cache = ""`
 
+### Is GitHub API rate limiting an issue?
+
+Your GitHub API rate limit depends on a few factors, so the actual limit can vary.
+As of version 3.11.0 we log your remaining rate limit so that you can visualize how it's used over time.
+Note that the built-in CloudWatch dashboard doesn't show this because you have to specify the GitHub Installation ID
+(if you install the app on more than one organization).
+We recommend setting up a separate, custom dashboard for monitoring this or other specific things you may want to look at.
+
+An example CloudWatch Insights query:
+```sql
+filter strcontains(@message, "rate_limit_remaining=") and strcontains(@message, "github_installation_id=YOUR_INSTALLATION_ID")
+| fields @timestamp, @message
+| parse @message " rate_limit_remaining=* " as rate_limit_remaining
+| stats min(rate_limit_remaining) by bin(15m)
+```
+
+![PullApprove GitHub API rate limit graph](img/cloudwatch-insights-rate-limit.png)
+
 ### The pullapprove status isn't showing up. What do I do?
 
 First, check the CloudWatch dashboard (if you have access to it) and look for anything out of the ordinary.
