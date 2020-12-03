@@ -1,5 +1,5 @@
 resource "aws_cloudwatch_dashboard" "pullapprove_cloudwatch_dashboard" {
-  dashboard_name = "PullApprove"
+  dashboard_name = "pullapprove${var.aws_unique_suffix}"
   dashboard_body = templatefile("${path.module}/dashboard.tpl",
     {
       aws_region            = var.aws_region,
