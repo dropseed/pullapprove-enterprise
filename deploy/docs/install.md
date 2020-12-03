@@ -37,7 +37,7 @@ and save that file for the next step.
 
 You can use [this image](img/github-app-logo.png) for the app logo/avatar.
 
-## Set up Terraform variables
+## Set up Terraform variables and provider
 
 There are a handful of required and optional settings. Some of the settings will
 need to be copied from your new GitHub App details. The full list of settings
@@ -57,6 +57,19 @@ github_bot_name = "(slugified name of your GitHub App + [bot], ex. `pullapprove-
 ```
 
 > Note: If you are installing this to run on GitHub.com then you should also set `github_status_context` to something other than "pullapprove" (like "pullapprove-yourcompany"), so that it doesn't use the same commit status name as our hosted service.
+
+
+You will also need to create a `provider.tf` alongside the base Terraform files.
+The contents should look like this:
+
+```hcl
+provider "aws" {
+  version    = "~> 2.7"
+  region     = var.aws_region
+  access_key = var.aws_access_key
+  secret_key = var.aws_secret_key
+}
+```
 
 ## Download the release assets
 
