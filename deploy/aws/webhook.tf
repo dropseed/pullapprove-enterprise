@@ -14,6 +14,7 @@ resource "aws_lambda_function" "pullapprove_webhook" {
       AWS_SQS_NAME           = aws_sqs_queue.pullapprove_worker_queue.name
       GITHUB_STATUS_CONTEXT  = var.github_status_context
       CONFIG_FILENAME        = var.config_filename
+      WEBHOOK_REPO_BLOCKLIST = join(",", var.webhook_repo_blocklist)
       GITHUB_BOT_NAME        = var.github_bot_name
       SENTRY_DSN             = var.sentry_dsn
       SENTRY_ENVIRONMENT     = var.sentry_env
