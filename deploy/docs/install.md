@@ -79,7 +79,7 @@ and keep your download token a secret.
 
 ```sh
 $ cd deploy
-$ ./scripts/download 3.10.1 $YOUR_PULLAPPROVE_DOWNLOAD_TOKEN
+$ ./scripts/download 3.11.0 $YOUR_PULLAPPROVE_DOWNLOAD_TOKEN
 ```
 
 ## Run terraform
