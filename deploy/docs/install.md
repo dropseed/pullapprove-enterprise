@@ -29,8 +29,9 @@ installation.
 - The webhook URL will be created *after* you run Terraform. So for now you just need to use a placeholder (ex. `https://yourcompany.com`).
 - You *should* create a webhook secret (ex. output of `ruby -rsecurerandom -e 'puts SecureRandom.hex(20)'`).
 
-See [this screenshot](img/github-app-settings.png) for an easy view of
-which permissions and events should be enabled.
+Ultimately you can decide which permissions and webhook events to use.
+If you know that certain features aren't going to be used,
+disabling webhooks is an easy way to preserve your rate limit and prevent unnecessary work. We recommend starting with [these permissions and events and tweaking from there](img/github-app-settings.png).
 
 After the app has been created, you will need to click "generate private key"
 and save that file for the next step.
