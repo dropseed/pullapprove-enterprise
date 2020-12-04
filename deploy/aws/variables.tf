@@ -83,13 +83,22 @@ variable "cache" {
   default     = "file"
   description = "Enable API request caching. Set to an empty string to disable."
 }
+variable "report_expiration_days" {
+  default     = "7"
+  description = "Use pre-signed URLs for links to reports. Set to 0 to make report URLs public."
+}
+variable "webhook_repo_blocklist" {
+  default     = []
+  type        = list(string)
+  description = "List of org/repo names to always ignore in webhook processing"
+}
 
 variable "pullapprove_version" {
-  default     = "3.10.1"
+  default     = "3.11.0"
   description = "The version of PullApprove being deployed"
 }
 
 variable "assets_dir" {
-  default     = "../versions/3.10.1"
+  default     = "../versions/3.11.0"
   description = "Path to the directory with assets for the version being deployed"
 }

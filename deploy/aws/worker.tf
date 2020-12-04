@@ -4,7 +4,7 @@ resource "aws_lambda_function" "pullapprove_worker" {
   role             = aws_iam_role.pullapprove_lambda_role.arn
   handler          = "main.aws_sqs_handler"
   source_code_hash = filebase64sha256("${var.assets_dir}/pullapprove_worker_aws.zip")
-  runtime          = "python3.7"
+  runtime          = "python3.8"
   timeout          = 300
   memory_size      = var.worker_memory
 
@@ -17,12 +17,13 @@ resource "aws_lambda_function" "pullapprove_worker" {
       GITHUB_API_BASE_URL    = var.github_api_base_url
       GITHUB_STATUS_CONTEXT  = var.github_status_context
       CONFIG_FILENAME        = var.config_filename
-      UI_BASE_URL            = "${var.ui_base_url != "" ? var.ui_base_url : "http://${aws_s3_bucket.pullapprove_public_bucket.website_endpoint}/report/"}"
+      UI_BASE_URL            = var.ui_base_url != "" ? var.ui_base_url : "http://${aws_s3_bucket.pullapprove_public_bucket.website_endpoint}/report/"
       SENTRY_DSN             = var.sentry_dsn
       SENTRY_ENVIRONMENT     = var.sentry_env
       LOG_LEVEL              = var.log_level
       CACHE                  = var.cache
       VERSION                = var.pullapprove_version
+      REPORT_EXPIRATION_DAYS = var.report_expiration_days
     }
   }
 }

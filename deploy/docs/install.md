@@ -29,15 +29,16 @@ installation.
 - The webhook URL will be created *after* you run Terraform. So for now you just need to use a placeholder (ex. `https://yourcompany.com`).
 - You *should* create a webhook secret (ex. output of `ruby -rsecurerandom -e 'puts SecureRandom.hex(20)'`).
 
-See [this screenshot](img/github-app-settings.png) for an easy view of
-which permissions and events should be enabled.
+Ultimately you can decide which permissions and webhook events to use.
+If you know that certain features aren't going to be used,
+disabling webhooks is an easy way to preserve your rate limit and prevent unnecessary work. We recommend starting with [these permissions and events and tweaking from there](img/github-app-settings.png).
 
 After the app has been created, you will need to click "generate private key"
 and save that file for the next step.
 
 You can use [this image](img/github-app-logo.png) for the app logo/avatar.
 
-## Set up Terraform variables
+## Set up Terraform variables and provider
 
 There are a handful of required and optional settings. Some of the settings will
 need to be copied from your new GitHub App details. The full list of settings
@@ -58,6 +59,19 @@ github_bot_name = "(slugified name of your GitHub App + [bot], ex. `pullapprove-
 
 > Note: If you are installing this to run on GitHub.com then you should also set `github_status_context` to something other than "pullapprove" (like "pullapprove-yourcompany"), so that it doesn't use the same commit status name as our hosted service.
 
+
+You will also need to create a `provider.tf` alongside the base Terraform files.
+The contents should look like this:
+
+```hcl
+provider "aws" {
+  version    = "~> 2.7"
+  region     = var.aws_region
+  access_key = var.aws_access_key
+  secret_key = var.aws_secret_key
+}
+```
+
 ## Download the release assets
 
 Contact us to get your download token.
@@ -66,7 +80,7 @@ and keep your download token a secret.
 
 ```sh
 $ cd deploy
-$ ./scripts/download 3.10.1 $YOUR_PULLAPPROVE_DOWNLOAD_TOKEN
+$ ./scripts/download 3.11.0 $YOUR_PULLAPPROVE_DOWNLOAD_TOKEN
 ```
 
 ## Run terraform

@@ -4,7 +4,7 @@ resource "aws_lambda_function" "pullapprove_webhook" {
   role             = aws_iam_role.pullapprove_lambda_role.arn
   handler          = "main.aws_handler"
   source_code_hash = filebase64sha256("${var.assets_dir}/pullapprove_webhook_aws.zip")
-  runtime          = "python3.7"
+  runtime          = "python3.8"
   timeout          = 30
   memory_size      = 128
 
@@ -14,6 +14,7 @@ resource "aws_lambda_function" "pullapprove_webhook" {
       AWS_SQS_NAME           = aws_sqs_queue.pullapprove_worker_queue.name
       GITHUB_STATUS_CONTEXT  = var.github_status_context
       CONFIG_FILENAME        = var.config_filename
+      WEBHOOK_REPO_BLOCKLIST = join(",", var.webhook_repo_blocklist)
       GITHUB_BOT_NAME        = var.github_bot_name
       SENTRY_DSN             = var.sentry_dsn
       SENTRY_ENVIRONMENT     = var.sentry_env
@@ -54,5 +55,5 @@ resource "aws_api_gateway_integration" "pullapprove_webhook_integration" {
 }
 
 output "github_app_webhook_url" {
-  value = "${aws_api_gateway_deployment.pullapprove_deployment.invoke_url}/${aws_api_gateway_resource.pullapprove_webhook_proxy.path_part}"
+  value = "${aws_api_gateway_stage.pullapprove_gateway_stage.invoke_url}/${aws_api_gateway_resource.pullapprove_webhook_proxy.path_part}"
 }
