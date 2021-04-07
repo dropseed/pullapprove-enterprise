@@ -92,6 +92,11 @@ variable "webhook_repo_blocklist" {
   type        = list(string)
   description = "List of org/repo names to always ignore in webhook processing"
 }
+variable "webhook_sender_blocklist" {
+  default     = []
+  type        = list(string)
+  description = "List of additional instances/apps/senders to always ignore in webhook processing"
+}
 
 variable "pullapprove_version" {
   default     = "3.11.0"
