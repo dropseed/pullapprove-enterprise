@@ -307,7 +307,7 @@
             "width": 15,
             "height": 6,
             "properties": {
-                "query": "SOURCE '/aws/lambda/${webhook_function_name}' | SOURCE '/aws/lambda/${worker_function_name}' | fields @message, @requestId\n| filter strcontains(@message, \"[ERROR]\")\n| stats count(@requestId) by bin(5m)",
+                "query": "SOURCE '/aws/lambda/${webhook_function_name}' | SOURCE '/aws/lambda/${worker_function_name}' | fields @message\n| filter strcontains(@message, \"[ERROR]\")\n| stats count() by bin(5m)",
                 "region": "${aws_region}",
                 "stacked": false,
                 "title": "Logs with [ERROR] ",
