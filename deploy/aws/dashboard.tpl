@@ -265,7 +265,7 @@
             "width": 24,
             "height": 6,
             "properties": {
-                "query": "SOURCE '/aws/lambda/${webhook_function_name}' | SOURCE '/aws/lambda/${worker_function_name}' | fields @logStream, @message\n| filter strcontains(@message, \"[ERROR]\")\n| sort @timestamp desc\n| limit 50",
+                "query": "SOURCE '/aws/lambda/${webhook_function_name}' | SOURCE '/aws/lambda/${worker_function_name}' | fields @message\n| filter strcontains(@message, \"[ERROR]\")\n| sort @timestamp desc\n| limit 50",
                 "region": "${aws_region}",
                 "stacked": false,
                 "title": "Most recent errors in logs",
