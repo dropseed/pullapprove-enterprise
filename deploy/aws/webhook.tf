@@ -13,6 +13,7 @@ resource "aws_lambda_function" "pullapprove_webhook" {
       AWS_SSM_PARAMETER_PATH   = "/pullapprove${var.aws_unique_suffix}"
       AWS_SQS_NAME             = aws_sqs_queue.pullapprove_worker_queue.name
       GITHUB_STATUS_CONTEXT    = var.github_status_context
+      BITBUCKET_STATUS_KEY     = var.bitbucket_status_key
       CONFIG_FILENAME          = var.config_filename
       WEBHOOK_REPO_BLOCKLIST   = join(",", var.webhook_repo_blocklist)
       WEBHOOK_SENDER_BLOCKLIST = join(",", var.webhook_sender_blocklist)

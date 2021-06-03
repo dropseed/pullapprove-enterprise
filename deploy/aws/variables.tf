@@ -25,6 +25,12 @@ variable "github_bot_name" {
   description = "The slugified name of your GitHub App. Should end in `[bot]`."
 }
 
+# Bitbucket integration (leave defaults if not using Bitbucket)
+variable "bitbucket_status_key" {
+  default     = "pullapprove"
+  description = "The commit status \"key\" used in Bitbucket"
+}
+
 # Only change these if testing/staging a new version or something
 variable "github_status_context" {
   default     = "pullapprove"
