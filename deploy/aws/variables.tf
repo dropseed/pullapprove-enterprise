@@ -29,11 +29,13 @@ variable "github_bot_name" {
 variable "bitbucket_status_key" {
   default     = "pullapprove"
   description = "The commit status \"key\" used in Bitbucket"
+  sensitive   = true
 }
 variable "bitbucket_username_password" {
   # TODO do all github vars become default "" now?
   default     = ""
   description = "A \"username:app_password\" string to give PullApprove Bitbucket API access. Typically associated with a \"pullapprove-yourorg\" user."
+  sensitive   = true
 }
 
 # Only change these if testing/staging a new version or something
