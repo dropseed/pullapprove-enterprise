@@ -11,7 +11,7 @@ Make sure you have the following things installed or set up and ready to go.
 You will want to maintain a clone/fork of this repo to streamline the process updating to new versions.
 
 ```sh
-$ git clone https://github.com/dropseed/pullapprove pullapprove-yourcompany
+$ git clone https://github.com/dropseed/pullapprove-enterprise pullapprove-yourcompany
 $ cd pullapprove-yourcompany
 $ git remote rename origin upstream
 # Create a new, private and empty git repo that you can push this to

@@ -321,7 +321,7 @@
             "width": 24,
             "height": 1,
             "properties": {
-                "markdown": "This dashboard is managed by PullApprove. Any changes will be overwritten by Terraform, so customizations should be made in a separate dashboard or in the [PullApprove repo on GitHub](https://github.com/dropseed/pullapprove)."
+                "markdown": "This dashboard is managed by PullApprove. Any changes will be overwritten by Terraform, so customizations should be made in a separate dashboard or in the [PullApprove repo on GitHub](https://github.com/dropseed/pullapprove-enterprise)."
             }
         },
         {
