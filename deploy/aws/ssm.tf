@@ -45,3 +45,9 @@ resource "aws_ssm_parameter" "availability_api_secret" {
   type  = "SecureString"
   value = var.availability_api_secret
 }
+
+resource "aws_ssm_parameter" "bitbucket_username_password" {
+  name  = "/pullapprove${var.aws_unique_suffix}/bitbucket_username_password"
+  type  = "SecureString"
+  value = var.bitbucket_username_password
+}

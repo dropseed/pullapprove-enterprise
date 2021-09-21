@@ -9,20 +9,36 @@ variable "aws_unique_suffix" {
 
 # GitHub App settings
 variable "github_app_id" {
+  default     = ""
   description = "ID for the GitHub App you created for PullApprove"
 }
 variable "github_api_base_url" {
+  default     = ""
   description = "Ex: https://github.yourcompany.com/api/v3"
 }
 variable "github_app_webhook_secret" {
+  default     = " " # intentional space for SSM
   description = "The webhook secret for your GitHub App"
 }
 variable "github_app_private_key" {
+  default     = " " # intentional space for SSM
   description = "The base64 encoded private key"
 }
 variable "github_bot_name" {
   default     = "pullapprove[bot]"
   description = "The slugified name of your GitHub App. Should end in `[bot]`."
+}
+
+# Bitbucket integration (leave defaults if not using Bitbucket)
+variable "bitbucket_status_key" {
+  default     = "pullapprove"
+  description = "The commit status \"key\" used in Bitbucket"
+  sensitive   = true
+}
+variable "bitbucket_username_password" {
+  default     = " " # intentional space for SSM
+  description = "A \"username:app_password\" string to give PullApprove Bitbucket API access. Typically associated with a \"pullapprove-yourorg\" user."
+  sensitive   = true
 }
 
 # Only change these if testing/staging a new version or something
