@@ -19,10 +19,12 @@ variable "github_api_base_url" {
 variable "github_app_webhook_secret" {
   default     = " " # intentional space for SSM
   description = "The webhook secret for your GitHub App"
+  sensitive   = true
 }
 variable "github_app_private_key" {
   default     = " " # intentional space for SSM
   description = "The base64 encoded private key"
+  sensitive   = true
 }
 variable "github_bot_name" {
   default     = "pullapprove[bot]"
@@ -64,6 +66,7 @@ variable "billing_api_url" {
 variable "billing_api_secret" {
   default     = " "
   description = "Secret for the billing API (not used for enterprise installations)"
+  sensitive   = true
 }
 variable "availability_api_url" {
   default     = " "
@@ -72,6 +75,7 @@ variable "availability_api_url" {
 variable "availability_api_secret" {
   default     = " "
   description = "Secret for the availability API (not used for enterprise installations)"
+  sensitive   = true
 }
 
 # Lambda settings
