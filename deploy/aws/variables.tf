@@ -43,6 +43,18 @@ variable "bitbucket_username_password" {
   sensitive   = true
 }
 
+# GitLab integration
+variable "gitlab_api_token" {
+  default     = " " # intentional space for SSM
+  description = "A personal access token for PullApprove"
+  sensitive   = true
+}
+
+variable "gitlab_api_base_url" {
+  default     = ""
+  description = "Ex: https://gitlab.yourcompany.com/api/v4"
+}
+
 # Only change these if testing/staging a new version or something
 variable "github_status_context" {
   default     = "pullapprove"

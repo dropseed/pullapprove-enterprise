@@ -51,3 +51,9 @@ resource "aws_ssm_parameter" "bitbucket_username_password" {
   type  = "SecureString"
   value = var.bitbucket_username_password
 }
+
+resource "aws_ssm_parameter" "gitlab_api_token" {
+  name  = "/pullapprove${var.aws_unique_suffix}/gitlab_api_token"
+  type  = "SecureString"
+  value = var.gitlab_api_token
+}
