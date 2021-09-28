@@ -55,6 +55,11 @@ variable "gitlab_api_base_url" {
   description = "Ex: https://gitlab.yourcompany.com/api/v4"
 }
 
+variable "gitlab_status_name" {
+  default     = "pullapprove"
+  description = "The name of the commit status"
+}
+
 # Only change these if testing/staging a new version or something
 variable "github_status_context" {
   default     = "pullapprove"
