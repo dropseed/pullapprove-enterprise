@@ -137,7 +137,7 @@ variable "webhook_sender_blocklist" {
 variable "webhook_ip_allowlist" {
   default     = ["*"]
   type        = list(string)
-  description = "List of CIDR IP addresses that can access the webhook (ex. https://api.github.com/meta \"hooks\")"
+  description = "List of CIDR IP addresses that can access the webhook"
 }
 
 variable "pullapprove_version" {

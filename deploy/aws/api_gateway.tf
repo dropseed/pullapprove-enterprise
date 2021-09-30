@@ -1,15 +1,19 @@
 resource "aws_api_gateway_rest_api" "pullapprove_gateway" {
-  name   = "pullapprove"
-  policy = data.aws_iam_policy_document.pullapprove_gateway_iam_policy.json
+  name = "pullapprove"
 }
 
-data "aws_iam_policy_document" "pullapprove_gateway_iam_policy" {
+resource "aws_api_gateway_rest_api_policy" "pullapprove_gateway_iam_policy" {
+  rest_api_id = aws_api_gateway_rest_api.pullapprove_gateway.id
+  policy      = data.aws_iam_policy_document.pullapprove_gateway_iam_policy_document.json
+}
+
+data "aws_iam_policy_document" "pullapprove_gateway_iam_policy_document" {
   statement {
     effect    = "Allow"
     actions   = ["execute-api:Invoke"]
-    resources = ["*"]
+    resources = [aws_api_gateway_rest_api.pullapprove_gateway.execution_arn]
     principals {
-      type        = "*"
+      type        = "AWS"
       identifiers = ["*"]
     }
     condition {
