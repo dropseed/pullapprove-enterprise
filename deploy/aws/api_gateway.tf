@@ -11,7 +11,7 @@ resource "aws_api_gateway_rest_api" "pullapprove_gateway" {
             "Resource": "*",
             "Condition": {
                 "IpAddress": {
-                    "aws:SourceIp": ${webhook_ip_allowlist}
+                    "aws:SourceIp": ${var.webhook_ip_allowlist}
                 }
             }
         }
