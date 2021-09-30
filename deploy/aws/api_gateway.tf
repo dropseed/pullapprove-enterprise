@@ -10,7 +10,7 @@ data "aws_iam_policy_document" "pullapprove_gateway_iam_policy" {
     resources = ["*"]
     principals {
       type        = "*"
-      identifiers = "*"
+      identifiers = ["*"]
     }
     condition {
       test     = "IpAddress"
