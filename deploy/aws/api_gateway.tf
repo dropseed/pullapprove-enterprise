@@ -1,23 +1,23 @@
 resource "aws_api_gateway_rest_api" "pullapprove_gateway" {
   name   = "pullapprove"
-  policy = <<POLICY
-  {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Principal": "*",
-            "Action": "execute-api:Invoke",
-            "Resource": "*",
-            "Condition": {
-                "IpAddress": {
-                    "aws:SourceIp": ${jsonencode(var.webhook_ip_allowlist)}
-                }
-            }
-        }
-    ]
+  policy = data.aws_iam_policy_document.pullapprove_gateway_iam_policy.json
+}
+
+data "aws_iam_policy_document" "pullapprove_gateway_iam_policy" {
+  statement {
+    effect    = "Allow"
+    actions   = ["execute-api:Invoke"]
+    resources = ["*"]
+    principals {
+      type        = "*"
+      identifiers = "*"
+    }
+    condition {
+      test     = "IpAddress"
+      variable = "aws:SourceIp"
+      values   = var.webhook_ip_allowlist
+    }
   }
-  POLICY
 }
 
 resource "aws_api_gateway_deployment" "pullapprove_deployment" {
