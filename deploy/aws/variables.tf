@@ -134,6 +134,11 @@ variable "webhook_sender_blocklist" {
   type        = list(string)
   description = "List of additional instances/apps/senders to always ignore in webhook processing"
 }
+variable "webhook_ip_allowlist" {
+  default     = ["*"]
+  type        = list(string)
+  description = "List of CIDR IP addresses that can access the webhook"
+}
 
 variable "pullapprove_version" {
   default     = "3.15.0"

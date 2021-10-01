@@ -2,12 +2,45 @@ resource "aws_api_gateway_rest_api" "pullapprove_gateway" {
   name = "pullapprove"
 }
 
+resource "aws_api_gateway_rest_api_policy" "pullapprove_gateway_iam_policy" {
+  rest_api_id = aws_api_gateway_rest_api.pullapprove_gateway.id
+  policy      = data.aws_iam_policy_document.pullapprove_gateway_iam_policy_document.json
+}
+
+data "aws_iam_policy_document" "pullapprove_gateway_iam_policy_document" {
+  statement {
+    effect    = "Allow"
+    actions   = ["execute-api:Invoke"]
+    resources = ["*"]
+    principals {
+      type        = "*"
+      identifiers = ["*"]
+    }
+    condition {
+      test     = "IpAddress"
+      variable = "aws:SourceIp"
+      values   = var.webhook_ip_allowlist
+    }
+  }
+}
+
 resource "aws_api_gateway_deployment" "pullapprove_deployment" {
   depends_on = [
     aws_api_gateway_integration.pullapprove_webhook_integration,
   ]
 
   rest_api_id = aws_api_gateway_rest_api.pullapprove_gateway.id
+
+  triggers = {
+    redeployment = sha1(jsonencode([
+      aws_api_gateway_rest_api.pullapprove_gateway.body,
+      data.aws_iam_policy_document.pullapprove_gateway_iam_policy_document.json, # Redeploy when policy changes
+    ]))
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "aws_api_gateway_stage" "pullapprove_gateway_stage" {
