@@ -1,6 +1,6 @@
 resource "aws_lambda_function" "pullapprove_webhook" {
   filename         = "${var.assets_dir}/pullapprove_webhook_aws.zip"
-  function_name    = "pullapprove_webhook"
+  function_name    = "pullapprove_webhook${var.aws_unique_suffix}"
   role             = aws_iam_role.pullapprove_lambda_role.arn
   handler          = "main.aws_handler"
   source_code_hash = filebase64sha256("${var.assets_dir}/pullapprove_webhook_aws.zip")

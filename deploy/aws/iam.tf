@@ -1,7 +1,7 @@
 data "aws_caller_identity" "current" {}
 
 resource "aws_iam_role" "pullapprove_lambda_role" {
-  name = "pullapprove"
+  name = "pullapprove${var.aws_unique_suffix}"
 
   assume_role_policy = <<EOF
 {
@@ -21,7 +21,7 @@ EOF
 }
 
 resource "aws_iam_policy" "pullapprove_logging_policy" {
-  name        = "pullapprove_logging"
+  name        = "pullapprove_logging${var.aws_unique_suffix}"
   path        = "/"
   description = "IAM policy for logging from PullApprove"
 
@@ -50,7 +50,7 @@ resource "aws_iam_role_policy_attachment" "pullapprove_logging_attachment" {
 
 # SQS
 resource "aws_iam_policy" "pullapprove_sqs_policy" {
-  name        = "pullapprove_sqs"
+  name        = "pullapprove_sqs${var.aws_unique_suffix}"
   path        = "/"
   description = "IAM policy for PullApprove SQS access"
 
@@ -79,7 +79,7 @@ resource "aws_iam_role_policy_attachment" "pullapprove_sqs_attachment" {
 
 # SSM
 resource "aws_iam_policy" "pullapprove_ssm_policy" {
-  name        = "pullapprove_ssm"
+  name        = "pullapprove_ssm${var.aws_unique_suffix}"
   path        = "/"
   description = "IAM policy for PullApprove SSM access"
 
@@ -107,7 +107,7 @@ resource "aws_iam_role_policy_attachment" "pullapprove_ssm_attachment" {
 # also set up an iam user, so that we can sign urls with a longer expiration
 # than we can with a role
 resource "aws_iam_user" "pullapprove" {
-  name = "pullapprove"
+  name = "pullapprove${var.aws_unique_suffix}"
 }
 
 resource "aws_iam_access_key" "pullapprove" {
@@ -140,7 +140,7 @@ resource "aws_api_gateway_account" "pullapprove_cloudwatch_account" {
 }
 
 resource "aws_iam_role" "pullapprove_cloudwatch_role" {
-  name = "pullapprove_cloudwatch_role"
+  name = "pullapprove_cloudwatch_role${var.aws_unique_suffix}"
 
   assume_role_policy = <<EOF
 {
@@ -160,7 +160,7 @@ EOF
 }
 
 resource "aws_iam_role_policy" "pullapprove_cloudwatch_policy" {
-  name = "pullapprove_cloudwatch_policy"
+  name = "pullapprove_cloudwatch_policy${var.aws_unique_suffix}"
   role = aws_iam_role.pullapprove_cloudwatch_role.id
 
   policy = <<EOF

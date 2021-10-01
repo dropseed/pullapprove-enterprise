@@ -1,5 +1,5 @@
 resource "aws_api_gateway_rest_api" "pullapprove_gateway" {
-  name = "pullapprove"
+  name = "pullapprove${var.aws_unique_suffix}"
 }
 
 resource "aws_api_gateway_rest_api_policy" "pullapprove_gateway_iam_policy" {
