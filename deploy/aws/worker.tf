@@ -17,6 +17,8 @@ resource "aws_lambda_function" "pullapprove_worker" {
       GITHUB_API_BASE_URL    = var.github_api_base_url
       GITHUB_STATUS_CONTEXT  = var.github_status_context
       BITBUCKET_STATUS_KEY   = var.bitbucket_status_key
+      GITLAB_API_BASE_URL    = var.gitlab_api_base_url
+      GITLAB_STATUS_NAME     = var.gitlab_status_name
       CONFIG_FILENAME        = var.config_filename
       UI_BASE_URL            = var.ui_base_url != "" ? var.ui_base_url : "http://${aws_s3_bucket.pullapprove_public_bucket.website_endpoint}/report/"
       SENTRY_DSN             = var.sentry_dsn
