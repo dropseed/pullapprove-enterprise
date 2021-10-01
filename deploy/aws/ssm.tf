@@ -57,3 +57,9 @@ resource "aws_ssm_parameter" "gitlab_api_token" {
   type  = "SecureString"
   value = var.gitlab_api_token
 }
+
+resource "aws_ssm_parameter" "gitlab_webhook_secret_token" {
+  name  = "/pullapprove${var.aws_unique_suffix}/gitlab_webhook_secret_token"
+  type  = "SecureString"
+  value = var.gitlab_webhook_secret_token
+}
