@@ -50,6 +50,12 @@ variable "gitlab_api_token" {
   sensitive   = true
 }
 
+variable "gitlab_webhook_secret_token" {
+  default     = " " # intentional space for SSM
+  description = "Optional webhook secret (be sure to use this in your webhooks if you set it here)"
+  sensitive   = true
+}
+
 variable "gitlab_api_base_url" {
   default     = ""
   description = "Ex: https://gitlab.yourcompany.com/api/v4"
