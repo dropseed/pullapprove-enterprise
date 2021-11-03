@@ -31,7 +31,7 @@ resource "aws_lambda_permission" "pullapprove_webhook_permission" {
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.pullapprove_webhook.arn
   principal     = "apigateway.amazonaws.com"
-  source_arn = "${aws_api_gateway_rest_api.pullapprove_gateway.execution_arn}/${aws_api_gateway_stage.pullapprove_gateway_stage.stage_name}/${aws_api_gateway_method.pullapprove_webhook_proxy_method.http_method}${aws_api_gateway_resource.pullapprove_webhook_proxy.path}"
+  source_arn    = "${aws_api_gateway_rest_api.pullapprove_gateway.execution_arn}/${aws_api_gateway_stage.pullapprove_gateway_stage.stage_name}/${aws_api_gateway_method.pullapprove_webhook_proxy_method.http_method}${aws_api_gateway_resource.pullapprove_webhook_proxy.path}"
 }
 
 resource "aws_api_gateway_resource" "pullapprove_webhook_proxy" {
