@@ -32,7 +32,7 @@ resource "aws_lambda_permission" "pullapprove_webhook_permission" {
   function_name = aws_lambda_function.pullapprove_webhook.function_name
   principal     = "apigateway.amazonaws.com"
   # source_arn is limited to the account, and set semi-manually so we avoid a cycle in the deployment trigger of the gateway
-  source_arn    = "arn:aws:execute-api:${var.aws_region}:${data.aws_caller_identity.current.account_id}/*/*/*"
+  source_arn    = "arn:aws:execute-api:${var.aws_region}:${data.aws_caller_identity.current.account_id}:*/*/*/*"
 }
 
 resource "aws_api_gateway_resource" "pullapprove_webhook_proxy" {
