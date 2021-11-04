@@ -1,6 +1,6 @@
 resource "aws_lambda_function" "pullapprove_webhook" {
   filename         = "${var.assets_dir}/pullapprove_webhook_aws.zip"
-  function_name    = "pullapprove_webhook"
+  function_name    = "pullapprove_webhook${var.aws_unique_suffix}"
   role             = aws_iam_role.pullapprove_lambda_role.arn
   handler          = "main.aws_handler"
   source_code_hash = filebase64sha256("${var.assets_dir}/pullapprove_webhook_aws.zip")
@@ -29,8 +29,9 @@ resource "aws_lambda_function" "pullapprove_webhook" {
 resource "aws_lambda_permission" "pullapprove_webhook_permission" {
   statement_id  = "AllowExecutionFromAPIGateway"
   action        = "lambda:InvokeFunction"
-  function_name = aws_lambda_function.pullapprove_webhook.arn
+  function_name = aws_lambda_function.pullapprove_webhook.function_name
   principal     = "apigateway.amazonaws.com"
+  source_arn    = "${aws_api_gateway_rest_api.pullapprove_gateway.execution_arn}/${aws_api_gateway_stage.pullapprove_gateway_stage.stage_name}/${aws_api_gateway_method.pullapprove_webhook_proxy_method.http_method}${aws_api_gateway_resource.pullapprove_webhook_proxy.path}"
 }
 
 resource "aws_api_gateway_resource" "pullapprove_webhook_proxy" {
