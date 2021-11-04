@@ -35,7 +35,7 @@ resource "aws_api_gateway_deployment" "pullapprove_deployment" {
     redeployment = sha1(jsonencode([
       aws_api_gateway_rest_api.pullapprove_gateway.body,
       data.aws_iam_policy_document.pullapprove_gateway_iam_policy_document.json, # Redeploy when policy changes
-      aws_lambda_function.pullapprove_webhook_function.id, # Need to trigger a redeployment to use source_arn webhook permission in latest release...
+      aws_lambda_function.pullapprove_webhook.id, # Need to trigger a redeployment to use source_arn webhook permission in latest release...
     ]))
   }
 
