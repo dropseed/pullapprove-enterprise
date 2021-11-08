@@ -10,6 +10,8 @@ In your private clone of this repo,
 # (`git remote add upstream https://github.com/dropseed/pullapprove-enterprise` if you need to add this)
 $ git fetch upstream
 $ git merge upstream/master
+# If you're jumping to a specific version, do a git checkout
+# $ git checkout v3.X.X
 ```
 
 Download the assets for this version:
