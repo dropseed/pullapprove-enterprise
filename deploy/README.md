@@ -10,7 +10,8 @@ please contact us directly.
 
 ## Docs
 
-- [First time installation](docs/install.md)
+- [First time installation (GitHub)](docs/install.md)
+- [First time installation (GitLab)](docs/install-gitlab.md)
 - [Updating to a new version](docs/update.md)
 - [FAQs](docs/faqs.md)
 
