@@ -147,11 +147,11 @@ variable "webhook_ip_allowlist" {
 }
 
 variable "pullapprove_version" {
-  default     = "3.15.0"
+  default     = "3.16.0"
   description = "The version of PullApprove being deployed"
 }
 
 variable "assets_dir" {
-  default     = "../versions/3.15.0"
+  default     = "../versions/3.16.0"
   description = "Path to the directory with assets for the version being deployed"
 }
