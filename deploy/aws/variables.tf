@@ -141,7 +141,7 @@ variable "webhook_sender_blocklist" {
   description = "List of additional instances/apps/senders to always ignore in webhook processing"
 }
 variable "webhook_ip_allowlist" {
-  default     = ["0.0.0.0/0"]
+  default     = ["/0"]
   type        = list(string)
   description = "List of CIDR IP addresses that can access the webhook (default is any IP)"
 }
