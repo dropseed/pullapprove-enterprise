@@ -105,3 +105,9 @@ Our hosted pullapprove.com SaaS uses Stripe for billing and subscription data, a
 ### Does PullApprove have permission to write to our repos?
 
 No! PullApprove only has read access to your code.
+
+### What should the webhook allowed IP addresses be when using with GitHub.com?
+
+GitHub.com's webhook IP addresses can be found at https://api.github.com/meta.
+(A handy command is `curl -s https://api.github.com/meta | jq .hooks`.)
+You can copy this list directly to `var.webhook_ip_allowlist`.
