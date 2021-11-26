@@ -5,6 +5,7 @@ Make sure you have the following things installed or set up and ready to go.
 - git
 - an AWS account
 - [Terraform](https://www.terraform.io/downloads.html)
+- GitLab 13.9+ (if self-hosted)
 
 ## Clone this repo
 
@@ -49,6 +50,7 @@ aws_unique_suffix = "-yourcompany"
 gitlab_api_token = "(your token from the previous step)"
 gitlab_webhook_secret_token = "(a random secret `ruby -rsecurerandom -e 'puts SecureRandom.hex(20)'`)"
 gitlab_api_base_url = "https://gitlab.example.com/api/v4"
+report_expiration_days = 0  # https://github.com/dropseed/pullapprove-enterprise/issues/137
 ```
 
 > Note: If you are installing this to run on GitLab.com then you should also set `gitlab_status_name` to something other than "pullapprove" (like "pullapprove-yourcompany"), so that it doesn't use the same commit status name as our hosted service.
