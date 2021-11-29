@@ -22,6 +22,12 @@ resource "aws_ssm_parameter" "github_app_private_key" {
   value = var.github_app_private_key
 }
 
+resource "aws_ssm_parameter" "cache_redis_url" {
+  name  = "/pullapprove${var.aws_unique_suffix}/cache_redis_url"
+  type  = "SecureString"
+  value = var.cache_redis_url
+}
+
 resource "aws_ssm_parameter" "billing_api_url" {
   name  = "/pullapprove${var.aws_unique_suffix}/billing_api_url"
   type  = "SecureString"

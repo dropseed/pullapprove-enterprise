@@ -124,7 +124,11 @@ variable "sentry_env" {
 
 variable "cache" {
   default     = "file"
-  description = "Enable API request caching. Set to an empty string to disable."
+  description = "Enable API request caching. Options are \"file\", \"redis\", or an empty string to disable."
+}
+variable "cache_redis_url" {
+  default     = "redis://localhost:6379/0"
+  description = "Redis URL for the cache"
 }
 variable "report_expiration_days" {
   default     = "7"
