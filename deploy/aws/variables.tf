@@ -130,6 +130,10 @@ variable "cache_redis_url" {
   default     = "redis://localhost:6379/0"
   description = "Redis URL for the cache"
 }
+variable "cache_redis_options" {
+  default     = {}
+  description = "Redis options for the cache"
+}
 variable "report_expiration_days" {
   default     = "7"
   description = "Use pre-signed URLs for links to reports. Set to 0 to make report URLs public."
