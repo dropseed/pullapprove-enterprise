@@ -25,6 +25,7 @@ resource "aws_lambda_function" "pullapprove_worker" {
       SENTRY_ENVIRONMENT     = var.sentry_env
       LOG_LEVEL              = var.log_level
       CACHE                  = var.cache
+      CACHE_REDIS_OPTIONS    = jsonencode(var.cache_redis_options)
       VERSION                = var.pullapprove_version
       REPORT_EXPIRATION_DAYS = var.report_expiration_days
     }

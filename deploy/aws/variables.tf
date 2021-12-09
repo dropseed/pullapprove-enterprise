@@ -124,7 +124,15 @@ variable "sentry_env" {
 
 variable "cache" {
   default     = "file"
-  description = "Enable API request caching. Set to an empty string to disable."
+  description = "Enable API request caching. Options are \"file\", \"redis\", or an empty string to disable."
+}
+variable "cache_redis_url" {
+  default     = "redis://localhost:6379/0"
+  description = "Redis URL for the cache"
+}
+variable "cache_redis_options" {
+  default     = {}
+  description = "Redis options for the cache. Options are JSON-encoded and passed through as kwargs to https://github.com/redis/redis-py/blob/12c17bfc436ea6784bbc8b2d327d981520858eb7/redis/utils.py#L11. Can contain basic settings like `{\"ssl_cert_reqs\": null}`."
 }
 variable "report_expiration_days" {
   default     = "7"
