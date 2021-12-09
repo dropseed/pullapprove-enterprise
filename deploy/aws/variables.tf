@@ -132,7 +132,7 @@ variable "cache_redis_url" {
 }
 variable "cache_redis_options" {
   default     = {}
-  description = "Redis options for the cache"
+  description = "Redis options for the cache. Options are JSON-encoded and passed through as kwargs to https://github.com/redis/redis-py/blob/12c17bfc436ea6784bbc8b2d327d981520858eb7/redis/utils.py#L11. Can contain basic settings like `{\"ssl_cert_reqs\": null}`."
 }
 variable "report_expiration_days" {
   default     = "7"
