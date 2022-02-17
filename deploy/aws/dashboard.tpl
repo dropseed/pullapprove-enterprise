@@ -130,7 +130,7 @@
                         "AWS/SQS",
                         "NumberOfMessagesReceived",
                         "QueueName",
-                        "pullapprove_worker_queue",
+                        "${worker_queue_name}",
                         {
                             "stat": "Sum"
                         }

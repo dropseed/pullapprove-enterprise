@@ -5,6 +5,7 @@ resource "aws_cloudwatch_dashboard" "pullapprove_cloudwatch_dashboard" {
       aws_region            = var.aws_region,
       worker_function_name  = aws_lambda_function.pullapprove_worker.function_name,
       webhook_function_name = aws_lambda_function.pullapprove_webhook.function_name,
+      worker_queue_name     = aws_sqs_queue.pullapprove_worker_queue.name,
   })
 }
 
