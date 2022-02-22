@@ -153,6 +153,11 @@ variable "webhook_ip_allowlist" {
   type        = list(string)
   description = "List of CIDR IP addresses that can access the webhook (default is any IP)"
 }
+variable "webhook_expression_blocklist" {
+  default     = []
+  type        = list(string)
+  description = "List of expressions to always ignore in webhook processing"
+}
 
 variable "pullapprove_version" {
   default     = "3.17.0"
