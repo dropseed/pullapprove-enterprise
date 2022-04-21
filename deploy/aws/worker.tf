@@ -7,6 +7,7 @@ resource "aws_lambda_function" "pullapprove_worker" {
   runtime          = "python3.8"
   timeout          = 300
   memory_size      = var.worker_memory
+  vpc_config       = var.worker_vpc_config
 
   environment {
     variables = {
