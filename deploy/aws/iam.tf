@@ -3,21 +3,7 @@ data "aws_caller_identity" "current" {}
 resource "aws_iam_role" "pullapprove_lambda_role" {
   name = "pullapprove${var.aws_unique_suffix}"
 
-  assume_role_policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Action": "sts:AssumeRole",
-      "Principal": {
-        "Service": "lambda.amazonaws.com"
-      },
-      "Effect": "Allow",
-      "Sid": ""
-    }
-  ]
-}
-EOF
+  assume_role_policy = var.lambda_role_policy
 }
 
 resource "aws_iam_policy" "pullapprove_logging_policy" {
