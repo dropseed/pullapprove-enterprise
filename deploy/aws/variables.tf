@@ -113,10 +113,13 @@ variable "worker_memory" {
 }
 
 variable "worker_vpc_config" {
-  default = {}
+  default = {
+    security_group_ids = []
+    subnet_ids         = []
+  }
   type = object({
-    security_group_ids = list(string),
-    subnet_ids         = list(string),
+    subnet_ids         = list(string)
+    security_group_ids = list(string)
   })
   description = "The vpc_config for the worker Lambda function (https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lambda_function#vpc_config)"
 }
