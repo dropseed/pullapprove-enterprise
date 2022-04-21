@@ -57,6 +57,6 @@ resource "aws_api_gateway_integration" "pullapprove_webhook_integration" {
   uri                     = aws_lambda_function.pullapprove_webhook.invoke_arn
 }
 
-output "github_app_webhook_url" {
+output "pullapprove_webhook_url" {
   value = "${aws_api_gateway_stage.pullapprove_gateway_stage.invoke_url}/${aws_api_gateway_resource.pullapprove_webhook_proxy.path_part}"
 }
