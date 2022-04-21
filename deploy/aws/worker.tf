@@ -7,7 +7,6 @@ resource "aws_lambda_function" "pullapprove_worker" {
   runtime          = "python3.8"
   timeout          = 300
   memory_size      = var.worker_memory
-  vpc_config       = var.worker_vpc_config
 
   environment {
     variables = {
@@ -30,6 +29,11 @@ resource "aws_lambda_function" "pullapprove_worker" {
       VERSION                = var.pullapprove_version
       REPORT_EXPIRATION_DAYS = var.report_expiration_days
     }
+  }
+
+  vpc_config {
+    subnet_ids         = var.worker_vpc_config.subnet_ids
+    security_group_ids = var.worker_vpc_config.security_group_ids
   }
 }
 
