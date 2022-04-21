@@ -20,6 +20,10 @@ resource "aws_iam_role" "pullapprove_lambda_role" {
 EOF
 }
 
+output "lambda_role_name" {
+  value = aws_iam_role.pullapprove_lambda_role.name
+}
+
 resource "aws_iam_policy" "pullapprove_logging_policy" {
   name        = "pullapprove_logging${var.aws_unique_suffix}"
   path        = "/"
