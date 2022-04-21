@@ -111,3 +111,173 @@ No! PullApprove only has read access to your code.
 GitHub.com's webhook IP addresses can be found at https://api.github.com/meta.
 (A handy command is `curl -s https://api.github.com/meta | jq .hooks`.)
 You can copy this list directly to `var.webhook_ip_allowlist`.
+
+### How can I get a static IP to add PullApprove to an allowed IP list?
+
+In order to do this you need to create a VPC, that has a NAT gateway, that is assigned an elastic IP, and connects the public and private subnets (where private is attached to your worker Lambda function).
+
+There are some articles online about how to do this,
+but here's an example config that can be added to your repo:
+
+```hcl
+resource "aws_vpc" "pullapprove_vpc" {
+  cidr_block = "10.0.0.0/16"
+
+  tags = {
+    Name = "pullapprove_vpc${var.aws_unique_suffix}"
+  }
+}
+
+resource "aws_subnet" "pullapprove_subnet_public" {
+  vpc_id     = aws_vpc.pullapprove_vpc.id
+  cidr_block = "10.0.0.0/24"
+
+  tags = {
+    Name = "pullapprove_subnet_public${var.aws_unique_suffix}"
+  }
+}
+
+resource "aws_internet_gateway" "pullapprove_internet_gateway" {
+  vpc_id = aws_vpc.pullapprove_vpc.id
+
+  tags = {
+    Name = "pullapprove_internet_gateway${var.aws_unique_suffix}"
+  }
+}
+
+resource "aws_route_table" "pullapprove_subnet_public_route_table" {
+    vpc_id = aws_vpc.pullapprove_vpc.id
+
+    route {
+        cidr_block = "0.0.0.0/0"
+        gateway_id = aws_internet_gateway.pullapprove_internet_gateway.id
+    }
+
+    tags = {
+      Name = "pullapprove_subnet_public_route_table${var.aws_unique_suffix}"
+    }
+}
+
+resource "aws_route_table_association" "pullapprove_subnet_public_route_table_association" {
+    route_table_id = aws_route_table.pullapprove_subnet_public_route_table.id
+    subnet_id = aws_subnet.pullapprove_subnet_public.id
+}
+
+
+resource "aws_subnet" "pullapprove_subnet_private" {
+  vpc_id     = aws_vpc.pullapprove_vpc.id
+  cidr_block = "10.0.1.0/24"
+
+  tags = {
+    Name = "pullapprove_subnet_private${var.aws_unique_suffix}"
+  }
+}
+
+resource "aws_eip" "pullapprove_elastic_ip" {
+  vpc      = true
+  depends_on = [aws_internet_gateway.pullapprove_internet_gateway]
+  tags = {
+    Name = "pullapprove_elastic_ip${var.aws_unique_suffix}"
+  }
+}
+
+resource "aws_nat_gateway" "pullapprove_nat_gateway" {
+  allocation_id = aws_eip.pullapprove_elastic_ip.id
+  subnet_id     = aws_subnet.pullapprove_subnet_public.id
+  connectivity_type = "public"
+
+  tags = {
+    Name = "pullapprove_nat_gateway${var.aws_unique_suffix}"
+  }
+
+  # To ensure proper ordering, it is recommended to add an explicit dependency
+  # on the Internet Gateway for the VPC.
+  depends_on = [aws_internet_gateway.pullapprove_internet_gateway]
+}
+
+resource "aws_route_table" "pullapprove_subnet_private_route_table" {
+    vpc_id = aws_vpc.pullapprove_vpc.id
+
+    route {
+        cidr_block = "0.0.0.0/0"
+        nat_gateway_id = aws_nat_gateway.pullapprove_nat_gateway.id
+    }
+
+    tags = {
+      Name = "pullapprove_subnet_private_route_table${var.aws_unique_suffix}"
+    }
+}
+
+resource "aws_route_table_association" "pullapprove_subnet_private_route_table_association" {
+    route_table_id = aws_route_table.pullapprove_subnet_private_route_table.id
+    subnet_id = aws_subnet.pullapprove_subnet_private.id
+}
+
+resource "aws_security_group" "pullapprove_worker_security_group" {
+  name        = "pullapprove_worker_security_group${var.aws_unique_suffix}"
+  description = "Allow outbound traffic"
+  vpc_id      = aws_vpc.pullapprove_vpc.id
+
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "pullapprove_worker_security_group${var.aws_unique_suffix}"
+  }
+}
+
+
+resource "aws_iam_policy" "pullapprove_lambda_ip_policy" {
+  name        = "pullapprove_lambda_ip${var.aws_unique_suffix}"
+  path        = "/"
+  description = "IAM policy for getting a static IP for the worker Lambda"
+
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "ec2:CreateNetworkInterface",
+        "ec2:DescribeNetworkInterfaces",
+        "ec2:DeleteNetworkInterface"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_iam_role_policy_attachment" "pullapprove_lambda_ip_attachment" {
+  role       = aws_iam_role.pullapprove_lambda_role.name
+  policy_arn = aws_iam_policy.pullapprove_lambda_ip_policy.arn
+}
+
+output "pullapprove_public_ip" {
+  value = aws_eip.pullapprove_elastic_ip.public_ip
+  description = "Public IP that can be used for allow-listing API access for PullApprove."
+}
+```
+
+Then in the existing `worker.tf`, you can update the `vpc_config`:
+
+```hcl
+resource "aws_lambda_function" "pullapprove_worker" {
+  ...
+
+  # Update vpc_config to use the new subnet and security group
+  vpc_config = {
+    subnet_ids = [
+      aws_subnet.pullapprove_subnet_private.id,
+    ]
+    security_group_ids = [
+      aws_security_group.pullapprove_worker_security_group.id,
+    ]
+  }
+}
