@@ -12,6 +12,7 @@ please contact us directly.
 
 - [First time installation (GitHub)](docs/install.md)
 - [First time installation (GitLab)](docs/install-gitlab.md)
+- [First time installation (Bitbucket)](docs/install-bitbucket.md)
 - [Updating to a new version](docs/update.md)
 - [FAQs](docs/faqs.md)
 
