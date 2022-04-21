@@ -112,6 +112,18 @@ variable "worker_memory" {
   description = "Memory limit on pullapprove worker"
 }
 
+variable "worker_vpc_config" {
+  default = {
+    security_group_ids = []
+    subnet_ids         = []
+  }
+  type = object({
+    subnet_ids         = list(string)
+    security_group_ids = list(string)
+  })
+  description = "The vpc_config for the worker Lambda function (https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lambda_function#vpc_config)"
+}
+
 # Optional error tracking
 variable "sentry_dsn" {
   default     = ""
