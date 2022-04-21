@@ -124,25 +124,6 @@ variable "worker_vpc_config" {
   description = "The vpc_config for the worker Lambda function (https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lambda_function#vpc_config)"
 }
 
-variable "lambda_role_policy" {
-  default     = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Action": "sts:AssumeRole",
-      "Principal": {
-        "Service": "lambda.amazonaws.com"
-      },
-      "Effect": "Allow",
-      "Sid": ""
-    }
-  ]
-}
-EOF
-  description = "The IAM policy for the Lambda role (https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role#assume_role_policy)"
-}
-
 # Optional error tracking
 variable "sentry_dsn" {
   default     = ""
