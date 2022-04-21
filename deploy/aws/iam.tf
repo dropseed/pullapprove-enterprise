@@ -21,7 +21,8 @@ EOF
 }
 
 output "lambda_role_name" {
-  value = aws_iam_role.pullapprove_lambda_role.name
+  value       = aws_iam_role.pullapprove_lambda_role.name
+  description = "Additional IAM policies can be attached to this role if you're using PullApprove as a Terraform module (`module.<name>.lambda_role_name`)."
 }
 
 resource "aws_iam_policy" "pullapprove_logging_policy" {

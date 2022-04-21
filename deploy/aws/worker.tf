@@ -32,6 +32,8 @@ resource "aws_lambda_function" "pullapprove_worker" {
   }
 
   vpc_config {
+    # To set the worker VPC, either use these variables (useful if using pullapprove as a module)
+    # or manually replace these with references to additional Terraform resources in this repo
     subnet_ids         = var.worker_vpc_config.subnet_ids
     security_group_ids = var.worker_vpc_config.security_group_ids
   }
