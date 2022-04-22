@@ -254,7 +254,7 @@
                 "query": "SOURCE '/aws/lambda/${worker_function_name}' | filter strcontains(@message, \"API.response\")\n| parse @message \" url=* \" as URL\n| stats count(URL) as calls by URL\n| sort calls desc\n| limit 50",
                 "region": "${aws_region}",
                 "stacked": false,
-                "title": "Most used GitHub API endpoints",
+                "title": "Most used API endpoints",
                 "view": "table"
             }
         },
@@ -296,7 +296,7 @@
                 "query": "SOURCE '/aws/lambda/${worker_function_name}' | filter strcontains(@message, \"from_cache=\")\n| fields @timestamp, @message\n| parse @message \" from_cache=True\" as cached_true\n| parse @message \" from_cache=False\" as cached_false\n| stats count(cached_true) as cache_hit, count(cached_false) as cache_miss by bin(5m)",
                 "region": "${aws_region}",
                 "stacked": true,
-                "title": "GitHub API cache usage",
+                "title": "API cache usage",
                 "view": "timeSeries"
             }
         },
