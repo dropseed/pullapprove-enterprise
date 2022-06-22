@@ -25,7 +25,7 @@ PullApprove will integrate through a user account that you create and give acces
 You could use a personal account for initial testing,
 but ultimately you will want a separate account with its own rate limit and permissions.
 
-## Create a personal access token
+## Create an app password
 
 While logged in as your "pullapprove" user,
 create a new personal access token with the "account:read" and "pullrequest:write" scopes.
