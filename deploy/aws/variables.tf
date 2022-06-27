@@ -91,15 +91,6 @@ variable "billing_api_secret" {
   description = "Secret for the billing API (not used for enterprise installations)"
   sensitive   = true
 }
-variable "availability_api_url" {
-  default     = " "
-  description = "URL to the availability API (not used for enterprise installations)"
-}
-variable "availability_api_secret" {
-  default     = " "
-  description = "Secret for the availability API (not used for enterprise installations)"
-  sensitive   = true
-}
 
 # Lambda settings
 variable "log_level" {
