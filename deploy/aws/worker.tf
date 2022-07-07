@@ -30,6 +30,13 @@ resource "aws_lambda_function" "pullapprove_worker" {
       REPORT_EXPIRATION_DAYS = var.report_expiration_days
     }
   }
+
+  vpc_config {
+    # To set the worker VPC, either use these variables (useful if using pullapprove as a module)
+    # or manually replace these with references to additional Terraform resources in this repo
+    subnet_ids         = var.worker_vpc_config.subnet_ids
+    security_group_ids = var.worker_vpc_config.security_group_ids
+  }
 }
 
 resource "aws_lambda_event_source_mapping" "pullapprove_worker_event_source_mapping" {

@@ -40,18 +40,6 @@ resource "aws_ssm_parameter" "billing_api_secret" {
   value = var.billing_api_secret
 }
 
-resource "aws_ssm_parameter" "availability_api_url" {
-  name  = "/pullapprove${var.aws_unique_suffix}/availability_api_url"
-  type  = "SecureString"
-  value = var.availability_api_url
-}
-
-resource "aws_ssm_parameter" "availability_api_secret" {
-  name  = "/pullapprove${var.aws_unique_suffix}/availability_api_secret"
-  type  = "SecureString"
-  value = var.availability_api_secret
-}
-
 resource "aws_ssm_parameter" "bitbucket_username_password" {
   name  = "/pullapprove${var.aws_unique_suffix}/bitbucket_username_password"
   type  = "SecureString"

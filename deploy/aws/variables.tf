@@ -91,15 +91,6 @@ variable "billing_api_secret" {
   description = "Secret for the billing API (not used for enterprise installations)"
   sensitive   = true
 }
-variable "availability_api_url" {
-  default     = " "
-  description = "URL to the availability API (not used for enterprise installations)"
-}
-variable "availability_api_secret" {
-  default     = " "
-  description = "Secret for the availability API (not used for enterprise installations)"
-  sensitive   = true
-}
 
 # Lambda settings
 variable "log_level" {
@@ -110,6 +101,18 @@ variable "log_level" {
 variable "worker_memory" {
   default     = 256
   description = "Memory limit on pullapprove worker"
+}
+
+variable "worker_vpc_config" {
+  default = {
+    security_group_ids = []
+    subnet_ids         = []
+  }
+  type = object({
+    subnet_ids         = list(string)
+    security_group_ids = list(string)
+  })
+  description = "The vpc_config for the worker Lambda function (https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lambda_function#vpc_config)"
 }
 
 # Optional error tracking
