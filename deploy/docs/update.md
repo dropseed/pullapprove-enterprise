@@ -18,7 +18,7 @@ Download the assets for this version:
 
 ```sh
 $ cd deploy
-$ ./scripts/download 3.17.0 $YOUR_PULLAPPROVE_DOWNLOAD_TOKEN
+$ ./scripts/download 3.18.1 $YOUR_PULLAPPROVE_DOWNLOAD_TOKEN
 ```
 
 Then run Terraform:
