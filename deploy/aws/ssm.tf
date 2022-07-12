@@ -25,7 +25,7 @@ resource "aws_ssm_parameter" "github_app_private_key" {
 resource "aws_ssm_parameter" "github_reporting_app_private_key" {
   name  = "/pullapprove${var.aws_unique_suffix}/github_reporting_app_private_key"
   type  = "SecureString"
-  value = var.github_app_private_key
+  value = var.github_reporting_app_private_key
 }
 
 resource "aws_ssm_parameter" "cache_redis_url" {

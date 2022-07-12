@@ -32,7 +32,7 @@ variable "github_bot_name" {
 }
 variable "github_reporting_app_id" {
   default     = ""
-  description = "Optional ID for the GitHub App that sends statuses (for protected branch app_id consistency in HA modes)"
+  description = "Optional ID for the GitHub App that sends statuses (for protected branch app_id consistency in multi-instance usage)"
 }
 variable "github_reporting_app_installation_id" {
   default     = ""
