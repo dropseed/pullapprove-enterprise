@@ -76,6 +76,22 @@ In order to transition the `terraform.tfstate` from a cloned setup to a module s
 our current recommendation is to manually modify `terraform.tfstate`.
 In your editor of choice, find `"mode": "managed",` and replace with `"module": "module.your_module_name", "mode": "managed",`. When you run terraform apply, it should now recognize most of the state as being the same as the current, and only show the few changes you expect.
 
+### How do you use GitHub's branch protection app_id with multiple instances of PullApprove?
+
+In HA or other multi-instance deployment scenarios, you may have multiple GitHub Apps for PullApprove that each have their own rate limit.
+This works fine, but when combined with [GitHub's setting to restrict which app_id can set a status](https://github.blog/changelog/2021-12-01-ensure-required-status-checks-provided-by-the-intended-app/), you'll find that only one of the apps can be authorized to report a specific status.
+
+For these scenarios there is an optional GitHub "reporting" app setting which separates the "processing" API calls from the status "reporting" call.
+The same "reporting" app can be used in multiple instances of PullApprove, so that the status always comes from the same `app_id`.
+
+To use it, create a new GitHub app with **read and write commit statuses** permission, then use these settings:
+
+```hcl
+github_reporting_app_id = "<app id>"
+github_reporting_app_installation_id = "<installation id - only supports a single organization currently>"
+github_reporting_app_private_key = "<base64 encoded private key>"
+```
+
 ## Security
 
 ### What data is stored?

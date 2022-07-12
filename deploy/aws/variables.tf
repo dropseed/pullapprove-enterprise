@@ -30,6 +30,19 @@ variable "github_bot_name" {
   default     = "pullapprove[bot]"
   description = "The slugified name of your GitHub App. Should end in `[bot]`."
 }
+variable "github_reporting_app_id" {
+  default     = ""
+  description = "Optional ID for the GitHub App that sends statuses (for protected branch app_id consistency in multi-instance usage)"
+}
+variable "github_reporting_app_installation_id" {
+  default     = ""
+  description = "The exact installation ID for the installed reporting GitHub App in an organization. Can only work with one organization."
+}
+variable "github_reporting_app_private_key" {
+  default     = " " # intentional space for SSM
+  description = "The base64 encoded private key for the reporting GitHub App"
+  sensitive   = true
+}
 
 # Bitbucket integration (leave defaults if not using Bitbucket)
 variable "bitbucket_status_key" {
