@@ -143,12 +143,14 @@ resource "aws_iam_user_policy" "pullapprove_iam_policy" {
 EOF
 }
 
+# You can only have one of these per AWS account,
+# so the role and policy don't use aws_unique_suffix
 resource "aws_api_gateway_account" "pullapprove_cloudwatch_account" {
   cloudwatch_role_arn = aws_iam_role.pullapprove_cloudwatch_role.arn
 }
 
 resource "aws_iam_role" "pullapprove_cloudwatch_role" {
-  name = "pullapprove_cloudwatch_role${var.aws_unique_suffix}"
+  name = "pullapprove_cloudwatch_role"
 
   assume_role_policy = <<EOF
 {
@@ -168,7 +170,7 @@ EOF
 }
 
 resource "aws_iam_role_policy" "pullapprove_cloudwatch_policy" {
-  name = "pullapprove_cloudwatch_policy${var.aws_unique_suffix}"
+  name = "pullapprove_cloudwatch_policy"
   role = aws_iam_role.pullapprove_cloudwatch_role.id
 
   policy = <<EOF
