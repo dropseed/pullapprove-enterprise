@@ -144,7 +144,10 @@ EOF
 }
 
 # You can only have one of these per AWS account,
-# so the role and policy don't use aws_unique_suffix
+# so the role and policy don't use aws_unique_suffix.
+# If you have multiple instances in a single account, you may need to import the role
+# depending on your Terraform setup:
+# terraform import module.pullapprove_dev.aws_iam_role.pullapprove_cloudwatch_role pullapprove_cloudwatch_role
 resource "aws_api_gateway_account" "pullapprove_cloudwatch_account" {
   cloudwatch_role_arn = aws_iam_role.pullapprove_cloudwatch_role.arn
 }

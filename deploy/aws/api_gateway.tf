@@ -11,7 +11,7 @@ data "aws_iam_policy_document" "pullapprove_gateway_iam_policy_document" {
   statement {
     effect    = "Allow"
     actions   = ["execute-api:Invoke"]
-    resources = ["*"]
+    resources = ["execute-api:/*"]
     principals {
       type        = "*"
       identifiers = ["*"]
