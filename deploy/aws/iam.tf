@@ -139,15 +139,12 @@ resource "aws_iam_user_policy" "pullapprove_iam_policy" {
 EOF
 }
 
-# Set up an iam role to allow enabling CloudWatch logging for API Gateway
-# NOTE: THIS IS SHARED ACROSS THE ENTIRE ACCOUNT, so the lack of unique suffix is intentional
-# (this is generally not an issue as the role and policy are very straightforward/standard)
 resource "aws_api_gateway_account" "pullapprove_cloudwatch_account" {
   cloudwatch_role_arn = aws_iam_role.pullapprove_cloudwatch_role.arn
 }
 
 resource "aws_iam_role" "pullapprove_cloudwatch_role" {
-  name = "pullapprove_cloudwatch_role" # missing unique_suffix is intentional (note above)
+  name = "pullapprove_cloudwatch_role${var.aws_unique_suffix}"
 
   assume_role_policy = <<EOF
 {
@@ -167,7 +164,7 @@ EOF
 }
 
 resource "aws_iam_role_policy" "pullapprove_cloudwatch_policy" {
-  name = "pullapprove_cloudwatch_policy" # missing unique_suffix is intentional (note above)
+  name = "pullapprove_cloudwatch_policy${var.aws_unique_suffix}"
   role = aws_iam_role.pullapprove_cloudwatch_role.id
 
   policy = <<EOF
