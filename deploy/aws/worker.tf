@@ -47,3 +47,7 @@ resource "aws_lambda_event_source_mapping" "pullapprove_worker_event_source_mapp
   enabled          = true
   function_name    = aws_lambda_function.pullapprove_worker.arn
 }
+
+output "pullapprove_worker_function" {
+  value = aws_lambda_function.pullapprove_worker
+}
