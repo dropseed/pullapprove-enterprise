@@ -96,7 +96,7 @@ github_reporting_app_private_key = "<base64 encoded private key>"
 
 PullApprove is invoked via webhooks, so one of the best ways to make better use of your API rate limits is to disable specific types of webhooks.
 
-In the GitHub App settings, you can enable/disable an entire class of event (ex. `status`).
+In the GitHub App settings, you can enable/disable an entire class of event (ex. `status`):
 
 ![CleanShot 2023-02-06 at 12 31 57](https://user-images.githubusercontent.com/649496/217055765-6d127792-584f-484b-b74d-90d2cb39313d.png)
 
@@ -132,7 +132,7 @@ webhook_expression_blocklist = [
   "'context' in body and body.repository.name not in ['allowedrepo1', 'allowedrepo2']"
 ]
 
-# You can also use common string methods like `.startswith`:
+# You can also use common string methods like `.startswith`
 webhook_expression_blocklist = [
   "'context' in body and not body.repository.name.startswith('terraform-')"
 ]
