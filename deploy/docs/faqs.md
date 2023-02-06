@@ -101,10 +101,18 @@ In the GitHub App settings, you can enable/disable an entire class of event (ex.
 ![CleanShot 2023-02-06 at 12 31 57](https://user-images.githubusercontent.com/649496/217055765-6d127792-584f-484b-b74d-90d2cb39313d.png)
 
 To block webhooks for a specific repo (if you have the app installed on all repos for simplicity, but aren't actually using it on all repos),
-use the `webhook_repo_blocklist`.
+use the `webhook_repo_blocklist`:
+
+```hcl
+webhook_repo_blocklist = ["myorg/blockedrepo"]
+```
 
 To block webhooks from a specific sender (ex. another noisy integration that doesn't impact PullApprove),
-use the `webhook_sender_blocklist`.
+use the `webhook_sender_blocklist`:
+
+```hcl
+webhook_sender_blocklist = ["integrationbot[bot]"]
+```
 
 For more fine-grained control (ex. `status` events per repository), you can use the `webhook_expression_blocklist` variable.
 You can write Python expressions similar to a `.pullapprove.yml`,
@@ -121,7 +129,7 @@ Here are some examples of blocking status events on specific repos:
 
 # Use standard Python operators and lists/strings
 webhook_expression_blocklist = [
-  "'context' in body and body.repository.name not in ['repowithstatuses1', 'repowithstatuses2']"
+  "'context' in body and body.repository.name not in ['allowedrepo1', 'allowedrepo2']"
 ]
 
 # You can also use common string methods like `.startswith`:
@@ -132,6 +140,13 @@ webhook_expression_blocklist = [
 # You can also use repository.full_name, but may not need to if you only have a single organization
 webhook_expression_blocklist = [
   "'context' in body and not body.repository.full_name.startswith('myorg/terraform-')"
+]
+
+# The blocklist is a list, so you can write multiple expressions and
+# ANY match will block the webhook
+webhook_expression_blocklist = [
+  "'context' in body and body.repository.name != 'allowedrepo1'",
+  "'context' in body and body.repository.name != 'allowedrepo2'",
 ]
 ```
 
