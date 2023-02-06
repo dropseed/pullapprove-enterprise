@@ -92,6 +92,53 @@ github_reporting_app_installation_id = "<installation id - only supports a singl
 github_reporting_app_private_key = "<base64 encoded private key>"
 ```
 
+### How do I selectively block webhooks?
+
+PullApprove is invoked via webhooks, so one of the best ways to make better use of your API rate limits is to disable specific types of webhooks.
+
+In the GitHub App settings, you can enable/disable an entire class of event (ex. `status`).
+
+![CleanShot 2023-02-06 at 12 31 57](https://user-images.githubusercontent.com/649496/217055765-6d127792-584f-484b-b74d-90d2cb39313d.png)
+
+To block webhooks for a specific repo (if you have the app installed on all repos for simplicity, but aren't actually using it on all repos),
+use the `webhook_repo_blocklist`.
+
+To block webhooks from a specific sender (ex. another noisy integration that doesn't impact PullApprove),
+use the `webhook_sender_blocklist`.
+
+For more fine-grained control (ex. `status` events per repository), you can use the `webhook_expression_blocklist` variable.
+You can write Python expressions similar to a `.pullapprove.yml`,
+but it has a more limited context -- the only variable is the `body` of the webhook itself
+(we may add support for the webhook "event" name or ability to use functions like `contains_regex` in the future).
+
+Here are some examples of blocking status events on specific repos:
+
+```hcl
+# The "status" event is the only webhook with "context" in the payload,
+# so we can use that to determine whether it's a status event.
+#
+# Remember that you are writing conditions to BLOCK a webhook, not conditions to ALLOW one!
+
+# Use standard Python operators and lists/strings
+webhook_expression_blocklist = [
+  "'context' in body and body.repository.name not in ['repowithstatuses1', 'repowithstatuses2']"
+]
+
+# You can also use common string methods like `.startswith`:
+webhook_expression_blocklist = [
+  "'context' in body and not body.repository.name.startswith('terraform-')"
+]
+
+# You can also use repository.full_name, but may not need to if you only have a single organization
+webhook_expression_blocklist = [
+  "'context' in body and not body.repository.full_name.startswith('myorg/terraform-')"
+]
+```
+
+When a webhook is blocked,
+you will be able to see an "explanation" in your AWS logs or in your GitHub App dashboard:
+![CleanShot 2023-02-06 at 12 07 40](https://user-images.githubusercontent.com/649496/217055100-17deb07e-6696-47f7-a4cb-2c132a2f3f3f.png)
+
 ## Security
 
 ### What data is stored?
