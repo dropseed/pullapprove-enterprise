@@ -154,6 +154,11 @@ When a webhook is blocked,
 you will be able to see an "explanation" in your AWS logs or in your GitHub App dashboard:
 ![CleanShot 2023-02-06 at 12 07 40](https://user-images.githubusercontent.com/649496/217055100-17deb07e-6696-47f7-a4cb-2c132a2f3f3f.png)
 
+You can also use the "Request" tab here to get concrete examples of webhook payloads and the data you have to work with:
+
+![CleanShot 2023-02-06 at 12 55 05](https://user-images.githubusercontent.com/649496/217060131-7823daad-a016-40ca-980e-ee833a3fd6d6.png)
+
+
 ## Security
 
 ### What data is stored?
