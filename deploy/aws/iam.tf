@@ -153,7 +153,7 @@ resource "aws_api_gateway_account" "pullapprove_cloudwatch_account" {
 }
 
 resource "aws_iam_role" "pullapprove_cloudwatch_role" {
-  name = "pullapprove_cloudwatch_role"
+  name = "pullapprove_cloudwatch_role" # missing unique_suffix is intentional (note above)
 
   assume_role_policy = <<EOF
 {
@@ -173,7 +173,7 @@ EOF
 }
 
 resource "aws_iam_role_policy" "pullapprove_cloudwatch_policy" {
-  name = "pullapprove_cloudwatch_policy"
+  name = "pullapprove_cloudwatch_policy" # missing unique_suffix is intentional (note above)
   role = aws_iam_role.pullapprove_cloudwatch_role.id
 
   policy = <<EOF
