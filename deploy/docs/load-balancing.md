@@ -1,11 +1,15 @@
 # Load balancing multiple GitHub Apps
 
 Large organizations may run into the rate limits of using a single GitHub App.
-It's possible to work around this by creating multiple GitHub Apps and using multiple workers to load balance the API requests.
+It's possible to work around this by creating multiple GitHub Apps and using multiple workers (one per app) to load balance the API requests.
 
 The easiest way to do this is to add additional worker Lambdas to your existing deployment.
 They will pull from the same SQS queue,
 and will use the GitHub API to determine the GitHub App `installation.id` at runtime (instead of relying on the webhook `installation.id`).
+
+The setup will look roughly like this:
+
+![](https://user-images.githubusercontent.com/649496/217365756-f8de00ac-41d6-4c89-b913-08fde4d10d29.png)
 
 ## Primary GitHub App
 
@@ -50,9 +54,10 @@ additional_workers = {
 }
 ```
 
+An example using a Terraform module for the base configuration:
+
 ```hcl
 module "pullapprove" {
-  # A module re-using the default PullApprove configuration
   source = "git::https://github.com/dropseed/pullapprove-enterprise.git//deploy/aws?ref=master"
 
   aws_region                = var.aws_region
@@ -89,17 +94,17 @@ resource "aws_lambda_function" "pullapprove_additional_worker" {
 
   environment {
     variables = {
-      # The app ID and private key are different for each additional worker
-      GITHUB_APP_ID                        = each.value.github_app_id
-      GITHUB_APP_PRIVATE_KEY               = each.value.github_app_private_key
+      GITHUB_APP_ID               = each.value.github_app_id
+      GITHUB_APP_PRIVATE_KEY_NAME = "github_app_private_key${each.key}" # Reference to SSM param name
+      # Or set the private key directly
+      # GITHUB_APP_PRIVATE_KEY      = each.value.github_app_private_key
 
-      AWS_SSM_PARAMETER_PATH               = "/pullapprove${var.aws_unique_suffix}"
-      AWS_SQS_NAME                         = module.pullapprove.pullapprove_worker_queue.name
-      AWS_S3_BUCKET                        = module.pullapprove.pullapprove_storage_bucket.bucket
-      GITHUB_STATUS_CONTEXT                = "pullapprove-lb"
-      CONFIG_FILENAME                      = ".pullapprove-dev.yml"
-      UI_BASE_URL                          = "${module.pullapprove.pullapprove_public_url}/report/"
-      VERSION                              = "latest"
+      AWS_SSM_PARAMETER_PATH = "/pullapprove${var.aws_unique_suffix}"
+      AWS_SQS_NAME           = module.pullapprove.pullapprove_worker_queue.name
+      AWS_S3_BUCKET          = module.pullapprove.pullapprove_storage_bucket.bucket
+      GITHUB_STATUS_CONTEXT  = "pullapprove-yourorg"
+      UI_BASE_URL            = "${module.pullapprove.pullapprove_public_url}/report/"
+      LOG_LEVEL              = "DEBUG"
 
       # If you are using a dedicated reporting app,
       # you need to see these variables too (the reporting private key is in SSM)
@@ -109,12 +114,21 @@ resource "aws_lambda_function" "pullapprove_additional_worker" {
   }
 }
 
+# Tell the additional workers to pull from the worker queue
 resource "aws_lambda_event_source_mapping" "pullapprove_additional_worker_event_source_mapping" {
-  for_each = var.additional_workers
+  for_each         = var.additional_workers
   batch_size       = 1
   event_source_arn = module.pullapprove.pullapprove_worker_queue.arn
   enabled          = true
   function_name    = aws_lambda_function.pullapprove_additional_worker[each.key].arn
+}
+
+# Store the private key in SSM
+resource "aws_ssm_parameter" "pullapprove_additional_worker_github_app_private_key" {
+  for_each = var.additional_workers
+  name     = "/pullapprove${var.aws_unique_suffix}/github_app_private_key${each.key}"
+  type     = "SecureString"
+  value    = each.value.github_app_private_key
 }
 ```
 
@@ -122,3 +136,6 @@ resource "aws_lambda_event_source_mapping" "pullapprove_additional_worker_event_
 
 - each GitHub App will need to be installed on each repo
 - additional workers will not show up in the default CloudWatch dashboard
+- you can replicate an entire "PullApprove" (webhook, queue, cache, worker, etc.) and load balance in front if you want more redundancy
+  - each webhook will use the same webhook secret from the primary app
+  - each worker will automatically authorize itself if it's `GITHUB_APP_ID` does not match the app ID from the webhook
