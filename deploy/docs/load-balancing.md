@@ -20,7 +20,7 @@ but **webhooks will be disabled**.
 - [ ] Copy this URL, paste it in your browser and replace `<organization>` with your GitHub organization name
 
 ```
-https://github.com/organizations/<organization>/settings/apps/new?name=pullapprove-lb-N&url=https://www.pullapprove.com&public=false&webhook_active=false&administration=read&statuses=write&checks=read&pull_requests=write&contents=read&members=read
+https://github.com/organizations/<organization>/settings/apps/new?name=pullapprove-yourorg-N&url=https://www.pullapprove.com&public=false&webhook_active=false&administration=read&statuses=write&checks=read&pull_requests=write&contents=read&members=read
 ```
 
 - [ ] Replace the "N" in the name with a number (ex. "1")
