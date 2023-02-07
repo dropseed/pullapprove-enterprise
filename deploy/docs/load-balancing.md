@@ -27,7 +27,7 @@ but **webhooks will be disabled**.
 https://github.com/organizations/<organization>/settings/apps/new?name=pullapprove-yourorg-N&url=https://www.pullapprove.com&public=false&webhook_active=false&administration=read&statuses=write&checks=read&pull_requests=write&contents=read&members=read
 ```
 
-- [ ] Replace the "N" in the name with a number (ex. "1")
+- [ ] Give it a unique name (ex. "pullapprove-yourorg-worker-1")
 - [ ] Copy your App ID (ex. 12345) and save it in Terraform variables
 - [ ] Click "Generate a private key"
 - [ ] Convert the key to base64 (`cat private-key.pem | base64`)
