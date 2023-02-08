@@ -1,4 +1,4 @@
-# ![PullApprove Enterprise](https://www.pullapprove.com/static/img/logos/pullapprove-enterprise.svg)
+# ![PullApprove Enterprise](https://www.pullapprove.com/assets/img/logos/pullapprove-enterprise.svg)
 
 These are the tools and instructions for deploying PullApprove Enterprise into your own AWS account,
 to work with your GitHub Enterprise installation.

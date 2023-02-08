@@ -1,4 +1,4 @@
-<a href="https://www.pullapprove.com/"><img src="https://www.pullapprove.com/static/img/logos/pull-approve-logo-gray-dk.png" alt="PullApprove" height="40px" /></a>
+<a href="https://www.pullapprove.com/"><img src="https://www.pullapprove.com/assets/img/logos/pull-approve-logo-gray-dk.png" alt="PullApprove" height="40px" /></a>
 ---
 
 PullApprove lets teams build automated code review workflows.

@@ -61,3 +61,7 @@ resource "aws_api_gateway_integration" "pullapprove_webhook_integration" {
 output "pullapprove_webhook_url" {
   value = "${aws_api_gateway_stage.pullapprove_gateway_stage.invoke_url}/${aws_api_gateway_resource.pullapprove_webhook_proxy.path_part}"
 }
+
+output "pullapprove_webhook_function" {
+  value = aws_lambda_function.pullapprove_webhook
+}

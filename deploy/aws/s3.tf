@@ -46,3 +46,7 @@ resource "null_resource" "pullapprove_public_bucket_sync" {
 output "pullapprove_public_url" {
   value = "http://${aws_s3_bucket.pullapprove_public_bucket.website_endpoint}"
 }
+
+output "pullapprove_storage_bucket" {
+  value = aws_s3_bucket.pullapprove_storage_bucket
+}

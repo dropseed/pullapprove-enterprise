@@ -20,6 +20,10 @@ resource "aws_iam_role" "pullapprove_lambda_role" {
 EOF
 }
 
+output "pullapprove_lambda_role" {
+  value = aws_iam_role.pullapprove_lambda_role
+}
+
 output "lambda_role_name" {
   value       = aws_iam_role.pullapprove_lambda_role.name
   description = "Additional IAM policies can be attached to this role if you're using PullApprove as a Terraform module (`module.<name>.lambda_role_name`)."
@@ -139,9 +143,11 @@ resource "aws_iam_user_policy" "pullapprove_iam_policy" {
 EOF
 }
 
-# Set up an iam role to allow enabling CloudWatch logging for API Gateway
-# NOTE: THIS IS SHARED ACROSS THE ENTIRE ACCOUNT, so the lack of unique suffix is intentional
-# (this is generally not an issue as the role and policy are very straightforward/standard)
+# You can only have one of these per AWS account,
+# so the role and policy don't use aws_unique_suffix.
+# If you have multiple instances in a single account, you may need to import the role
+# depending on your Terraform setup:
+# terraform import module.pullapprove_dev.aws_iam_role.pullapprove_cloudwatch_role pullapprove_cloudwatch_role
 resource "aws_api_gateway_account" "pullapprove_cloudwatch_account" {
   cloudwatch_role_arn = aws_iam_role.pullapprove_cloudwatch_role.arn
 }
