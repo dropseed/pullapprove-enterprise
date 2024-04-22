@@ -88,7 +88,7 @@ resource "aws_lambda_function" "pullapprove_additional_worker" {
   role             = module.pullapprove.pullapprove_lambda_role.arn
   handler          = "main.aws_sqs_handler"
   source_code_hash = filebase64sha256("../versions/latest/pullapprove_worker_aws.zip")
-  runtime          = "python3.8"
+  runtime          = "python3.9"
   timeout          = 300
   memory_size      = 256
 
