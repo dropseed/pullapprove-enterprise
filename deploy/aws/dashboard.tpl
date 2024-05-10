@@ -307,9 +307,9 @@
             "width": 6,
             "height": 6,
             "properties": {
-                "query": "SOURCE '/aws/lambda/${worker_function_name}' | filter strcontains(@message, "canonical-log-line") and strcontains(@message, \"pr_locked=\")\n| fields @timestamp, @message\n| parse @message \" pr_locked=True\" as locked_true\n| parse @message \" pr_locked=False\" as locked_false\n| stats count(locked_true) as pr_locked, count(locked_false) as pr_not_locked by bin(5m)",
+                "query": "SOURCE '/aws/lambda/${worker_function_name}' | filter strcontains(@message, \"canonical-log-line\") and strcontains(@message, \"pr_locked=\")\n| fields @timestamp, @message\n| parse @message \" pr_locked=True\" as locked_true\n| parse @message \" pr_locked=False\" as locked_false\n| stats count(locked_true) as pr_locked, count(locked_false) as pr_not_locked by bin(5m)",
                 "region": "${aws_region}",
-                "stacked": false,
+                "stacked": true,
                 "title": "PR lock usage",
                 "view": "timeSeries"
             }
