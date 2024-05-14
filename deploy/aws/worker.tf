@@ -30,6 +30,7 @@ resource "aws_lambda_function" "pullapprove_worker" {
       CACHE_REDIS_OPTIONS                  = jsonencode(var.cache_redis_options)
       VERSION                              = var.pullapprove_version
       REPORT_EXPIRATION_DAYS               = var.report_expiration_days
+      PR_LOCK_MAX_CONCURRENCY              = var.pr_lock_max_concurrency
     }
   }
 

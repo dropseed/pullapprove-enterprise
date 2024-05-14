@@ -105,6 +105,11 @@ variable "billing_api_secret" {
   sensitive   = true
 }
 
+variable "pr_lock_max_concurrency" {
+  default     = -1
+  description = "Maximum concurrent processing of a single PR. Set to -1 for no limit."
+}
+
 # Lambda settings
 variable "log_level" {
   default     = "INFO"
