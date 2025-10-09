@@ -257,7 +257,7 @@ resource "aws_subnet" "pullapprove_subnet_private" {
 }
 
 resource "aws_eip" "pullapprove_elastic_ip" {
-  vpc      = true
+  domain = "vpc"
   depends_on = [aws_internet_gateway.pullapprove_internet_gateway]
   tags = {
     Name = "pullapprove_elastic_ip${var.aws_unique_suffix}"
